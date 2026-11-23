@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase History | Manufacturer | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/manufacturer/history.css">
+</head>
+
+<body data-role="manufacturer" data-page="history">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Purchase History</h1>
+                        <p class="page-subtitle">Biomass purchase orders that have been delivered.</p>
+                    </div>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-circle-check"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiCompleted">0</div>
+                            <div class="kpi-label">Completed Orders</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiTons">0 t</div>
+                            <div class="kpi-label">Biomass Received</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiSpent">₹0</div>
+                            <div class="kpi-label">Total Spent</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiAvg">₹0</div>
+                            <div class="kpi-label">Avg. Price / Ton</div>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Order History</div>
+                            <div class="card-subtitle" id="resultCount">0 records</div>
+                        </div>
+                    </div>
+
+                    <div class="card-body filter-body">
+                        <form id="filterForm" class="filter-grid" novalidate>
+                            <div class="form-group">
+                                <label for="fromDate">From Date</label>
+                                <input type="date" id="fromDate" data-label="From date" data-rules="date|notFuture">
+                            </div>
+                            <div class="form-group">
+                                <label for="toDate">To Date</label>
+                                <input type="date" id="toDate" data-label="To date" data-rules="date|notFuture|sameOrAfter:#fromDate">
+                            </div>
+                            <div class="form-group">
+                                <label for="searchInput">Search</label>
+                                <input type="search" id="searchInput" placeholder="PO ID, farmer, biomass" data-novalidate>
+                            </div>
+                            <div class="filter-actions">
+                                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-filter"></i> Apply</button>
+                                <button type="button" class="btn btn-secondary" id="resetBtn">Reset</button>
+                            </div>
+                        </form>
+                        <p class="form-hint">Date range filters on the order date.</p>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>PO ID</th>
+                                    <th>Farmer</th>
+                                    <th>Biomass</th>
+                                    <th>Quantity</th>
+                                    <th>Price / Ton</th>
+                                    <th>Amount</th>
+                                    <th>Order Date</th>
+                                    <th>Delivered On</th>
+                                    <th>Payment</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historyTable"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/manufacturer/history.js"></script>
+
+</body>
+
+</html>

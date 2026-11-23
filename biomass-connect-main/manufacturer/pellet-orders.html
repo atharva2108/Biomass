@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pellet Orders | Manufacturer | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/manufacturer/pellet-orders.css">
+</head>
+
+<body data-role="manufacturer" data-page="pellet-orders">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Pellet Orders Received</h1>
+                        <p class="page-subtitle">Power plants buy a whole pellet listing. Every order must be supplied; pickup and delivery are arranged by the logistics team.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-secondary" href="pellet-tracking.html">
+                            <i class="fa-solid fa-route"></i> Order Tracking
+                        </a>
+                    </div>
+                </div>
+
+                <section class="card">
+
+                    <div class="card-body" style="padding-bottom:0">
+                        <div class="tabs" id="statusTabs" style="margin-bottom:16px"></div>
+                        <div class="toolbar">
+                            <div class="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" id="searchInput" placeholder="Search by order ID, power plant or pellet type" data-novalidate>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Power Plant</th>
+                                    <th>Pellets</th>
+                                    <th>Quantity</th>
+                                    <th>Amount</th>
+                                    <th>Order Date</th>
+                                    <th>Status</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orderTable"></tbody>
+                        </table>
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- VIEW MODAL -->
+
+    <div class="modal-backdrop" id="viewModal">
+        <div class="modal modal-lg" role="dialog" aria-modal="true" aria-labelledby="viewTitle">
+            <div class="modal-header">
+                <h3 id="viewTitle">Order details</h3>
+                <button class="modal-close" type="button" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="viewBody"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-close>Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/manufacturer/pellet-orders.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Power Plant | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/powerplant/dashboard.css">
+</head>
+
+<body data-role="powerplant" data-page="dashboard">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Power Plant Dashboard</h1>
+                        <p class="page-subtitle">Your pellet orders, deliveries and batch feedback at a glance.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-secondary" href="consumption.html">
+                            <i class="fa-solid fa-fire-flame-curved"></i> Log Consumption
+                        </a>
+                        <a class="btn btn-primary" href="marketplace.html">
+                            <i class="fa-solid fa-cart-plus"></i> Buy Pellets
+                        </a>
+                    </div>
+                </div>
+
+                <!-- KPI CARDS -->
+
+                <div class="kpi-grid">
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiDelivered">0 t</div>
+                            <div class="kpi-label">Pellets Delivered</div>
+                            <div class="kpi-trend" id="kpiDeliveredNote"></div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiActive">0</div>
+                            <div class="kpi-label">Active Orders</div>
+                            <div class="kpi-trend" id="kpiActiveNote"></div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiValue">₹0</div>
+                            <div class="kpi-label">Total Order Value</div>
+                            <div class="kpi-trend" id="kpiValueNote"></div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiFeedback">0</div>
+                            <div class="kpi-label">Batches Awaiting Feedback</div>
+                            <div class="kpi-trend" id="kpiFeedbackNote"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="dashboard-grid">
+
+                    <!-- RECENT ORDERS -->
+
+                    <section class="card">
+
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Recent Pellet Orders</div>
+                                <div class="card-subtitle">Latest orders placed with manufacturers</div>
+                            </div>
+                            <a class="btn btn-ghost btn-sm" href="tracking.html">Track orders <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Supplier</th>
+                                        <th>Pellet Type</th>
+                                        <th>Quantity</th>
+                                        <th>Amount</th>
+                                        <th>Ordered On</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="orderTable"></tbody>
+                            </table>
+                        </div>
+
+                    </section>
+
+                    <!-- QUICK LINKS -->
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div class="card-title">Quick Links</div>
+                        </div>
+                        <div class="card-body action-grid quick-actions">
+                            <a class="action-tile" href="marketplace.html"><i class="fa-solid fa-store"></i> Buy Pellets</a>
+                            <a class="action-tile" href="tracking.html"><i class="fa-solid fa-truck-fast"></i> Track Orders</a>
+                            <a class="action-tile" href="pellet-feedback.html"><i class="fa-solid fa-clipboard-check"></i> Batch Feedback</a>
+                            <a class="action-tile" href="consumption.html"><i class="fa-solid fa-fire-flame-curved"></i> Consumption</a>
+                            <a class="action-tile" href="carbon-savings.html"><i class="fa-solid fa-leaf"></i> Carbon Savings</a>
+                            <a class="action-tile" href="billing.html"><i class="fa-solid fa-file-invoice"></i> Billing</a>
+                        </div>
+                    </section>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/powerplant/plant.js"></script>
+    <script src="../js/powerplant/dashboard.js"></script>
+
+</body>
+
+</html>

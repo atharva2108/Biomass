@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/auth/auth.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="public-header">
+
+        <a class="logo" href="../index.html">
+            <i class="fa-solid fa-leaf"></i>
+            <div>
+                <h2>Biomass Connect</h2>
+                <span>From Farms To Fuel</span>
+            </div>
+        </a>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../index.html#features">Features</a>
+            <a href="../index.html#workflow">How it Works</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+
+        <a class="btn btn-secondary" href="register.html">Register</a>
+
+    </header>
+
+    <!-- MAIN -->
+
+    <main class="auth-main">
+
+        <div class="auth-shell">
+
+            <aside class="auth-aside">
+
+                <div>
+                    <span class="aside-icon"><i class="fa-solid fa-seedling"></i></span>
+                    <h2>Welcome to Biomass Connect</h2>
+                    <p>One platform connecting the agricultural residue supply chain.</p>
+                </div>
+
+                <ul class="aside-list">
+                    <li>
+                        <i class="fa-solid fa-wheat-awn"></i>
+                        <div><strong>Farmers</strong><span>List and sell crop residue instead of burning it.</span></div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-industry"></i>
+                        <div><strong>Manufacturers</strong><span>Source biomass and sell quality pellets.</span></div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-bolt"></i>
+                        <div><strong>Power Plants</strong><span>Buy pellets for co-firing and track carbon savings.</span></div>
+                    </li>
+                </ul>
+
+                <p class="aside-note"><i class="fa-solid fa-shield-halved"></i> Your data is protected and only shared with verified partners.</p>
+
+            </aside>
+
+            <section class="auth-body">
+
+                <h1>Sign in</h1>
+                <p class="subtitle">Continue your biomass journey</p>
+
+                <form id="loginForm" class="auth-form" novalidate>
+
+                    <div class="form-group">
+                        <label for="username">Email or Mobile Number</label>
+                        <input type="text" id="username" autocomplete="username"
+                            placeholder="name@example.com or 9876543210"
+                            data-label="Email or mobile number"
+                            data-rules="required|emailOrMobile|maxlen:100">
+                        <small id="usernameError" class="error"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-wrap">
+                            <input type="password" id="password" autocomplete="current-password"
+                                placeholder="Enter your password"
+                                data-rules="required|minlen:8|maxlen:20"
+                                data-filter="nospace">
+                            <button type="button" class="password-toggle" aria-label="Show password"><i class="fa-regular fa-eye"></i></button>
+                        </div>
+                        <small id="passwordError" class="error"></small>
+                    </div>
+
+                    <div class="form-row-between">
+                        <label class="checkbox-row">
+                            <input type="checkbox" id="rememberMe" data-novalidate>
+                            Remember me
+                        </label>
+                        <a href="forgot-password.html">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block btn-lg" id="loginBtn">
+                        Sign in <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </form>
+
+                <div class="auth-switch">
+                    Don't have an account? <a href="register.html">Create one</a>
+                </div>
+
+                <details class="demo-box">
+                    <summary><i class="fa-solid fa-key"></i> Demo accounts</summary>
+                    <table>
+                        <tbody>
+                            <tr><td>Admin</td><td class="demo-fill" data-user="admin@gmail.com" data-pass="Admin@123">admin@gmail.com / Admin@123</td></tr>
+                            <tr><td>Farmer</td><td class="demo-fill" data-user="farmer@gmail.com" data-pass="Farmer@123">farmer@gmail.com / Farmer@123</td></tr>
+                            <tr><td>Manufacturer</td><td class="demo-fill" data-user="manufacturer@gmail.com" data-pass="Manufacturer@123">manufacturer@gmail.com / Manufacturer@123</td></tr>
+                            <tr><td>Power Plant</td><td class="demo-fill" data-user="powerplant@gmail.com" data-pass="PowerPlant@123">powerplant@gmail.com / PowerPlant@123</td></tr>
+                            <tr><td>Logistics</td><td class="demo-fill" data-user="logistics@gmail.com" data-pass="Logistics@123">logistics@gmail.com / Logistics@123</td></tr>
+                        </tbody>
+                    </table>
+                </details>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer class="public-footer" id="contact">
+        <div class="footer-inner">
+            <div>
+                <h3>Biomass Connect</h3>
+                <p>From Farms To Fuel</p>
+                <p>Connecting people, resources and energy for a sustainable future.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <p><a href="../index.html">Home</a></p>
+                <p><a href="register.html">Register</a></p>
+                <p><a href="forgot-password.html">Forgot Password</a></p>
+            </div>
+            <div>
+                <h4>Support</h4>
+                <p>Help Center</p>
+                <p>FAQs</p>
+                <p>User Guide</p>
+            </div>
+            <div>
+                <h4>Contact Us</h4>
+                <p><i class="fa-solid fa-envelope"></i> support@biomassconnect.com</p>
+                <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fa-solid fa-location-dot"></i> Pune, India</p>
+            </div>
+            <div>
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <i class="fa-brands fa-linkedin" onclick="openLinkedIn()"></i>
+                    <i class="fa-brands fa-x-twitter" onclick="openTwitter()"></i>
+                    <i class="fa-brands fa-youtube" onclick="openYoutube()"></i>
+                    <i class="fa-brands fa-instagram" onclick="openInstagram()"></i>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 Biomass Connect. All Rights Reserved.</div>
+    </footer>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/auth/users.js"></script>
+    <script src="../js/auth/auth.js"></script>
+
+</body>
+
+</html>

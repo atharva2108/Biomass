@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Manufacturer | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/manufacturer/profile.css">
+</head>
+
+<body data-role="manufacturer" data-page="profile">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>My Profile</h1>
+                        <p class="page-subtitle">Keep your company, factory and contact details up to date so power plants, farmers and the logistics team can reach you.</p>
+                    </div>
+                </div>
+
+                <div class="profile-layout">
+
+                    <!-- SUMMARY -->
+
+                    <aside class="card profile-summary">
+                        <div class="card-body">
+
+                            <div class="profile-avatar" id="avatarBig" aria-hidden="true">GI</div>
+                            <h2 class="profile-name" id="sumName">GreenPellet Industries</h2>
+                            <p class="text-muted">Manufacturer · <span id="sumStatus"></span></p>
+
+                            <div class="profile-rating">
+                                <span id="sumRating"></span>
+                                <p class="form-hint">Supplier rating, calculated automatically from the batch details power plants submit after delivery.</p>
+                            </div>
+
+                            <div class="photo-actions">
+                                <label class="btn btn-secondary btn-sm" for="photoInput"><i class="fa-solid fa-camera"></i> Change Photo</label>
+                                <button type="button" class="btn btn-ghost btn-sm hidden" id="removePhoto">Remove</button>
+                            </div>
+                            <div class="form-group photo-group">
+                                <input type="file" id="photoInput" class="visually-hidden" accept=".jpg,.jpeg,.png"
+                                       data-label="Profile photo" data-rules="fileTypes:jpg,jpeg,png|maxSize:1">
+                                <small class="error"></small>
+                                <small class="form-hint">JPG or PNG, up to 1 MB</small>
+                            </div>
+
+                            <ul class="profile-facts">
+                                <li><i class="fa-solid fa-user"></i><span id="sumContact">—</span></li>
+                                <li><i class="fa-solid fa-phone"></i><span id="sumMobile">—</span></li>
+                                <li><i class="fa-regular fa-envelope"></i><span id="sumEmail">—</span></li>
+                                <li><i class="fa-solid fa-location-dot"></i><span id="sumLocation">—</span></li>
+                                <li><i class="fa-solid fa-industry"></i><span id="sumCapacity">—</span></li>
+                                <li><i class="fa-regular fa-calendar"></i><span id="sumSince">—</span></li>
+                            </ul>
+
+                            <div class="completion">
+                                <div class="flex between">
+                                    <span class="text-muted">Profile completeness</span>
+                                    <strong id="completeText">0%</strong>
+                                </div>
+                                <div class="progress"><span id="completeBar" style="width:0%"></span></div>
+                            </div>
+
+                        </div>
+                    </aside>
+
+                    <div class="stack">
+
+                        <!-- PROFILE FORM -->
+
+                        <section class="card">
+
+                            <div class="card-header">
+                                <div>
+                                    <div class="card-title">Profile Information</div>
+                                    <div class="card-subtitle">Fields marked * are required</div>
+                                </div>
+                            </div>
+
+                            <form class="card-body" id="profileForm" novalidate>
+
+                                <div class="form-grid">
+
+                                    <div class="form-section-title">Company Details</div>
+
+                                    <div class="form-group full">
+                                        <label for="companyName">Company Name</label>
+                                        <input type="text" id="companyName" autocomplete="organization"
+                                               data-label="Company name" data-rules="required|text|minlen:2|maxlen:100">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="contactPerson">Contact Person</label>
+                                        <input type="text" id="contactPerson" autocomplete="name"
+                                               data-label="Contact person" data-rules="required|name">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="mobile">Mobile Number</label>
+                                        <input type="tel" id="mobile" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="10-digit mobile"
+                                               data-label="Mobile number" data-rules="required|mobile">
+                                    </div>
+
+                                    <div class="form-group full">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" id="email" autocomplete="email" placeholder="name@example.com"
+                                               data-label="Email" data-rules="required|email">
+                                    </div>
+
+                                    <div class="form-section-title">Factory &amp; Address</div>
+
+                                    <div class="form-group full">
+                                        <label for="address">Factory Address</label>
+                                        <input type="text" id="address" placeholder="Plot / gat no., industrial area, landmark"
+                                               data-label="Address" data-rules="required|text|minlen:10|maxlen:200">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="city">City</label>
+                                        <input type="text" id="city" data-label="City" data-rules="required|alpha|minlen:2|maxlen:60">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="state">State</label>
+                                        <select id="state" data-rules="required"></select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="pincode">PIN Code</label>
+                                        <input type="text" id="pincode" inputmode="numeric" placeholder="6-digit PIN"
+                                               data-label="PIN code" data-rules="required|pincode">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="capacity">Production Capacity (Tons/Day)</label>
+                                        <input type="number" id="capacity" inputmode="decimal" placeholder="e.g. 60"
+                                               data-label="Production capacity" data-rules="required|number|positive|max:5000|decimals:2">
+                                    </div>
+
+                                    <div class="form-section-title">GST Verification</div>
+
+                                    <div class="form-group">
+                                        <label for="gstin">GSTIN</label>
+                                        <input type="text" id="gstin" disabled aria-describedby="gstinHint">
+                                        <small class="form-hint" id="gstinHint"><i class="fa-solid fa-lock"></i> Linked to your GST certificate. Contact support to change it.</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <span class="form-label">GST Certificate</span>
+                                        <div class="doc-status" id="gstDoc"></div>
+                                        <small class="form-hint" id="gstHint"></small>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-secondary" id="discardBtn">
+                                        <i class="fa-solid fa-rotate-left"></i> Discard Changes
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa-solid fa-floppy-disk"></i> Save Profile
+                                    </button>
+                                </div>
+
+                            </form>
+
+                        </section>
+
+                        <!-- CHANGE PASSWORD -->
+
+                        <section class="card">
+
+                            <div class="card-header">
+                                <div>
+                                    <div class="card-title">Change Password</div>
+                                    <div class="card-subtitle">8–20 characters with uppercase, lowercase, number and special character</div>
+                                </div>
+                            </div>
+
+                            <form class="card-body" id="passwordForm" novalidate>
+
+                                <div class="form-grid cols-3">
+
+                                    <div class="form-group">
+                                        <label for="currentPassword">Current Password</label>
+                                        <div class="password-wrap">
+                                            <input type="password" id="currentPassword" autocomplete="current-password"
+                                                   data-label="Current password" data-rules="required|maxlen:20">
+                                            <button type="button" class="password-toggle" aria-label="Show password"><i class="fa-regular fa-eye"></i></button>
+                                        </div>
+                                        <small class="error"></small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="newPassword">New Password</label>
+                                        <div class="password-wrap">
+                                            <input type="password" id="newPassword" autocomplete="new-password"
+                                                   data-label="New password" data-rules="required|password|different:#currentPassword">
+                                            <button type="button" class="password-toggle" aria-label="Show password"><i class="fa-regular fa-eye"></i></button>
+                                        </div>
+                                        <small class="error"></small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="confirmPassword">Confirm New Password</label>
+                                        <div class="password-wrap">
+                                            <input type="password" id="confirmPassword" autocomplete="new-password"
+                                                   data-label="Confirm password" data-rules="required|match:#newPassword">
+                                            <button type="button" class="password-toggle" aria-label="Show password"><i class="fa-regular fa-eye"></i></button>
+                                        </div>
+                                        <small class="error"></small>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa-solid fa-key"></i> Update Password
+                                    </button>
+                                </div>
+
+                            </form>
+
+                        </section>
+
+                    </div>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/auth/users.js"></script>
+    <script src="../js/manufacturer/profile.js"></script>
+
+</body>
+
+</html>

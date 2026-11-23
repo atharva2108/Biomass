@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Farmer | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/farmer/dashboard.css">
+</head>
+
+<body data-role="farmer" data-page="dashboard">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Farmer Dashboard</h1>
+                        <p class="page-subtitle">Overview of your biomass listings, orders and earnings.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-primary" href="create-listing.html">
+                            <i class="fa-solid fa-plus"></i> New Listing
+                        </a>
+                    </div>
+                </div>
+
+                <!-- KPI CARDS -->
+
+                <div class="kpi-grid">
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiListings">0</div>
+                            <div class="kpi-label">Active Listings</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiOrders">0</div>
+                            <div class="kpi-label">Orders Received</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiRevenue">₹0</div>
+                            <div class="kpi-label">Revenue Earned</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiDelivered">0</div>
+                            <div class="kpi-label">Delivered Orders</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="dashboard-grid">
+
+                    <!-- RECENT ORDERS -->
+
+                    <section class="card">
+
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Recent Orders</div>
+                                <div class="card-subtitle">Latest orders placed on your listings</div>
+                            </div>
+                            <a class="btn btn-ghost btn-sm" href="orders.html">View all <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Buyer</th>
+                                        <th>Biomass Type</th>
+                                        <th>Quantity</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="orderTable"></tbody>
+                            </table>
+                        </div>
+
+                    </section>
+
+                    <!-- ORDER STATUS + QUICK ACTIONS -->
+
+                    <div class="stack">
+
+                        <section class="card">
+                            <div class="card-header">
+                                <div class="card-title">Order Status</div>
+                            </div>
+                            <div class="card-body status-list" id="statusList"></div>
+                        </section>
+
+                        <section class="card">
+                            <div class="card-header">
+                                <div class="card-title">Quick Actions</div>
+                            </div>
+                            <div class="card-body action-grid quick-actions">
+                                <a class="action-tile" href="create-listing.html"><i class="fa-solid fa-circle-plus"></i> Create Listing</a>
+                                <a class="action-tile" href="manage-listings.html"><i class="fa-solid fa-list-check"></i> Manage Listings</a>
+                                <a class="action-tile" href="tracking.html"><i class="fa-solid fa-truck-fast"></i> Track Orders</a>
+                                <a class="action-tile" href="billing.html"><i class="fa-solid fa-file-invoice"></i> Payments</a>
+                            </div>
+                        </section>
+
+                    </div>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/farmer/farmer-utils.js"></script>
+    <script src="../js/farmer/dashboard.js"></script>
+
+</body>
+
+</html>

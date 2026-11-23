@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipments | Logistics | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/logistics/dashboard.css">
+</head>
+
+<body data-role="logistics" data-page="dashboard">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Shipments</h1>
+                        <p class="page-subtitle">Schedule pickups and update dispatch and delivery. Farmers, manufacturers and power plants see these updates on their order tracking.</p>
+                    </div>
+                </div>
+
+                <div class="kpi-grid">
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-inbox"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiPlaced">0</div>
+                            <div class="kpi-label">To Schedule</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiScheduled">0</div>
+                            <div class="kpi-label">Pickup Scheduled</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiTransit">0</div>
+                            <div class="kpi-label">In Transit</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-circle-check"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiDelivered">0</div>
+                            <div class="kpi-label">Delivered</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <section class="card">
+
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">All Shipments</div>
+                            <div class="card-subtitle">Biomass: farmer to manufacturer. Pellets: manufacturer to power plant.</div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="tabs" id="statusTabs" role="tablist"></div>
+
+                        <div class="toolbar">
+                            <div class="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" id="searchInput" placeholder="Search by order ID, name or vehicle" data-novalidate aria-label="Search shipments">
+                            </div>
+                            <select id="typeFilter" data-novalidate aria-label="Shipment type">
+                                <option value="all">All types</option>
+                                <option value="biomass">Biomass</option>
+                                <option value="pellet">Pellets</option>
+                            </select>
+                        </div>
+
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Pickup From</th>
+                                        <th>Deliver To</th>
+                                        <th>Load</th>
+                                        <th>Pickup</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="shipmentTable"></tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- SCHEDULE / EDIT SHIPMENT -->
+
+    <div class="modal-backdrop" id="shipmentModal">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="shipmentTitle">
+            <div class="modal-header">
+                <h3 id="shipmentTitle">Schedule Pickup</h3>
+                <button type="button" class="modal-close" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="shipmentForm" novalidate>
+                <div class="modal-body">
+                    <input type="hidden" id="shipmentKey">
+                    <input type="hidden" id="shipmentId">
+                    <div class="order-summary" id="shipmentSummary"></div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="pickupDate">Pickup Date</label>
+                            <input type="date" id="pickupDate" data-label="Pickup date"
+                                   data-rules="required|date|notPast|maxDate:+30">
+                        </div>
+                        <div class="form-group">
+                            <label for="expectedDelivery">Expected Delivery</label>
+                            <input type="date" id="expectedDelivery" data-label="Expected delivery date"
+                                   data-rules="required|date|notPast|sameOrAfter:#pickupDate|maxDate:+60">
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicleNo">Vehicle Number</label>
+                            <input type="text" id="vehicleNo" placeholder="e.g. MH15AB1234" data-label="Vehicle number"
+                                   data-rules="required|vehicle" data-filter="upper" maxlength="13">
+                        </div>
+                        <div class="form-group">
+                            <label for="driverName">Driver Name</label>
+                            <input type="text" id="driverName" placeholder="Driver's full name" data-label="Driver name"
+                                   data-rules="required|name">
+                        </div>
+                        <div class="form-group">
+                            <label for="driverMobile">Driver Mobile</label>
+                            <input type="tel" id="driverMobile" placeholder="10-digit mobile number" inputmode="numeric" maxlength="10"
+                                   data-label="Driver mobile" data-rules="required|mobile">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close>Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="shipmentSubmit"><i class="fa-solid fa-check"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- VIEW SHIPMENT -->
+
+    <div class="modal-backdrop" id="viewModal">
+        <div class="modal modal-lg" role="dialog" aria-modal="true" aria-labelledby="viewTitle">
+            <div class="modal-header">
+                <h3 id="viewTitle">Shipment</h3>
+                <button type="button" class="modal-close" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="viewBody"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-close>Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/logistics/dashboard.js"></script>
+
+</body>
+
+</html>

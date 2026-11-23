@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biomass Consumption | Power Plant | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/powerplant/consumption.css">
+</head>
+
+<body data-role="powerplant" data-page="consumption">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Biomass Consumption</h1>
+                        <p class="page-subtitle">Log daily pellet and coal consumption per unit and monitor the co-firing ratio.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-secondary" href="carbon-savings.html">
+                            <i class="fa-solid fa-leaf"></i> Carbon Savings
+                        </a>
+                    </div>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiPellets">0 t</div>
+                            <div class="kpi-label">Pellets Co-fired This Month</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-mound"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiCoal">0 t</div>
+                            <div class="kpi-label">Coal Consumed This Month</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-percent"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiRatio">0%</div>
+                            <div class="kpi-label">Co-firing Ratio This Month</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-bolt"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiEnergy">0</div>
+                            <div class="kpi-label">Energy Generated (MWh)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="consumption-grid">
+
+                    <!-- LOG ENTRY FORM -->
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Log Consumption Entry</div>
+                                <div class="card-subtitle">One entry per unit per day</div>
+                            </div>
+                        </div>
+
+                        <form class="card-body" id="entryForm" novalidate>
+                            <div class="form-grid">
+
+                                <div class="form-group">
+                                    <label for="entryDate">Entry Date</label>
+                                    <input type="date" id="entryDate" data-label="Entry date"
+                                           data-rules="required|date|notFuture|minDate:-365">
+                                    <small class="error" id="entryDateError"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="unit">Unit / Boiler</label>
+                                    <select id="unit" data-label="Unit" data-rules="required">
+                                        <option value="">Select unit</option>
+                                    </select>
+                                    <small class="error" id="unitError"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pellets">Pellets Consumed (tons)</label>
+                                    <input type="number" id="pellets" step="0.01" placeholder="e.g. 140" data-label="Pellets consumed"
+                                           data-rules="required|number|positive|max:10000|decimals:2">
+                                    <small class="error" id="pelletsError"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="coal">Coal Consumed (tons)</label>
+                                    <input type="number" id="coal" step="0.01" placeholder="e.g. 2400" data-label="Coal consumed"
+                                           data-rules="required|number|positive|max:50000|decimals:2">
+                                    <small class="error" id="coalError"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ratio">Co-firing Ratio (%)</label>
+                                    <input type="text" id="ratio" readonly placeholder="Auto-calculated" data-label="Co-firing ratio"
+                                           data-rules="number|min:0|max:20|decimals:2"
+                                           data-msg-max="Co-firing ratio cannot exceed 20% — check the pellet and coal quantities">
+                                    <small class="error" id="ratioError"></small>
+                                    <small class="form-hint">Pellets ÷ (pellets + coal) × 100</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="energy">Energy Generated (MWh)</label>
+                                    <input type="number" id="energy" step="0.01" placeholder="e.g. 4800" data-label="Energy generated"
+                                           data-rules="required|number|positive|max:100000|decimals:2">
+                                    <small class="error" id="energyError"></small>
+                                </div>
+
+                                <div class="form-group full">
+                                    <label for="remarks">Remarks (optional)</label>
+                                    <input type="text" id="remarks" placeholder="Shift notes, mill issues, pellet source…" data-label="Remarks"
+                                           data-rules="text|maxlen:200">
+                                    <small class="error" id="remarksError"></small>
+                                </div>
+
+                            </div>
+
+                            <div class="form-actions">
+                                <button class="btn btn-secondary" type="reset">Clear</button>
+                                <button class="btn btn-primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Save Entry</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- MONTHLY CHART -->
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Monthly Co-firing Ratio</div>
+                                <div class="card-subtitle">Last 6 months</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-wrap">
+                                <div class="bar-chart" id="ratioChart"></div>
+                            </div>
+                            <p class="form-hint mt-2" id="chartNote"></p>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- ENTRIES TABLE -->
+
+                <section class="card mt-3">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Consumption Log</div>
+                            <div class="card-subtitle" id="entryCount"></div>
+                        </div>
+                        <select id="unitFilter" aria-label="Filter by unit" data-novalidate class="unit-filter">
+                            <option value="">All units</option>
+                        </select>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Unit</th>
+                                    <th>Pellets (t)</th>
+                                    <th>Coal (t)</th>
+                                    <th>Co-firing %</th>
+                                    <th>Energy (MWh)</th>
+                                    <th>Remarks</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="entryTable"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/powerplant/plant.js"></script>
+    <script src="../js/powerplant/consumption.js"></script>
+
+</body>
+
+</html>

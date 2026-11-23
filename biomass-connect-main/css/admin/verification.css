@@ -1,0 +1,145 @@
+/* Admin verification pages (farmer / manufacturer / power plant) —
+   page-specific layout only. Shared components live in ../theme.css */
+
+.modal-lg {
+    max-width: 720px;
+}
+
+.tab .count {
+    font-weight: 600;
+}
+
+.applicant-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.avatar-lg {
+    width: 48px;
+    height: 48px;
+    font-size: 16px;
+}
+
+.applicant-status {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.section-title {
+    font-size: 14px;
+    color: var(--primary-dark);
+    margin: 22px 0 10px;
+}
+
+/* Submitted document */
+
+.doc-preview {
+    border: 1.5px dashed var(--border-strong);
+    border-radius: var(--radius);
+    background: var(--surface-muted);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.doc-sheet {
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 4 / 3;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 16px;
+    text-align: center;
+}
+
+.doc-sheet i {
+    font-size: 28px;
+    color: var(--primary-border);
+}
+
+.doc-sheet strong {
+    font-size: 14px;
+}
+
+.doc-sheet > span {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.doc-lines {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.doc-lines span {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--border);
+}
+
+.doc-lines span:nth-child(2) { width: 85%; }
+.doc-lines span:nth-child(3) { width: 70%; }
+.doc-lines span:nth-child(4) { width: 50%; }
+
+/* Checklist + notes */
+
+.checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checklist .checkbox-row {
+    margin: 0;
+}
+
+.checklist .checkbox-row.unchecked {
+    color: var(--danger);
+}
+
+.note-box {
+    background: var(--surface-muted);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    font-size: 14px;
+}
+
+.note-box p {
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.note-success { border-left-color: var(--success); }
+.note-danger { border-left-color: var(--danger); }
+
+@media (max-width: 768px) {
+    .applicant-head {
+        flex-wrap: wrap;
+    }
+
+    .applicant-status {
+        margin-left: 0;
+        align-items: flex-start;
+    }
+}

@@ -1,0 +1,654 @@
+/* =========================================================
+   LANDING PAGE — page-specific styles (base comes from theme.css)
+========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.landing section[id] {
+    scroll-margin-top: 80px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+
+/* ================= HEADER ================= */
+
+.landing-header nav a.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.landing-header .nav-toggle {
+    display: none;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    background:
+        radial-gradient(circle at 85% 20%, var(--primary-soft) 0, transparent 45%),
+        linear-gradient(180deg, var(--primary-softer) 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 72px 0 80px;
+}
+
+.hero-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items: center;
+}
+
+.hero-left h1 {
+    font-size: 48px;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin: 16px 0 18px;
+    font-weight: 700;
+}
+
+.hero-left h1 span {
+    color: var(--primary);
+}
+
+.hero-text {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 540px;
+    line-height: 1.7;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+}
+
+.hero-benefits {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    margin-top: 32px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.hero-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero-benefits i {
+    color: var(--primary);
+}
+
+/* journey card */
+
+.journey-card-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 24px;
+}
+
+.journey-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.journey {
+    list-style: none;
+    position: relative;
+}
+
+.journey::before {
+    content: "";
+    position: absolute;
+    left: 21px;
+    top: 22px;
+    bottom: 22px;
+    width: 2px;
+    background: repeating-linear-gradient(to bottom, var(--primary-border) 0 6px, transparent 6px 12px);
+}
+
+.journey-step {
+    position: relative;
+    display: flex;
+    gap: 16px;
+    padding: 12px 0;
+}
+
+.journey-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--primary-soft);
+    color: var(--primary);
+    border: 4px solid var(--surface);
+    box-shadow: 0 0 0 1px var(--primary-border);
+    display: grid;
+    place-items: center;
+    font-size: 16px;
+    position: relative;
+}
+
+.journey-step h4 {
+    font-size: 15px;
+    margin: 2px 0 2px;
+}
+
+.journey-step p {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.journey-foot {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.journey-foot i {
+    color: var(--warning);
+}
+
+/* ================= VALUE STRIP ================= */
+
+.value-strip {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 26px 0;
+}
+
+.value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.value-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+.value-item i {
+    color: var(--primary);
+    font-size: 18px;
+    margin-top: 3px;
+}
+
+.value-item strong {
+    display: block;
+    font-size: 14px;
+}
+
+.value-item span {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* ================= SECTIONS ================= */
+
+.section {
+    padding: 80px 0;
+}
+
+.section-muted {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.section-head {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 44px;
+}
+
+.section-head h2 {
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    margin: 10px 0 10px;
+}
+
+.section-head p {
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+/* ================= FEATURES ================= */
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: border-color .15s, box-shadow .15s, transform .15s;
+}
+
+.feature-card:hover {
+    border-color: var(--primary-border);
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+
+.feature-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: var(--primary-soft);
+    color: var(--primary);
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.feature-card h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.feature-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* ================= ROLES ================= */
+
+.role-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.role-panel {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+}
+
+.role-panel h3 {
+    font-size: 18px;
+}
+
+.role-lead {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin: 4px 0 18px;
+}
+
+.check-list {
+    list-style: none;
+    margin-bottom: 24px;
+    flex: 1;
+}
+
+.check-list li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.check-list li::before {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    font-size: 12px;
+    color: var(--primary);
+}
+
+/* ================= WORKFLOW ================= */
+
+.workflow {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px;
+    position: relative;
+}
+
+.workflow::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: var(--primary-border);
+}
+
+.workflow-step {
+    position: relative;
+    text-align: center;
+    padding: 0 8px;
+}
+
+.workflow-num {
+    width: 38px;
+    height: 38px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    box-shadow: 0 0 0 6px var(--bg);
+}
+
+.workflow-step i {
+    font-size: 22px;
+    color: var(--primary);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.workflow-step h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.workflow-step p {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* ================= CTA ================= */
+
+.cta-band {
+    padding: 0 0 80px;
+}
+
+.cta-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.cta-band .container {
+    max-width: 1136px;
+    background: var(--primary-soft);
+    border: 1px solid var(--primary-border);
+    border-radius: var(--radius-lg);
+    padding: 36px 40px;
+}
+
+.cta-inner h2 {
+    font-size: 24px;
+    color: var(--primary-dark);
+}
+
+.cta-inner p {
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.cta-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* ================= CONTACT ================= */
+
+#contact.section {
+    padding-top: 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 48px;
+    align-items: start;
+}
+
+.contact-info h2 {
+    font-size: 28px;
+    margin: 10px 0 12px;
+}
+
+.contact-info > p {
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+.contact-list {
+    list-style: none;
+    margin-top: 24px;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    margin-bottom: 14px;
+}
+
+.contact-list i {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--primary-soft);
+    color: var(--primary);
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+}
+
+.contact-form .card-body {
+    padding: 28px;
+}
+
+/* ================= FOOTER / MISC ================= */
+
+.landing .public-footer {
+    margin-top: 0;
+}
+
+.back-to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s;
+    z-index: 30;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1100px) {
+    .landing-header nav {
+        gap: 18px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-inner,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-left h1 {
+        font-size: 40px;
+    }
+
+    .feature-grid,
+    .role-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .workflow {
+        grid-template-columns: 1fr;
+        gap: 0;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .workflow::before {
+        top: 20px;
+        bottom: 20px;
+        left: 18px;
+        right: auto;
+        width: 2px;
+        height: auto;
+    }
+
+    .workflow-step {
+        display: grid;
+        grid-template-columns: 38px 28px 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 14px;
+        text-align: left;
+        padding: 0 0 26px;
+        align-items: center;
+    }
+
+    .workflow-num {
+        margin: 0;
+        grid-row: span 2;
+    }
+
+    .workflow-step i {
+        margin: 0;
+        grid-row: span 2;
+    }
+
+    .landing-header nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        padding: 8px 16px 16px;
+    }
+
+    .landing-header nav a {
+        padding: 12px 8px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .landing-header.nav-open nav {
+        display: flex;
+    }
+
+    .landing-header .nav-toggle {
+        display: grid;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .hero {
+        padding: 48px 0 56px;
+    }
+
+    .hero-left h1 {
+        font-size: 32px;
+    }
+
+    .section {
+        padding: 56px 0;
+    }
+
+    .section-head h2 {
+        font-size: 24px;
+    }
+
+    .feature-grid,
+    .role-grid,
+    .value-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header-buttons .btn-secondary {
+        display: none;
+    }
+
+    .landing-header nav {
+        display: none !important;
+    }
+
+    .landing-header.nav-open nav {
+        display: flex !important;
+    }
+
+    .cta-band .container {
+        padding: 28px 20px;
+        margin: 0 16px;
+        width: auto;
+    }
+}

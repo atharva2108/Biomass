@@ -1,0 +1,125 @@
+/* Order tracking layout — page-specific only.
+   Used by tracking.html (purchase tracking). */
+
+.track-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.track-layout .card + .card {
+    margin-top: 0;
+}
+
+.track-search {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.order-list {
+    max-height: 560px;
+    overflow-y: auto;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    border-left: 3px solid transparent;
+    background: var(--surface);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.order-item:hover {
+    background: var(--surface-muted);
+}
+
+.order-item.active {
+    background: var(--primary-softer);
+    border-left-color: var(--primary);
+}
+
+.order-item strong {
+    display: block;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.order-item small {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.track-stepper {
+    margin-bottom: 24px;
+}
+
+.track-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(220px, 2fr);
+    gap: 24px;
+}
+
+.track-subtitle {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin-bottom: 12px;
+}
+
+.track-note {
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    background: var(--surface-muted);
+    border: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.track-note.danger {
+    background: var(--danger-soft);
+    border-color: var(--danger-soft);
+    color: var(--danger);
+}
+
+.track-note.info {
+    background: var(--info-soft);
+    border-color: var(--info-soft);
+    color: var(--info);
+}
+
+.track-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 14px 20px;
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 1100px) {
+    .track-layout,
+    .track-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .order-list {
+        max-height: 300px;
+    }
+}

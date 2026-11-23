@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing &amp; Complaints | Manufacturer | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/manufacturer/billing.css">
+</head>
+
+<body data-role="manufacturer" data-page="billing">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Billing &amp; Complaints</h1>
+                        <p class="page-subtitle">Pay farmers for delivered biomass, see payments due from power plants and raise complaints.</p>
+                    </div>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiPayable">₹0</div>
+                            <div class="kpi-label">Payable to Farmers</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-circle-check"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiPaid">₹0</div>
+                            <div class="kpi-label">Paid to Farmers</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiReceivable">₹0</div>
+                            <div class="kpi-label">Receivable from Power Plants</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-comments"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiComplaints">0</div>
+                            <div class="kpi-label">Open Complaints</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tabs" id="billingTabs">
+                    <button type="button" class="tab active" data-tab="payments"><i class="fa-solid fa-indian-rupee-sign"></i> Payments</button>
+                    <button type="button" class="tab" data-tab="complaints"><i class="fa-solid fa-headset"></i> Complaints <span class="tab-count" id="complaintCount">0</span></button>
+                </div>
+
+                <!-- ================= PAYMENTS ================= -->
+
+                <div class="tab-panel" data-panel="payments">
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Payable to Farmers</div>
+                                <div class="card-subtitle">Delivered biomass orders. Mark an order as paid once you have paid the farmer; the farmer sees it too.</div>
+                            </div>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Order</th>
+                                        <th>Farmer</th>
+                                        <th>Delivered On</th>
+                                        <th>Amount</th>
+                                        <th>Payment</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="payableTable"></tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Receivable from Power Plants</div>
+                                <div class="card-subtitle">Delivered pellet orders. The power plant marks these as paid.</div>
+                            </div>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Order</th>
+                                        <th>Power Plant</th>
+                                        <th>Delivered On</th>
+                                        <th>Amount</th>
+                                        <th>Payment</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="receivableTable"></tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- ================= COMPLAINTS ================= -->
+
+                <div class="tab-panel hidden" data-panel="complaints">
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Raise a Complaint</div>
+                                <div class="card-subtitle">The Biomass Connect team reviews every complaint and records the resolution here.</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="complaintForm" class="form-grid" novalidate>
+
+                                <div class="form-group">
+                                    <label for="cOrder">Order</label>
+                                    <select id="cOrder" data-label="Order" data-rules="required">
+                                        <option value="">Select an order</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cAgainst">Against</label>
+                                    <input type="text" id="cAgainst" readonly placeholder="Select an order" data-novalidate>
+                                </div>
+
+                                <div class="form-group full">
+                                    <label for="cCategory">Category</label>
+                                    <select id="cCategory" data-label="Category" data-rules="required">
+                                        <option value="">Select a category</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group full">
+                                    <label for="cDescription">Description</label>
+                                    <textarea id="cDescription" rows="4" placeholder="Describe what happened and the amounts or quantities involved"
+                                              data-label="Description" data-rules="required|text|minlen:20|maxlen:500"></textarea>
+                                    <small class="form-hint"><span id="cDescCount">0</span>/500 characters (minimum 20)</small>
+                                </div>
+
+                                <div class="form-actions full">
+                                    <button type="reset" class="btn btn-secondary">Clear</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Submit Complaint</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </section>
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Complaints</div>
+                                <div class="card-subtitle">Complaints you have raised and complaints raised against you</div>
+                            </div>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Order</th>
+                                        <th>Raised By</th>
+                                        <th>Against</th>
+                                        <th>Category</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="complaintTable"></tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- COMPLAINT VIEW MODAL -->
+
+    <div class="modal-backdrop" id="complaintModal">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="complaintTitle">
+            <div class="modal-header">
+                <h3 id="complaintTitle">Complaint</h3>
+                <button class="modal-close" type="button" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="complaintBody"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-close>Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/manufacturer/billing.js"></script>
+
+</body>
+
+</html>

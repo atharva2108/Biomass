@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Orders | Manufacturer | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/manufacturer/purchase-orders.css">
+</head>
+
+<body data-role="manufacturer" data-page="purchase-orders">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Purchase Orders</h1>
+                        <p class="page-subtitle">Buy a whole biomass listing and follow the orders you have placed.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-secondary" href="marketplace.html">
+                            <i class="fa-solid fa-store"></i> Browse Marketplace
+                        </a>
+                    </div>
+                </div>
+
+                <div class="po-layout">
+
+                    <!-- CREATE PURCHASE ORDER -->
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Create Purchase Order</div>
+                                <div class="card-subtitle">Select a biomass listing. The whole listing is bought as one lot.</div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <form id="poForm" class="form-grid" novalidate>
+
+                                <div class="form-group full">
+                                    <label for="listingSelect">Biomass Listing</label>
+                                    <select id="listingSelect" data-label="Biomass listing" data-rules="required">
+                                        <option value="">Select a listing</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="farmerName">Farmer</label>
+                                    <input type="text" id="farmerName" readonly placeholder="—" data-novalidate>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="quantityDisplay">Quantity</label>
+                                    <input type="text" id="quantityDisplay" readonly placeholder="—" data-novalidate>
+                                    <small class="form-hint">Full listing quantity</small>
+                                </div>
+
+                                <div class="form-group full">
+                                    <label for="deliveryAddress">Delivery Address</label>
+                                    <textarea id="deliveryAddress" rows="2" placeholder="Plant / warehouse address with PIN code"
+                                              data-rules="required|text|minlen:10|maxlen:200"></textarea>
+                                </div>
+
+                                <div class="form-group full">
+                                    <label for="notes">Notes <span class="text-subtle">(optional)</span></label>
+                                    <textarea id="notes" rows="2" placeholder="Loading instructions, gate timings, etc."
+                                              data-label="Notes" data-rules="text|maxlen:500"></textarea>
+                                    <small class="form-hint"><span id="notesCount">0</span>/500 characters</small>
+                                </div>
+
+                                <div class="form-actions full">
+                                    <button type="reset" class="btn btn-secondary">Clear</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Place Order</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </section>
+
+                    <!-- ORDER SUMMARY -->
+
+                    <aside class="card summary-card">
+                        <div class="card-header">
+                            <div class="card-title">Order Summary</div>
+                        </div>
+                        <div class="card-body">
+                            <div id="listingSummary" class="text-muted">No listing selected.</div>
+                            <div class="summary-lines">
+                                <div class="summary-line"><span>Quantity</span><strong id="sumQty">—</strong></div>
+                                <div class="summary-line"><span>Price / ton</span><strong id="sumPrice">—</strong></div>
+                                <div class="summary-line total"><span>Order Total</span><strong id="sumTotal">₹0</strong></div>
+                            </div>
+                            <p class="form-hint">Once placed, an order cannot be cancelled. The logistics team schedules the pickup and delivery. Pay the farmer from Billing after delivery.</p>
+                        </div>
+                    </aside>
+
+                </div>
+
+                <!-- MY PURCHASE ORDERS -->
+
+                <section class="card mt-3">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">My Purchase Orders</div>
+                            <div class="card-subtitle" id="orderCount">0 orders</div>
+                        </div>
+                    </div>
+
+                    <div class="card-body" style="padding-bottom:0">
+                        <div class="toolbar">
+                            <div class="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" id="orderSearch" placeholder="Search by PO ID, farmer or biomass type" data-novalidate>
+                            </div>
+                            <select id="statusFilter" data-novalidate aria-label="Filter by status">
+                                <option value="">All statuses</option>
+                                <option>Placed</option>
+                                <option>Pickup Scheduled</option>
+                                <option>In Transit</option>
+                                <option>Delivered</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>PO ID</th>
+                                    <th>Farmer</th>
+                                    <th>Biomass</th>
+                                    <th>Quantity</th>
+                                    <th>Amount</th>
+                                    <th>Order Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="purchaseOrderTable"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/manufacturer/purchase-orders.js"></script>
+
+</body>
+
+</html>

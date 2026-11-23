@@ -1,0 +1,38 @@
+/* Power plant purchase orders — page-specific layout only. */
+
+.order-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.order-layout .card + .card {
+    margin-top: 0;
+}
+
+.summary-total {
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: var(--radius-sm);
+    background: var(--primary-softer);
+    border: 1px solid var(--primary-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary-total strong {
+    font-size: 18px;
+    color: var(--primary-dark);
+}
+
+#listingSummary .detail-list {
+    grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 1100px) {
+    .order-layout {
+        grid-template-columns: 1fr;
+    }
+}

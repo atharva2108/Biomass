@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Admin | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/admin/dashboard.css">
+</head>
+
+<body data-role="admin" data-page="dashboard">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1 id="welcomeTitle">Admin Dashboard</h1>
+                        <p class="page-subtitle" id="welcomeSubtitle">Platform overview of users, verifications, orders and complaints.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-secondary" href="reports-monitoring.html">
+                            <i class="fa-solid fa-chart-pie"></i> Reports
+                        </a>
+                        <a class="btn btn-primary" href="farmer-verification.html">
+                            <i class="fa-solid fa-user-check"></i> Review Verifications
+                        </a>
+                    </div>
+                </div>
+
+                <!-- KPI CARDS -->
+
+                <div class="kpi-grid">
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-users"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiUsers">0</div>
+                            <div class="kpi-label">Total Users</div>
+                            <div class="kpi-trend" id="kpiUsersTrend"></div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-seedling"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiFarmers">0</div>
+                            <div class="kpi-label">Farmers</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-industry"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiManufacturers">0</div>
+                            <div class="kpi-label">Manufacturers</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-bolt"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiPlants">0</div>
+                            <div class="kpi-label">Power Plants</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-user-clock"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiPending">0</div>
+                            <div class="kpi-label">Pending Verifications</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiActiveOrders">0</div>
+                            <div class="kpi-label">Active Orders</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiDisputes">0</div>
+                            <div class="kpi-label">Open Complaints</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiGmv">₹0</div>
+                            <div class="kpi-label">Total Order Value</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="dashboard-grid">
+
+                    <div class="stack">
+
+                        <!-- PENDING VERIFICATION QUEUE -->
+
+                        <section class="card">
+                            <div class="card-header">
+                                <div>
+                                    <div class="card-title">Pending Verification Queue</div>
+                                    <div class="card-subtitle">Oldest registrations awaiting document review</div>
+                                </div>
+                                <span class="badge badge-warning" id="queueCount">0 pending</span>
+                            </div>
+                            <div class="table-wrap">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Applicant</th>
+                                            <th>Role</th>
+                                            <th>Location</th>
+                                            <th>Submitted</th>
+                                            <th>Document</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="queueTable"></tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <!-- RECENT TRANSACTIONS -->
+
+                        <section class="card">
+                            <div class="card-header">
+                                <div>
+                                    <div class="card-title">Recent Transactions</div>
+                                    <div class="card-subtitle">Latest biomass and pellet orders across the platform</div>
+                                </div>
+                                <a class="btn btn-ghost btn-sm" href="orders-monitoring.html">View all <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                            <div class="table-wrap">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Type</th>
+                                            <th>Buyer</th>
+                                            <th>Seller</th>
+                                            <th>Amount</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="txnTable"></tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                    </div>
+
+                    <div class="stack">
+
+                        <!-- USERS BY ROLE -->
+
+                        <section class="card">
+                            <div class="card-header">
+                                <div class="card-title">Users by Role</div>
+                                <a class="btn btn-ghost btn-sm" href="user-management.html">Manage</a>
+                            </div>
+                            <div class="card-body status-list" id="roleList"></div>
+                        </section>
+
+                        <!-- OPEN COMPLAINTS -->
+
+                        <section class="card">
+                            <div class="card-header">
+                                <div class="card-title">Open Complaints</div>
+                                <a class="btn btn-ghost btn-sm" href="dispute-management.html">View all</a>
+                            </div>
+                            <div class="card-body mini-list" id="disputeList"></div>
+                        </section>
+
+                        <!-- QUICK LINKS -->
+
+                        <section class="card">
+                            <div class="card-header">
+                                <div class="card-title">Quick Links</div>
+                            </div>
+                            <div class="card-body action-grid quick-actions">
+                                <a class="action-tile" href="user-management.html"><i class="fa-solid fa-users"></i> User Management</a>
+                                <a class="action-tile" href="farmer-verification.html"><i class="fa-solid fa-user-check"></i> Verification</a>
+                                <a class="action-tile" href="dispute-management.html"><i class="fa-solid fa-scale-balanced"></i> Disputes</a>
+                                <a class="action-tile" href="audit-compliance.html"><i class="fa-solid fa-shield-halved"></i> Audit &amp; Compliance</a>
+                                <a class="action-tile" href="reports-monitoring.html"><i class="fa-solid fa-chart-pie"></i> Reports</a>
+                                <a class="action-tile" href="orders-monitoring.html"><i class="fa-solid fa-money-bill-transfer"></i> Transactions</a>
+                            </div>
+                        </section>
+
+                    </div>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/admin/admin-common.js"></script>
+    <script src="../js/admin/dashboard.js"></script>
+
+</body>
+
+</html>

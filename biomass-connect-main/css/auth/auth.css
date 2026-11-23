@@ -1,0 +1,334 @@
+/* =========================================================
+   AUTH PAGES (login, register, forgot password)
+   Page-specific layout only — base styles come from ../theme.css
+========================================================= */
+
+.auth-main {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 48px 20px;
+}
+
+.auth-shell {
+    width: 100%;
+    max-width: 960px;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.auth-shell.wide {
+    max-width: 1080px;
+    grid-template-columns: 0.75fr 1.25fr;
+}
+
+.auth-shell.narrow {
+    max-width: 520px;
+    grid-template-columns: 1fr;
+}
+
+/* ----- Left info panel ----- */
+
+.auth-aside {
+    background: var(--primary-softer);
+    border-right: 1px solid var(--border);
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.auth-aside .aside-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius);
+    background: var(--primary-soft);
+    color: var(--primary);
+    display: grid;
+    place-items: center;
+    font-size: 20px;
+}
+
+.auth-aside h2 {
+    font-size: 22px;
+    margin-top: 14px;
+}
+
+.auth-aside > div > p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.aside-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.aside-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.aside-list li i {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--primary-border);
+    color: var(--primary);
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+}
+
+.aside-list strong {
+    display: block;
+    font-size: 14px;
+}
+
+.aside-list span {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.aside-note {
+    margin-top: auto;
+    font-size: 13px;
+    color: var(--text-muted);
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+/* ----- Form side ----- */
+
+.auth-body {
+    padding: 40px 44px;
+}
+
+.auth-body h1 {
+    font-size: 24px;
+}
+
+.auth-body .subtitle {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin: 6px 0 26px;
+}
+
+.auth-form .form-group + .form-group {
+    margin-top: 16px;
+}
+
+.auth-form .form-grid .form-group + .form-group {
+    margin-top: 0;
+}
+
+.form-row-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px 0 22px;
+    font-size: 14px;
+}
+
+.form-row-between label {
+    margin: 0;
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.auth-switch a {
+    font-weight: 600;
+}
+
+.demo-box {
+    margin-top: 22px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface-muted);
+    font-size: 13px;
+}
+
+.demo-box summary {
+    padding: 10px 14px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.demo-box table {
+    font-size: 12px;
+}
+
+.demo-box table td {
+    padding: 6px 14px;
+}
+
+.demo-box .demo-fill {
+    cursor: pointer;
+    color: var(--primary);
+}
+
+/* ----- Register: role cards ----- */
+
+.role-selection {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 26px;
+}
+
+.role-card {
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: 16px 12px;
+    text-align: center;
+    cursor: pointer;
+    font: inherit;
+    color: var(--text);
+    transition: border-color .15s, background .15s;
+}
+
+.role-card i {
+    font-size: 20px;
+    color: var(--text-subtle);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.role-card h3 {
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.role-card p {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.role-card:hover {
+    border-color: var(--primary-border);
+    background: var(--primary-softer);
+}
+
+.role-card.active {
+    border-color: var(--primary);
+    background: var(--primary-soft);
+    box-shadow: 0 0 0 1px var(--primary) inset;
+}
+
+.role-card.active i {
+    color: var(--primary);
+}
+
+.auth-form .form-section-title {
+    margin: 26px 0 16px;
+}
+
+.auth-form .form-section-title:first-of-type {
+    margin-top: 0;
+}
+
+.strength {
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--text-subtle);
+}
+
+.strength .progress {
+    flex: 1;
+    height: 5px;
+}
+
+.strength .progress span {
+    width: 0;
+    transition: width .2s, background .2s;
+}
+
+.strength[data-level="1"] .progress span { width: 25%; background: var(--danger); }
+.strength[data-level="2"] .progress span { width: 50%; background: var(--warning); }
+.strength[data-level="3"] .progress span { width: 75%; background: #6aa77f; }
+.strength[data-level="4"] .progress span { width: 100%; background: var(--primary); }
+
+.file-name {
+    font-size: 13px;
+    color: var(--primary-dark);
+    margin-top: 6px;
+}
+
+.terms-row {
+    margin-top: 22px;
+}
+
+.terms-row label {
+    font-weight: 400;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin: 0;
+}
+
+/* ----- Forgot password steps ----- */
+
+.auth-steps {
+    margin-bottom: 24px;
+}
+
+.question-box {
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    background: var(--primary-softer);
+    border: 1px solid var(--primary-border);
+    font-size: 14px;
+    color: var(--primary-dark);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* ----- Responsive ----- */
+
+@media (max-width: 900px) {
+    .auth-shell,
+    .auth-shell.wide {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-aside {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .auth-main {
+        padding: 24px 16px;
+    }
+
+    .auth-body {
+        padding: 28px 20px;
+    }
+
+    .role-selection {
+        grid-template-columns: 1fr;
+    }
+}

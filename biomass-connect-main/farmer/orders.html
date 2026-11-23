@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders Received | Farmer | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/farmer/orders.css">
+</head>
+
+<body data-role="farmer" data-page="orders">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Orders Received</h1>
+                        <p class="page-subtitle">Orders placed by manufacturers on your biomass listings. Keep the stock ready for pickup by the logistics team.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-secondary" href="tracking.html">
+                            <i class="fa-solid fa-truck-fast"></i> Order Tracking
+                        </a>
+                    </div>
+                </div>
+
+                <section class="card">
+
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Purchase Orders</div>
+                            <div class="card-subtitle">Each order is for the whole listing and must be supplied</div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="tabs" id="statusTabs" role="tablist"></div>
+
+                        <div class="toolbar">
+                            <div class="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" id="searchInput" placeholder="Search by order ID, manufacturer or biomass" data-novalidate aria-label="Search orders">
+                            </div>
+                        </div>
+
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Manufacturer</th>
+                                        <th>Biomass</th>
+                                        <th>Quantity</th>
+                                        <th>Amount</th>
+                                        <th>Order Date</th>
+                                        <th>Status</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ordersTable"></tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- VIEW ORDER MODAL -->
+
+    <div class="modal-backdrop" id="viewModal">
+        <div class="modal modal-lg" role="dialog" aria-modal="true" aria-labelledby="viewTitle">
+            <div class="modal-header">
+                <h3 id="viewTitle">Order Details</h3>
+                <button type="button" class="modal-close" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="viewBody"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-close>Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/farmer/farmer-utils.js"></script>
+    <script src="../js/farmer/orders.js"></script>
+
+</body>
+
+</html>

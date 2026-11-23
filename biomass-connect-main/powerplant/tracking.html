@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking | Power Plant | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/powerplant/tracking.css">
+</head>
+
+<body data-role="powerplant" data-page="tracking">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Order Tracking</h1>
+                        <p class="page-subtitle">Follow each pellet order from placement to delivery. Transport details are updated by the logistics team.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-secondary" href="history.html">
+                            <i class="fa-solid fa-clock-rotate-left"></i> Purchase History
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tracking-grid">
+
+                    <!-- ORDER LIST -->
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div class="card-title">My Orders</div>
+                        </div>
+                        <div class="card-body list-body">
+                            <div class="tabs" id="statusTabs"></div>
+                            <div class="order-list" id="orderList"></div>
+                        </div>
+                    </section>
+
+                    <!-- ORDER DETAIL -->
+
+                    <section class="card" id="detailCard">
+                        <div class="empty-state"><i class="fa-solid fa-truck-fast"></i>Select an order to view its tracking details.</div>
+                    </section>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/powerplant/plant.js"></script>
+    <script src="../js/powerplant/tracking.js"></script>
+
+</body>
+
+</html>

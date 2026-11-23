@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Pellet Listings | Manufacturer | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/manufacturer/pellet-management.css">
+</head>
+
+<body data-role="manufacturer" data-page="pellet-management">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Manage Pellet Listings</h1>
+                        <p class="page-subtitle">Update quantity, price and quality details, or pause and remove listings. Sold out listings have been bought and cannot be changed.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-primary" href="pellet-listing.html">
+                            <i class="fa-solid fa-plus"></i> New Listing
+                        </a>
+                    </div>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiTotal">0</div>
+                            <div class="kpi-label">Total Listings</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-circle-check"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiActive">0</div>
+                            <div class="kpi-label">Active Listings</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-warehouse"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiStock">0 t</div>
+                            <div class="kpi-label">Stock Listed</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiValue">₹0</div>
+                            <div class="kpi-label">Listed Stock Value</div>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">My Pellet Listings</div>
+                            <div class="card-subtitle" id="resultCount">0 listings</div>
+                        </div>
+                    </div>
+
+                    <div class="card-body" style="padding-bottom:0">
+                        <div class="toolbar">
+                            <div class="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" id="searchInput" placeholder="Search by listing ID or pellet type" data-novalidate>
+                            </div>
+                            <select id="statusFilter" data-novalidate aria-label="Filter by status">
+                                <option value="">All statuses</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                                <option>Sold Out</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Listing</th>
+                                    <th>Pellet Type</th>
+                                    <th>Grade</th>
+                                    <th>Quantity</th>
+                                    <th>Price / Ton</th>
+                                    <th>Quality (M / Ash / GCV)</th>
+                                    <th>Available From</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listingTable"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- VIEW MODAL -->
+
+    <div class="modal-backdrop" id="viewModal">
+        <div class="modal modal-lg" role="dialog" aria-modal="true" aria-labelledby="viewTitle">
+            <div class="modal-header">
+                <h3 id="viewTitle">Listing details</h3>
+                <button class="modal-close" type="button" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="viewBody"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-close>Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- EDIT MODAL -->
+
+    <div class="modal-backdrop" id="editModal">
+        <div class="modal modal-lg" role="dialog" aria-modal="true" aria-labelledby="editTitle">
+            <div class="modal-header">
+                <h3 id="editTitle">Edit listing</h3>
+                <button class="modal-close" type="button" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="editForm" novalidate>
+                <div class="modal-body">
+                    <div class="form-grid cols-3">
+
+                        <div class="form-section-title">Product Details</div>
+
+                        <div class="form-group">
+                            <label for="editPelletType">Pellet Type</label>
+                            <select id="editPelletType" data-label="Pellet type" data-rules="required">
+                                <option value="">Select pellet type</option>
+                                <option>Agro Residue Pellets</option>
+                                <option>Rice Husk Pellets</option>
+                                <option>Bagasse Pellets</option>
+                                <option>Wheat Straw Pellets</option>
+                                <option>Mustard Husk Pellets</option>
+                                <option>Groundnut Shell Pellets</option>
+                                <option>Wood Pellets</option>
+                                <option>Mixed Biomass Pellets</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editGrade">Grade</label>
+                            <select id="editGrade" data-grade-select data-label="Grade" data-rules="required">
+                                <option value="">Select grade</option>
+                                <option>Premium</option>
+                                <option>Standard</option>
+                                <option>Industrial</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editQuantity">Quantity (Tons)</label>
+                            <input type="number" id="editQuantity" step="any" inputmode="decimal"
+                                   data-label="Quantity" data-rules="required|number|positive|max:10000|decimals:2">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editPrice">Price per Ton (₹)</label>
+                            <input type="number" id="editPrice" step="any" inputmode="decimal"
+                                   data-label="Price per ton" data-rules="required|number|min:1000|max:50000|decimals:2">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editAvailableFrom">Available From</label>
+                            <input type="date" id="editAvailableFrom" data-label="Available from"
+                                   data-rules="required|date|notPastIfChanged|maxDate:+180">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editLocation">Pickup Location</label>
+                            <input type="text" id="editLocation" data-label="Pickup location"
+                                   data-rules="required|text|minlen:2|maxlen:100">
+                        </div>
+
+                        <div class="form-section-title">Quality Parameters</div>
+
+                        <div class="form-group">
+                            <label for="editDiameter">Diameter (mm)</label>
+                            <input type="number" id="editDiameter" step="any" inputmode="decimal"
+                                   data-label="Diameter" data-rules="required|number|min:6|max:12|decimals:1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editLength">Length (mm)</label>
+                            <input type="number" id="editLength" step="any" inputmode="decimal"
+                                   data-label="Length" data-rules="required|number|min:10|max:50|decimals:1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editMoisture">Moisture (%)</label>
+                            <input type="number" id="editMoisture" step="any" inputmode="decimal"
+                                   data-label="Moisture" data-rules="required|number|min:0|max:15|decimals:2|premiumMax:10">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editAsh">Ash Content (%)</label>
+                            <input type="number" id="editAsh" step="any" inputmode="decimal"
+                                   data-label="Ash content" data-rules="required|number|min:0|max:20|decimals:2|premiumMax:8">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editCalorific">Calorific Value (kcal/kg)</label>
+                            <input type="number" id="editCalorific" inputmode="numeric"
+                                   data-label="Calorific value" data-rules="required|number|integer|min:3000|max:5500|premiumMin:4000">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editBulk">Bulk Density (kg/m³)</label>
+                            <input type="number" id="editBulk" inputmode="numeric"
+                                   data-label="Bulk density" data-rules="required|number|integer|min:500|max:800">
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="editCertification">Certification <span class="text-subtle">(optional)</span></label>
+                            <input type="text" id="editCertification" list="certOptions" data-label="Certification"
+                                   data-rules="text|minlen:2|maxlen:60">
+                            <datalist id="certOptions">
+                                <option value="BIS IS 17583"></option>
+                                <option value="ENplus A1"></option>
+                                <option value="ENplus A2"></option>
+                                <option value="ISO 17225-2"></option>
+                            </datalist>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close>Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/manufacturer/pellet-management.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit &amp; Compliance | Admin | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/admin/audit-compliance.css">
+</head>
+
+<body data-role="admin" data-page="audit-compliance">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Audit &amp; Compliance</h1>
+                        <p class="page-subtitle">Track platform activity and issue Government Norms Compliance Certificates to coal power plants.</p>
+                    </div>
+                </div>
+
+                <!-- KPI CARDS -->
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-list-ul"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiLogs">0</div>
+                            <div class="kpi-label">Log Entries (30 days)</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-user-shield"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiAdminToday">0</div>
+                            <div class="kpi-label">Admin Actions Today</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-certificate"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiCerts">0</div>
+                            <div class="kpi-label">Certificates Issued</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-circle-check"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiValid">0</div>
+                            <div class="kpi-label">Valid Certificates</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tabs" id="sectionTabs" role="tablist">
+                    <button class="tab active" type="button" data-panel="logsPanel"><i class="fa-solid fa-clock-rotate-left"></i> Audit Logs</button>
+                    <button class="tab" type="button" data-panel="certPanel"><i class="fa-solid fa-certificate"></i> Compliance Certificates</button>
+                </div>
+
+                <!-- AUDIT LOGS -->
+
+                <section class="card" id="logsPanel">
+
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Audit Log</div>
+                            <div class="card-subtitle" id="logCount">0 entries</div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+
+                        <form class="toolbar filters" id="logFilters" novalidate>
+                            <div class="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" id="logSearch" placeholder="Search user or action" aria-label="Search audit log" data-novalidate>
+                            </div>
+                            <select id="logRole" aria-label="Filter by role" data-novalidate>
+                                <option value="All">All Roles</option>
+                                <option>Admin</option>
+                                <option>Farmer</option>
+                                <option>Manufacturer</option>
+                                <option>Power Plant</option>
+                            </select>
+                            <select id="logModule" aria-label="Filter by module" data-novalidate>
+                                <option value="All">All Modules</option>
+                            </select>
+                            <div class="form-group filter-field">
+                                <label for="logFrom">From</label>
+                                <input type="date" id="logFrom" data-label="From date" data-rules="date|notFuture">
+                                <small class="error"></small>
+                            </div>
+                            <div class="form-group filter-field">
+                                <label for="logTo">To</label>
+                                <input type="date" id="logTo" data-label="To date" data-rules="date|notFuture|sameOrAfter:#logFrom">
+                                <small class="error"></small>
+                            </div>
+                            <button class="btn btn-ghost" type="button" id="clearLogFilters"><i class="fa-solid fa-rotate-left"></i> Clear</button>
+                        </form>
+
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>User</th>
+                                        <th>Role</th>
+                                        <th>Action</th>
+                                        <th>Module</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="logTable"></tbody>
+                            </table>
+                        </div>
+
+                        <div class="text-center mt-2">
+                            <button class="btn btn-ghost btn-sm hidden" type="button" id="moreLogsBtn">Show more</button>
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- COMPLIANCE CERTIFICATES -->
+
+                <div class="hidden" id="certPanel">
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Issue Compliance Certificate</div>
+                                <div class="card-subtitle">Government Norms Compliance Certificate for a coal power plant that follows government norms</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="certForm" novalidate>
+                                <div class="form-grid cols-3">
+
+                                    <div class="form-group">
+                                        <label for="certPlant">Coal Power Plant</label>
+                                        <select id="certPlant" data-label="Power plant" data-rules="required">
+                                            <option value="">Select power plant</option>
+                                        </select>
+                                        <small class="form-hint">Only approved, active power plants are listed.</small>
+                                        <small class="error"></small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="certNo">Certificate No.</label>
+                                        <input type="text" id="certNo" readonly data-novalidate>
+                                        <small class="form-hint">Generated automatically.</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="certIssue">Issue Date</label>
+                                        <input type="date" id="certIssue" data-label="Issue date" data-rules="required|date|notFuture">
+                                        <small class="error"></small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="certValid">Valid Until</label>
+                                        <input type="date" id="certValid" data-label="Valid until" data-rules="required|date|after:#certIssue">
+                                        <small class="error"></small>
+                                    </div>
+
+                                    <div class="form-group span-2">
+                                        <label for="certRemarks">Remarks (optional)</label>
+                                        <input type="text" id="certRemarks" placeholder="e.g. Biomass co-firing as per the Ministry of Power policy" data-rules="text|maxlen:200">
+                                        <small class="error"></small>
+                                    </div>
+
+                                </div>
+                                <div class="form-actions">
+                                    <button class="btn btn-secondary" type="reset">Clear</button>
+                                    <button class="btn btn-primary" type="submit"><i class="fa-solid fa-certificate"></i> Issue Certificate</button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Issued Certificates</div>
+                                <div class="card-subtitle" id="certCount">0 certificates</div>
+                            </div>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Certificate No.</th>
+                                        <th>Power Plant</th>
+                                        <th>Issue Date</th>
+                                        <th>Valid Until</th>
+                                        <th>Status</th>
+                                        <th>Issued By</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="certTable"></tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/admin/admin-common.js"></script>
+    <script src="../js/admin/audit-compliance.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+/* Power plant pellet batch feedback — page-specific layout only. */
+
+.feedback-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.feedback-layout .card + .card {
+    margin-top: 0;
+}
+
+.score-figure {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.score-figure strong {
+    font-size: 32px;
+    color: var(--primary-dark);
+}
+
+.score-figure + .progress + .form-hint {
+    margin-top: 8px;
+}
+
+.remarks-cell {
+    min-width: 180px;
+    max-width: 280px;
+    white-space: normal;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.table-note {
+    padding: 10px 16px 14px;
+    border-top: 1px solid var(--border);
+    margin-top: 0;
+}
+
+@media (max-width: 1100px) {
+    .feedback-layout {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,87 @@
+/* Biomass marketplace — page-specific layout only. */
+
+.filter-grid {
+    display: grid;
+    grid-template-columns: minmax(220px, 2fr) repeat(4, minmax(140px, 1fr)) auto;
+    gap: 14px 16px;
+    align-items: start;
+}
+
+.filter-actions {
+    padding-top: 25px;
+}
+
+.listing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.listing-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.listing-card + .listing-card {
+    margin-top: 0;
+}
+
+.listing-card .card-body {
+    flex: 1;
+}
+
+.listing-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+.listing-price small {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.listing-desc {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.listing-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-top: 1px solid var(--border);
+    background: var(--surface-muted);
+    border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.listing-grid .empty-state {
+    grid-column: 1 / -1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+@media (max-width: 1200px) {
+    .filter-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .filter-search {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .filter-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-actions {
+        padding-top: 0;
+    }
+}

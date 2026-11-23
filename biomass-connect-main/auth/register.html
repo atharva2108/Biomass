@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/auth/auth.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="public-header">
+
+        <a class="logo" href="../index.html">
+            <i class="fa-solid fa-leaf"></i>
+            <div>
+                <h2>Biomass Connect</h2>
+                <span>From Farms To Fuel</span>
+            </div>
+        </a>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../index.html#features">Features</a>
+            <a href="../index.html#workflow">How it Works</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+
+        <a class="btn btn-secondary" href="login.html">Login</a>
+
+    </header>
+
+    <!-- MAIN -->
+
+    <main class="auth-main">
+
+        <div class="auth-shell wide">
+
+            <aside class="auth-aside">
+
+                <div>
+                    <span class="aside-icon"><i class="fa-solid fa-user-plus"></i></span>
+                    <h2>Join Biomass Connect</h2>
+                    <p>Create your account in three simple steps.</p>
+                </div>
+
+                <ul class="aside-list">
+                    <li>
+                        <i class="fa-solid fa-1"></i>
+                        <div><strong>Choose your role</strong><span>Farmer, Manufacturer or Power Plant.</span></div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-2"></i>
+                        <div><strong>Fill in your details</strong><span>Contact info, password and security question.</span></div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-3"></i>
+                        <div><strong>Upload a document</strong><span>Our admins verify it to approve your account.</span></div>
+                    </li>
+                </ul>
+
+                <p class="aside-note"><i class="fa-solid fa-leaf"></i> Every ton of residue sold is a ton not burned in the field.</p>
+
+            </aside>
+
+            <section class="auth-body">
+
+                <h1>Create new account</h1>
+                <p class="subtitle">Join Biomass Connect and be part of a sustainable future</p>
+
+                <form id="registerForm" class="auth-form" novalidate>
+
+                    <!-- ROLE -->
+
+                    <div class="role-selection" role="radiogroup" aria-label="Account type">
+
+                        <button type="button" class="role-card active" data-role="Farmer" role="radio" aria-checked="true">
+                            <i class="fa-solid fa-seedling"></i>
+                            <h3>Farmer</h3>
+                            <p>Sell your biomass</p>
+                        </button>
+
+                        <button type="button" class="role-card" data-role="Manufacturer" role="radio" aria-checked="false">
+                            <i class="fa-solid fa-industry"></i>
+                            <h3>Manufacturer</h3>
+                            <p>Buy biomass, sell pellets</p>
+                        </button>
+
+                        <button type="button" class="role-card" data-role="Power Plant" role="radio" aria-checked="false">
+                            <i class="fa-solid fa-bolt"></i>
+                            <h3>Power Plant</h3>
+                            <p>Buy pellets for co-firing</p>
+                        </button>
+
+                    </div>
+
+                    <input type="hidden" id="selectedRole" value="Farmer">
+
+                    <!-- PERSONAL -->
+
+                    <div class="form-grid">
+
+                        <div class="form-section-title">Personal information</div>
+
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" placeholder="e.g. Ramesh Patil"
+                                autocomplete="name" data-rules="required|name">
+                            <small id="fullNameError" class="error"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mobile">Mobile Number</label>
+                            <input type="tel" id="mobile" placeholder="10-digit mobile number"
+                                autocomplete="tel" inputmode="numeric" data-rules="required|mobile">
+                            <small id="mobileError" class="error"></small>
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="name@example.com"
+                                autocomplete="email" data-rules="required|email">
+                            <small id="emailError" class="error"></small>
+                        </div>
+
+                        <!-- organisation (manufacturer / power plant only) -->
+                        <div class="form-group org-only hidden">
+                            <label for="orgName" id="orgNameLabel">Company Name</label>
+                            <input type="text" id="orgName" placeholder="Registered business name"
+                                data-label="Company name" data-rules="required|text|minlen:2|maxlen:100">
+                            <small id="orgNameError" class="error"></small>
+                        </div>
+
+                        <div class="form-group org-only hidden">
+                            <label for="gstin">GSTIN</label>
+                            <input type="text" id="gstin" placeholder="e.g. 27ABCDE1234F1Z5"
+                                data-label="GSTIN" data-rules="required|gst">
+                            <small id="gstinError" class="error"></small>
+                        </div>
+
+                        <!-- aadhaar (farmer only) -->
+                        <div class="form-group farmer-only">
+                            <label for="aadhaar">Aadhaar Number</label>
+                            <input type="text" id="aadhaar" placeholder="12-digit Aadhaar number"
+                                inputmode="numeric" data-label="Aadhaar number" data-rules="required|aadhaar">
+                            <small id="aadhaarError" class="error"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <select id="state" data-rules="required">
+                                <option value="">Select state</option>
+                                <option>Andhra Pradesh</option>
+                                <option>Bihar</option>
+                                <option>Chhattisgarh</option>
+                                <option>Gujarat</option>
+                                <option>Haryana</option>
+                                <option>Karnataka</option>
+                                <option>Madhya Pradesh</option>
+                                <option>Maharashtra</option>
+                                <option>Odisha</option>
+                                <option>Punjab</option>
+                                <option>Rajasthan</option>
+                                <option>Tamil Nadu</option>
+                                <option>Telangana</option>
+                                <option>Uttar Pradesh</option>
+                                <option>West Bengal</option>
+                            </select>
+                            <small id="stateError" class="error"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pincode">PIN Code</label>
+                            <input type="text" id="pincode" placeholder="6-digit PIN code"
+                                inputmode="numeric" data-label="PIN code" data-rules="required|pincode">
+                            <small id="pincodeError" class="error"></small>
+                        </div>
+
+                        <!-- SECURITY -->
+
+                        <div class="form-section-title">Account security</div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="password-wrap">
+                                <input type="password" id="password" placeholder="Create a password"
+                                    autocomplete="new-password" data-rules="required|password">
+                                <button type="button" class="password-toggle" aria-label="Show password"><i class="fa-regular fa-eye"></i></button>
+                            </div>
+                            <div class="strength" id="strengthMeter" data-level="0">
+                                <div class="progress"><span></span></div>
+                                <span class="strength-label"></span>
+                            </div>
+                            <small id="passwordError" class="error"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <div class="password-wrap">
+                                <input type="password" id="confirmPassword" placeholder="Re-enter password"
+                                    autocomplete="new-password" data-label="Confirm password"
+                                    data-rules="required|match:#password" data-filter="nospace">
+                                <button type="button" class="password-toggle" aria-label="Show password"><i class="fa-regular fa-eye"></i></button>
+                            </div>
+                            <small id="confirmPasswordError" class="error"></small>
+                        </div>
+
+                        <p class="form-hint full-width">8–20 characters with uppercase, lowercase, a number and a special character. No spaces.</p>
+
+                        <div class="form-group">
+                            <label for="securityQuestion">Security Question</label>
+                            <select id="securityQuestion" data-rules="required">
+                                <option value="">Select a security question</option>
+                                <option>What is your first school name?</option>
+                                <option>What is your favourite color?</option>
+                                <option>What is your birth city?</option>
+                                <option>What is your mother's maiden name?</option>
+                            </select>
+                            <small id="securityQuestionError" class="error"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="securityAnswer">Security Answer</label>
+                            <input type="text" id="securityAnswer" placeholder="Your answer"
+                                autocomplete="off" data-rules="required|text|minlen:2|maxlen:50">
+                            <small id="securityAnswerError" class="error"></small>
+                        </div>
+
+                        <!-- DOCUMENT -->
+
+                        <div class="form-section-title">Verification document</div>
+
+                        <div class="form-group full">
+                            <div class="upload-box">
+                                <div>
+                                    <h4 id="documentTitle">Aadhaar Card <span class="req">*</span></h4>
+                                    <p id="documentDescription">Upload your Aadhaar card for identity verification.</p>
+                                    <small>PDF, JPG or PNG · Maximum 5 MB</small>
+                                    <div class="file-name" id="fileName"></div>
+                                </div>
+                                <input type="file" id="document" accept=".pdf,.jpg,.jpeg,.png"
+                                    data-label="Verification document"
+                                    data-rules="required|fileTypes:pdf,jpg,jpeg,png|maxSize:5">
+                            </div>
+                            <small id="documentError" class="error"></small>
+                        </div>
+
+                    </div>
+
+                    <div class="terms-row form-group">
+                        <label>
+                            <input type="checkbox" id="terms" data-label="the terms and privacy policy" data-rules="checked">
+                            I agree to the Terms of Service and Privacy Policy
+                        </label>
+                        <small id="termsError" class="error"></small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block btn-lg mt-3" id="registerBtn">
+                        Create account
+                    </button>
+
+                </form>
+
+                <div class="auth-switch">
+                    Already have an account? <a href="login.html">Sign in</a>
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer class="public-footer" id="contact">
+        <div class="footer-inner">
+            <div>
+                <h3>Biomass Connect</h3>
+                <p>From Farms To Fuel</p>
+                <p>Connecting people, resources and energy for a sustainable future.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <p><a href="../index.html">Home</a></p>
+                <p><a href="login.html">Login</a></p>
+                <p><a href="forgot-password.html">Forgot Password</a></p>
+            </div>
+            <div>
+                <h4>Support</h4>
+                <p>Help Center</p>
+                <p>FAQs</p>
+                <p>User Guide</p>
+            </div>
+            <div>
+                <h4>Contact Us</h4>
+                <p><i class="fa-solid fa-envelope"></i> support@biomassconnect.com</p>
+                <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fa-solid fa-location-dot"></i> Pune, India</p>
+            </div>
+            <div>
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <i class="fa-brands fa-linkedin" onclick="openLinkedIn()"></i>
+                    <i class="fa-brands fa-x-twitter" onclick="openTwitter()"></i>
+                    <i class="fa-brands fa-youtube" onclick="openYoutube()"></i>
+                    <i class="fa-brands fa-instagram" onclick="openInstagram()"></i>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 Biomass Connect. All Rights Reserved.</div>
+    </footer>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/auth/users.js"></script>
+    <script src="../js/auth/register.js"></script>
+
+</body>
+
+</html>

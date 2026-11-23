@@ -1,0 +1,26 @@
+/* Pellet sales history — page-specific layout only. */
+
+.rating-summary {
+    margin-bottom: 24px;
+}
+
+.rating-summary .card-body {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.rating-summary .card-title .rating {
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+.rating-summary .form-hint {
+    margin-top: 2px;
+}
+
+.cell-note {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+}

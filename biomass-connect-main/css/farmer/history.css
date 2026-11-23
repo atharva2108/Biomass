@@ -1,0 +1,39 @@
+/* Farmer — Order History: page-specific layout only.
+   Shared components (KPI cards, forms, tables) live in ../theme.css */
+
+.filter-bar {
+    display: grid;
+    grid-template-columns: minmax(200px, 2fr) repeat(2, minmax(150px, 1fr)) auto;
+    gap: 14px;
+    align-items: start;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.filter-actions {
+    display: flex;
+    gap: 8px;
+    padding-top: 25px;
+}
+
+@media (max-width: 1200px) {
+    .filter-bar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .filter-search,
+    .filter-actions {
+        grid-column: 1 / -1;
+    }
+
+    .filter-actions {
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .filter-bar {
+        grid-template-columns: 1fr;
+    }
+}

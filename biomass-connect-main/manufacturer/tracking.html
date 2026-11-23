@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Tracking | Manufacturer | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/manufacturer/tracking.css">
+</head>
+
+<body data-role="manufacturer" data-page="tracking">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Purchase Tracking</h1>
+                        <p class="page-subtitle">Follow your biomass purchase orders from placement to delivery.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-secondary" href="purchase-orders.html">
+                            <i class="fa-solid fa-file-signature"></i> Purchase Orders
+                        </a>
+                    </div>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-file-signature"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiPlaced">0</div>
+                            <div class="kpi-label">Placed</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiPickup">0</div>
+                            <div class="kpi-label">Pickup Scheduled</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiTransit">0</div>
+                            <div class="kpi-label">In Transit</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-warehouse"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiDelivered">0</div>
+                            <div class="kpi-label">Delivered</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="track-layout">
+
+                    <!-- ORDER LIST -->
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">My Orders</div>
+                                <div class="card-subtitle">Select an order to track it</div>
+                            </div>
+                        </div>
+                        <div class="card-body track-search">
+                            <div class="toolbar" style="margin-bottom:0">
+                                <div class="search">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="search" id="orderSearch" placeholder="Search PO, farmer, biomass" data-novalidate>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-list" id="orderList"></div>
+                    </section>
+
+                    <!-- TRACKING DETAIL (read only) -->
+
+                    <section class="card" id="trackDetail"></section>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/manufacturer/tracking.js"></script>
+
+</body>
+
+</html>

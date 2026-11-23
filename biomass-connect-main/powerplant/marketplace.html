@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pellet Marketplace | Power Plant | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/powerplant/marketplace.css">
+</head>
+
+<body data-role="powerplant" data-page="marketplace">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Pellet Marketplace</h1>
+                        <p class="page-subtitle">Compare pellets from verified manufacturers. Each listing is sold as one whole lot.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-secondary" href="tracking.html">
+                            <i class="fa-solid fa-truck-fast"></i> My Orders
+                        </a>
+                    </div>
+                </div>
+
+                <!-- FILTERS -->
+
+                <section class="card mb-3">
+                    <div class="card-body">
+
+                        <div class="toolbar">
+                            <div class="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" id="searchInput" placeholder="Search by pellet type, supplier or location" aria-label="Search listings" data-novalidate>
+                            </div>
+                            <select id="sortBy" aria-label="Sort listings" data-novalidate>
+                                <option value="newest">Newest first</option>
+                                <option value="ratingDesc">Supplier rating: high to low</option>
+                                <option value="priceAsc">Price: low to high</option>
+                                <option value="priceDesc">Price: high to low</option>
+                                <option value="cvDesc">Calorific value: high to low</option>
+                                <option value="qtyDesc">Quantity: high to low</option>
+                            </select>
+                            <button class="btn btn-secondary" type="button" id="resetFilters">
+                                <i class="fa-solid fa-rotate-left"></i> Reset
+                            </button>
+                        </div>
+
+                        <div class="form-grid filter-grid" id="filterForm">
+
+                            <div class="form-group">
+                                <label for="gradeFilter">Grade</label>
+                                <select id="gradeFilter" data-novalidate>
+                                    <option value="">All grades</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="supplierFilter">Supplier</label>
+                                <select id="supplierFilter" data-novalidate>
+                                    <option value="">All suppliers</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="maxPrice">Max Price (₹/ton)</label>
+                                <input type="number" id="maxPrice" placeholder="Any price" data-label="Max price"
+                                       data-rules="number|positive|max:100000|decimals:2">
+                                <small class="error" id="maxPriceError"></small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="minCv">Min Calorific Value (kcal/kg)</label>
+                                <input type="number" id="minCv" placeholder="Any value" data-label="Calorific value"
+                                       data-rules="integer|min:1000|max:6000">
+                                <small class="error" id="minCvError"></small>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </section>
+
+                <div class="flex between wrap mb-2">
+                    <span class="text-muted" id="resultCount"></span>
+                    <span class="form-hint rating-note"><i class="fa-solid fa-star"></i> Supplier ratings are calculated automatically from the quality of batches delivered to power plants.</span>
+                </div>
+
+                <div class="listing-grid" id="listingGrid"></div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- LISTING DETAILS MODAL -->
+
+    <div class="modal-backdrop" id="listingModal">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="listingModalTitle">
+            <div class="modal-header">
+                <h3 id="listingModalTitle">Pellet Details</h3>
+                <button class="modal-close" type="button" data-close-modal aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="listingModalBody"></div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-close-modal>Close</button>
+                <a class="btn btn-primary" id="listingModalOrder" href="purchase-orders.html"><i class="fa-solid fa-cart-plus"></i> Order Now</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/powerplant/plant.js"></script>
+    <script src="../js/powerplant/marketplace.js"></script>
+
+</body>
+
+</html>

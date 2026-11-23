@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | Admin | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/admin/setting.css">
+</head>
+
+<body data-role="admin" data-page="setting">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Platform Settings</h1>
+                        <p class="page-subtitle">Configure platform details, commercial terms, security limits and admin notifications.</p>
+                    </div>
+                    <div class="page-actions">
+                        <span class="text-muted save-state" id="saveState"></span>
+                    </div>
+                </div>
+
+                <form id="settingsForm" novalidate>
+
+                    <div class="settings-grid">
+
+                        <div class="stack">
+
+                            <!-- GENERAL -->
+
+                            <section class="card">
+                                <div class="card-header">
+                                    <div>
+                                        <div class="card-title">General</div>
+                                        <div class="card-subtitle">Shown to users in emails, invoices and the help centre</div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-grid">
+                                        <div class="form-group full">
+                                            <label for="platformName">Platform Name</label>
+                                            <input type="text" id="platformName" placeholder="Biomass Connect" data-rules="required|text|minlen:3|maxlen:60">
+                                            <small class="error"></small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="supportEmail">Support Email</label>
+                                            <input type="email" id="supportEmail" placeholder="support@example.com" data-rules="required|email">
+                                            <small class="error"></small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="supportPhone">Support Phone</label>
+                                            <input type="tel" id="supportPhone" placeholder="10-digit mobile" inputmode="numeric" maxlength="10" data-label="Support phone" data-rules="required|mobile">
+                                            <small class="error"></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- COMMERCIAL -->
+
+                            <section class="card">
+                                <div class="card-header">
+                                    <div>
+                                        <div class="card-title">Commercial</div>
+                                        <div class="card-subtitle">Applied to every new order on the marketplace</div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-grid cols-3">
+                                        <div class="form-group">
+                                            <label for="commission">Platform Commission (%)</label>
+                                            <input type="number" id="commission" placeholder="2.5" step="0.01" inputmode="decimal" data-label="Commission" data-rules="required|number|min:0|max:20|decimals:2">
+                                            <small class="form-hint">0 – 20%</small>
+                                            <small class="error"></small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="gst">GST on Commission (%)</label>
+                                            <input type="number" id="gst" placeholder="18" step="0.01" inputmode="decimal" data-label="GST" data-rules="required|number|min:0|max:28|decimals:2">
+                                            <small class="form-hint">0 – 28%</small>
+                                            <small class="error"></small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="minOrderQty">Minimum Order (tons)</label>
+                                            <input type="number" id="minOrderQty" placeholder="5" step="1" inputmode="numeric" data-label="Minimum order quantity" data-rules="required|integer|min:1|max:1000">
+                                            <small class="form-hint">1 – 1000 tons</small>
+                                            <small class="error"></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- SECURITY -->
+
+                            <section class="card">
+                                <div class="card-header">
+                                    <div>
+                                        <div class="card-title">Security &amp; Uploads</div>
+                                        <div class="card-subtitle">Session and document upload limits for all users</div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-grid cols-3">
+                                        <div class="form-group">
+                                            <label for="sessionTimeout">Session Timeout (minutes)</label>
+                                            <input type="number" id="sessionTimeout" placeholder="30" step="1" inputmode="numeric" data-label="Session timeout" data-rules="required|integer|min:5|max:240">
+                                            <small class="form-hint">5 – 240 minutes</small>
+                                            <small class="error"></small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="maxLoginAttempts">Max Login Attempts</label>
+                                            <input type="number" id="maxLoginAttempts" placeholder="5" step="1" inputmode="numeric" data-label="Max login attempts" data-rules="required|integer|min:3|max:10">
+                                            <small class="form-hint">Account locks after this many failures (3 – 10)</small>
+                                            <small class="error"></small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="maxUpload">Max Upload Size (MB)</label>
+                                            <input type="number" id="maxUpload" placeholder="5" step="1" inputmode="numeric" data-label="Max upload size" data-rules="required|integer|min:1|max:25">
+                                            <small class="form-hint">1 – 25 MB per document</small>
+                                            <small class="error"></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                        </div>
+
+                        <!-- NOTIFICATIONS -->
+
+                        <div class="stack">
+
+                            <section class="card">
+                                <div class="card-header">
+                                    <div>
+                                        <div class="card-title">Admin Notifications</div>
+                                        <div class="card-subtitle">Choose which events alert the admin team</div>
+                                    </div>
+                                </div>
+                                <div class="card-body toggle-list">
+                                    <label class="toggle-row">
+                                        <span><strong>New registrations</strong><small>Farmer, manufacturer or power plant awaiting verification</small></span>
+                                        <input type="checkbox" class="switch" id="notifyRegistration" data-novalidate>
+                                    </label>
+                                    <label class="toggle-row">
+                                        <span><strong>Complaints raised</strong><small>A participant raises a complaint on an order</small></span>
+                                        <input type="checkbox" class="switch" id="notifyDisputes" data-novalidate>
+                                    </label>
+                                    <label class="toggle-row">
+                                        <span><strong>High-value transactions</strong><small>Orders above the threshold below</small></span>
+                                        <input type="checkbox" class="switch" id="notifyHighValue" data-novalidate>
+                                    </label>
+                                    <div class="form-group" id="thresholdGroup">
+                                        <label for="highValueThreshold">High-value Threshold (₹)</label>
+                                        <input type="number" id="highValueThreshold" placeholder="1000000" step="1" inputmode="numeric" data-label="High-value threshold" data-rules="required|integer|min:10000|max:100000000">
+                                        <small class="form-hint">₹10,000 – ₹10,00,00,000</small>
+                                        <small class="error"></small>
+                                    </div>
+                                </div>
+                            </section>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn btn-danger" type="button" id="resetDefaults"><i class="fa-solid fa-rotate-left"></i> Reset to Defaults</button>
+                        <button class="btn btn-secondary" type="button" id="discardBtn">Discard Changes</button>
+                        <button class="btn btn-primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Save Settings</button>
+                    </div>
+
+                </form>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/admin/admin-common.js"></script>
+    <script src="../js/admin/setting.js"></script>
+
+</body>
+
+</html>

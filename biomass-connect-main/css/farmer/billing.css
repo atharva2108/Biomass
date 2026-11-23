@@ -1,0 +1,7 @@
+/* Farmer — Payments & Complaints: page-specific layout only.
+   Shared components (KPI cards, tabs, tables, forms, modal) live in ../theme.css */
+
+.pre-wrap {
+    white-space: pre-wrap;
+    word-break: break-word;
+}

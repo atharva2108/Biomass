@@ -1,0 +1,65 @@
+/* Admin dashboard — page-specific layout only.
+   Shared components (cards, tables, KPI, badges) live in ../theme.css */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.status-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.role-row {
+    display: block;
+    color: var(--text);
+}
+
+.role-row:hover .progress > span {
+    background: var(--primary-hover);
+}
+
+.mini-list {
+    padding: 8px 20px;
+}
+
+.mini-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    font-size: 14px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+}
+
+.mini-item:last-child {
+    border-bottom: none;
+}
+
+.mini-item:hover {
+    color: var(--primary-dark);
+}
+
+.quick-actions {
+    grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 1100px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}

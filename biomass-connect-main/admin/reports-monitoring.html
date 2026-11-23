@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports &amp; Monitoring | Admin | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/admin/reports-monitoring.css">
+</head>
+
+<body data-role="admin" data-page="reports-monitoring">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Reports &amp; Monitoring</h1>
+                        <p class="page-subtitle">Deliveries, payments and manufacturer pellet quality across the platform.</p>
+                    </div>
+                </div>
+
+                <!-- KPI CARDS -->
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiBiomass">0 t</div>
+                            <div class="kpi-label">Biomass Delivered</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiPellets">0 t</div>
+                            <div class="kpi-label">Pellets Delivered</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiPaid">₹0</div>
+                            <div class="kpi-label">Paid to Sellers</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiPending">₹0</div>
+                            <div class="kpi-label">Delivered, Payment Pending</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reports-grid">
+
+                    <!-- CHART -->
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Monthly Deliveries</div>
+                                <div class="card-subtitle" id="chartSubtitle">Last 6 months</div>
+                            </div>
+                            <select id="chartMetric" aria-label="Chart metric" data-novalidate class="metric-select">
+                                <option value="Biomass">Biomass (t)</option>
+                                <option value="Pellet">Pellets (t)</option>
+                            </select>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-wrap">
+                                <div class="bar-chart" id="barChart"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- ORDERS BY STATUS -->
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div class="card-title">Orders by Status</div>
+                            <a class="btn btn-ghost btn-sm" href="orders-monitoring.html">View orders</a>
+                        </div>
+                        <div class="card-body status-breakdown" id="statusList"></div>
+                    </section>
+
+                </div>
+
+                <!-- MANUFACTURER RATINGS -->
+
+                <section class="card mt-3">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Manufacturer Pellet Quality</div>
+                            <div class="card-subtitle">Rated automatically from the batch details power plants submit after delivery</div>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Manufacturer</th>
+                                    <th>Pellet Orders</th>
+                                    <th>Pellets Delivered</th>
+                                    <th>Quality Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ratingTable"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/admin/admin-common.js"></script>
+    <script src="../js/admin/reports-monitoring.js"></script>
+
+</body>
+
+</html>

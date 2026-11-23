@@ -1,0 +1,893 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1326" viewBox="0 0 2000 1326" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="40" y="38" font-size="24" font-weight="700" fill="#1f2937">Biomass Connect — Entity Relationship Diagram (PostgreSQL)</text>
+<text x="40" y="64" font-size="14" font-weight="400" fill="#6b7280">17 tables · crow's foot notation · PK primary key · FK foreign key · UK unique · UK1 unique together · GEN generated column · null = optional link</text>
+<path d="M40 92H84" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M84 82V102" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M77 85V99M72 85V99" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<text x="94" y="97" font-size="13" font-weight="400" fill="#6b7280">exactly one</text>
+<path d="M230 92H250" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M274 82V102" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M258 92H274M265 85V99" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="254" cy="92" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<text x="284" y="97" font-size="13" font-weight="400" fill="#6b7280">zero or one</text>
+<path d="M420 92H440" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M464 82V102" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M448 92H464M451 92L464 85M451 92L464 99" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="444" cy="92" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<text x="474" y="97" font-size="13" font-weight="400" fill="#6b7280">zero or many</text>
+<rect x="616" y="83" width="26" height="18" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="652" y="97" font-size="13" font-weight="400" fill="#6b7280">order tables (core workflow)</text>
+<path d="M1620 151H24V975" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M404 151V1049" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1216 151V677" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1596 151V1021" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1940 151H1976V503" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="404" cy="151" r="3.5" fill="#64748b" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="1216" cy="151" r="3.5" fill="#64748b" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="1596" cy="151" r="3.5" fill="#64748b" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1613 144V158M1608 144V158" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1947 144V158M1952 144V158" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<text x="36" y="142" font-size="13" font-weight="400" fill="#6b7280">every side lane: FK → users.user_id</text>
+<path d="M24 235H36" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M44 235H60M51 228V242" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="40" cy="235" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M24 677H36" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M44 677H60M51 670V684" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="40" cy="677" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M24 803H36" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M44 803H60M47 803L60 796M47 803L60 810" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="40" cy="803" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M24 975H36" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M44 975H60M47 975L60 968M47 975L60 982" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="40" cy="975" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M404 253H416" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M424 253H440M427 253L440 246M427 253L440 260" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="420" cy="253" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M404 569H416" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M424 569H440M427 569L440 562M427 569L440 576" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="420" cy="569" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M404 587H416" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M424 587H440M427 587L440 580M427 587L440 594" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="420" cy="587" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M404 1031H416" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M424 1031H440M427 1031L440 1024M427 1031L440 1038" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="420" cy="1031" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M404 1049H416" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M424 1049H440M427 1049L440 1042M427 1049L440 1056" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="420" cy="1049" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1216 253H1204" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1196 253H1180M1193 253L1180 246M1193 253L1180 260" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="1200" cy="253" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1216 659H1204" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1196 659H1180M1193 659L1180 652M1193 659L1180 666" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="1200" cy="659" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1216 677H1204" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1196 677H1180M1193 677L1180 670M1193 677L1180 684" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="1200" cy="677" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1596 235H1584" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1576 235H1560M1569 228V242" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="1580" cy="235" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1596 497H1584" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1576 497H1560M1569 490V504" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="1580" cy="497" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1596 813H1584" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1576 813H1560M1573 813L1560 806M1573 813L1560 820" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="1580" cy="813" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1596 903H1584" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1576 903H1560M1573 903L1560 896M1573 903L1560 910" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="1580" cy="903" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1596 1021H1584" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1576 1021H1560M1573 1021L1560 1014M1573 1021L1560 1028" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="1580" cy="1021" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1976 503H1964" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1956 503H1940M1953 503L1940 496M1953 503L1940 510" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="1960" cy="503" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M784 551H788V235H760" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M776 551H760M769 544V558" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="780" cy="551" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M767 228V242M772 228V242" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M836 641H832V235H860" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M844 641H860M851 634V648" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="840" cy="641" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M853 228V242M848 228V242" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M700 934V940H800V1067H784" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M700 926V910M693 919H707" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="700" cy="930" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M776 1067H760M773 1067L760 1060M773 1067L760 1074" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="780" cy="1067" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M880 1024V1030H816V1085H784" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M880 1016V1000M873 1009H887" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="880" cy="1020" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M776 1085H760M773 1085L760 1078M773 1085L760 1092" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="780" cy="1085" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1100 1000V1036" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1093 1007H1107M1093 1012H1107" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<path d="M1100 1044V1060M1093 1051H1107" fill="none" stroke="#64748b" stroke-width="1.4"/>
+<circle cx="1100" cy="1040" r="4" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+<g>
+<rect x="1620" y="108" width="320" height="294" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M1620 118a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#f1f5f9"/>
+<rect x="1620" y="108" width="320" height="294" rx="10" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<line x1="1620" x2="1940" y1="142" y2="142" stroke="#94a3b8" stroke-width="1"/>
+<text x="1634" y="131" font-size="15" font-weight="700" fill="#1f2937">USERS</text>
+<text x="1632" y="155.5" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+<text x="1686" y="155.5" font-size="13" font-weight="700" fill="#1f2937">user_id</text>
+<text x="1928" y="155.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint identity</text>
+<line x1="1630" x2="1930" y1="160" y2="160" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="173.5" font-size="13" font-weight="400" fill="#1f2937">name</text>
+<text x="1928" y="173.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(100)</text>
+<line x1="1630" x2="1930" y1="178" y2="178" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1632" y="191.5" font-size="11" font-weight="700" fill="#6b7280">UK</text>
+<text x="1686" y="191.5" font-size="13" font-weight="400" fill="#1f2937">email</text>
+<text x="1928" y="191.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(100)</text>
+<line x1="1630" x2="1930" y1="196" y2="196" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1632" y="209.5" font-size="11" font-weight="700" fill="#6b7280">UK</text>
+<text x="1686" y="209.5" font-size="13" font-weight="400" fill="#1f2937">mobile</text>
+<text x="1928" y="209.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">char(10)</text>
+<line x1="1630" x2="1930" y1="214" y2="214" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="227.5" font-size="13" font-weight="400" fill="#1f2937">password_hash</text>
+<text x="1928" y="227.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(255)</text>
+<line x1="1630" x2="1930" y1="232" y2="232" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="245.5" font-size="13" font-weight="400" fill="#1f2937">role</text>
+<text x="1928" y="245.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">user_role</text>
+<line x1="1630" x2="1930" y1="250" y2="250" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="263.5" font-size="13" font-weight="400" fill="#1f2937">status</text>
+<text x="1928" y="263.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">user_status</text>
+<line x1="1630" x2="1930" y1="268" y2="268" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="281.5" font-size="13" font-weight="400" fill="#1f2937">security_question</text>
+<text x="1928" y="281.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(100)</text>
+<line x1="1630" x2="1930" y1="286" y2="286" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="299.5" font-size="13" font-weight="400" fill="#1f2937">security_answer_hash</text>
+<text x="1928" y="299.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(255)</text>
+<line x1="1630" x2="1930" y1="304" y2="304" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="317.5" font-size="13" font-weight="400" fill="#1f2937">registered_on</text>
+<text x="1928" y="317.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="1630" x2="1930" y1="322" y2="322" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="335.5" font-size="13" font-weight="400" fill="#1f2937">previous_status</text>
+<text x="1928" y="335.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">user_status</text>
+<line x1="1630" x2="1930" y1="340" y2="340" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="353.5" font-size="13" font-weight="400" fill="#1f2937">block_category</text>
+<text x="1928" y="353.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(50)</text>
+<line x1="1630" x2="1930" y1="358" y2="358" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="371.5" font-size="13" font-weight="400" fill="#1f2937">block_reason</text>
+<text x="1928" y="371.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(500)</text>
+<line x1="1630" x2="1930" y1="376" y2="376" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="389.5" font-size="13" font-weight="400" fill="#1f2937">blocked_on</text>
+<text x="1928" y="389.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+</g>
+<g>
+<rect x="60" y="192" width="320" height="384" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M60 202a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#f1f5f9"/>
+<rect x="60" y="192" width="320" height="384" rx="10" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<line x1="60" x2="380" y1="226" y2="226" stroke="#94a3b8" stroke-width="1"/>
+<text x="74" y="215" font-size="15" font-weight="700" fill="#1f2937">FARMER_PROFILES</text>
+<text x="72" y="239.5" font-size="11" font-weight="700" fill="#2563eb">PK FK</text>
+<text x="126" y="239.5" font-size="13" font-weight="700" fill="#1f2937">user_id</text>
+<text x="368" y="239.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="70" x2="370" y1="244" y2="244" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="257.5" font-size="13" font-weight="400" fill="#1f2937">dob</text>
+<text x="368" y="257.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="70" x2="370" y1="262" y2="262" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="275.5" font-size="13" font-weight="400" fill="#1f2937">gender</text>
+<text x="368" y="275.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(10)</text>
+<line x1="70" x2="370" y1="280" y2="280" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="293.5" font-size="13" font-weight="400" fill="#1f2937">address</text>
+<text x="368" y="293.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(200)</text>
+<line x1="70" x2="370" y1="298" y2="298" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="311.5" font-size="13" font-weight="400" fill="#1f2937">village</text>
+<text x="368" y="311.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(60)</text>
+<line x1="70" x2="370" y1="316" y2="316" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="329.5" font-size="13" font-weight="400" fill="#1f2937">district</text>
+<text x="368" y="329.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(50)</text>
+<line x1="70" x2="370" y1="334" y2="334" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="347.5" font-size="13" font-weight="400" fill="#1f2937">state</text>
+<text x="368" y="347.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(60)</text>
+<line x1="70" x2="370" y1="352" y2="352" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="365.5" font-size="13" font-weight="400" fill="#1f2937">pincode</text>
+<text x="368" y="365.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">char(6)</text>
+<line x1="70" x2="370" y1="370" y2="370" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="383.5" font-size="13" font-weight="400" fill="#1f2937">farm_area_acres</text>
+<text x="368" y="383.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(8,2)</text>
+<line x1="70" x2="370" y1="388" y2="388" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="401.5" font-size="13" font-weight="400" fill="#1f2937">primary_crops</text>
+<text x="368" y="401.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(100)</text>
+<line x1="70" x2="370" y1="406" y2="406" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="419.5" font-size="13" font-weight="400" fill="#1f2937">account_holder</text>
+<text x="368" y="419.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(100)</text>
+<line x1="70" x2="370" y1="424" y2="424" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="437.5" font-size="13" font-weight="400" fill="#1f2937">bank_name</text>
+<text x="368" y="437.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(100)</text>
+<line x1="70" x2="370" y1="442" y2="442" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="455.5" font-size="13" font-weight="400" fill="#1f2937">account_no</text>
+<text x="368" y="455.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(18)</text>
+<line x1="70" x2="370" y1="460" y2="460" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="473.5" font-size="13" font-weight="400" fill="#1f2937">ifsc</text>
+<text x="368" y="473.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">char(11)</text>
+<line x1="70" x2="370" y1="478" y2="478" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="491.5" font-size="13" font-weight="400" fill="#1f2937">upi_id</text>
+<text x="368" y="491.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(100)</text>
+<line x1="70" x2="370" y1="496" y2="496" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="509.5" font-size="13" font-weight="400" fill="#1f2937">aadhaar_last4</text>
+<text x="368" y="509.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">char(4)</text>
+<line x1="70" x2="370" y1="514" y2="514" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="527.5" font-size="13" font-weight="400" fill="#1f2937">pan</text>
+<text x="368" y="527.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">char(10)</text>
+<line x1="70" x2="370" y1="532" y2="532" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="545.5" font-size="13" font-weight="400" fill="#1f2937">photo_url</text>
+<text x="368" y="545.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(255)</text>
+<line x1="70" x2="370" y1="550" y2="550" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="563.5" font-size="13" font-weight="400" fill="#1f2937">updated_at</text>
+<text x="368" y="563.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+</g>
+<g>
+<rect x="60" y="616" width="320" height="258" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M60 626a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#f1f5f9"/>
+<rect x="60" y="616" width="320" height="258" rx="10" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<line x1="60" x2="380" y1="650" y2="650" stroke="#94a3b8" stroke-width="1"/>
+<text x="74" y="639" font-size="15" font-weight="700" fill="#1f2937">VERIFICATION_DOCUMENTS</text>
+<text x="72" y="663.5" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+<text x="126" y="663.5" font-size="13" font-weight="700" fill="#1f2937">document_id</text>
+<text x="368" y="663.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint identity</text>
+<line x1="70" x2="370" y1="668" y2="668" stroke="#e2e8f0" stroke-width="1"/>
+<text x="72" y="681.5" font-size="11" font-weight="700" fill="#c2410c">FK UK</text>
+<text x="126" y="681.5" font-size="13" font-weight="400" fill="#1f2937">user_id</text>
+<text x="368" y="681.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="70" x2="370" y1="686" y2="686" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="699.5" font-size="13" font-weight="400" fill="#1f2937">doc_type</text>
+<text x="368" y="699.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">document_type</text>
+<line x1="70" x2="370" y1="704" y2="704" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="717.5" font-size="13" font-weight="400" fill="#1f2937">doc_number</text>
+<text x="368" y="717.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(30)</text>
+<line x1="70" x2="370" y1="722" y2="722" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="735.5" font-size="13" font-weight="400" fill="#1f2937">doc_file</text>
+<text x="368" y="735.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(255)</text>
+<line x1="70" x2="370" y1="740" y2="740" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="753.5" font-size="13" font-weight="400" fill="#1f2937">doc_size_kb</text>
+<text x="368" y="753.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">integer</text>
+<line x1="70" x2="370" y1="758" y2="758" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="771.5" font-size="13" font-weight="400" fill="#1f2937">submitted_on</text>
+<text x="368" y="771.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="70" x2="370" y1="776" y2="776" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="789.5" font-size="13" font-weight="400" fill="#1f2937">status</text>
+<text x="368" y="789.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">verification_status</text>
+<line x1="70" x2="370" y1="794" y2="794" stroke="#e2e8f0" stroke-width="1"/>
+<text x="72" y="807.5" font-size="11" font-weight="700" fill="#c2410c">FK</text>
+<text x="126" y="807.5" font-size="13" font-weight="400" fill="#1f2937">reviewed_by</text>
+<text x="368" y="807.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint null</text>
+<line x1="70" x2="370" y1="812" y2="812" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="825.5" font-size="13" font-weight="400" fill="#1f2937">reviewed_on</text>
+<text x="368" y="825.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="70" x2="370" y1="830" y2="830" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="843.5" font-size="13" font-weight="400" fill="#1f2937">reason_category</text>
+<text x="368" y="843.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(50)</text>
+<line x1="70" x2="370" y1="848" y2="848" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="861.5" font-size="13" font-weight="400" fill="#1f2937">reason</text>
+<text x="368" y="861.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(500)</text>
+</g>
+<g>
+<rect x="60" y="914" width="320" height="186" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M60 924a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#f1f5f9"/>
+<rect x="60" y="914" width="320" height="186" rx="10" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<line x1="60" x2="380" y1="948" y2="948" stroke="#94a3b8" stroke-width="1"/>
+<text x="74" y="937" font-size="15" font-weight="700" fill="#1f2937">NOTIFICATIONS</text>
+<text x="72" y="961.5" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+<text x="126" y="961.5" font-size="13" font-weight="700" fill="#1f2937">notification_id</text>
+<text x="368" y="961.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint identity</text>
+<line x1="70" x2="370" y1="966" y2="966" stroke="#e2e8f0" stroke-width="1"/>
+<text x="72" y="979.5" font-size="11" font-weight="700" fill="#c2410c">FK</text>
+<text x="126" y="979.5" font-size="13" font-weight="400" fill="#1f2937">user_id</text>
+<text x="368" y="979.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="70" x2="370" y1="984" y2="984" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="997.5" font-size="13" font-weight="400" fill="#1f2937">type</text>
+<text x="368" y="997.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">notification_type</text>
+<line x1="70" x2="370" y1="1002" y2="1002" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="1015.5" font-size="13" font-weight="400" fill="#1f2937">title</text>
+<text x="368" y="1015.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(100)</text>
+<line x1="70" x2="370" y1="1020" y2="1020" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="1033.5" font-size="13" font-weight="400" fill="#1f2937">message</text>
+<text x="368" y="1033.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(300)</text>
+<line x1="70" x2="370" y1="1038" y2="1038" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="1051.5" font-size="13" font-weight="400" fill="#1f2937">link</text>
+<text x="368" y="1051.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(200)</text>
+<line x1="70" x2="370" y1="1056" y2="1056" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="1069.5" font-size="13" font-weight="400" fill="#1f2937">is_read</text>
+<text x="368" y="1069.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">boolean</text>
+<line x1="70" x2="370" y1="1074" y2="1074" stroke="#e2e8f0" stroke-width="1"/>
+<text x="126" y="1087.5" font-size="13" font-weight="400" fill="#1f2937">created_at</text>
+<text x="368" y="1087.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">timestamptz</text>
+</g>
+<g>
+<rect x="440" y="192" width="320" height="258" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M440 202a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#f1f5f9"/>
+<rect x="440" y="192" width="320" height="258" rx="10" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<line x1="440" x2="760" y1="226" y2="226" stroke="#94a3b8" stroke-width="1"/>
+<text x="454" y="215" font-size="15" font-weight="700" fill="#1f2937">BIOMASS_LISTINGS</text>
+<text x="452" y="239.5" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+<text x="506" y="239.5" font-size="13" font-weight="700" fill="#1f2937">listing_id</text>
+<text x="748" y="239.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint identity</text>
+<line x1="450" x2="750" y1="244" y2="244" stroke="#e2e8f0" stroke-width="1"/>
+<text x="452" y="257.5" font-size="11" font-weight="700" fill="#c2410c">FK</text>
+<text x="506" y="257.5" font-size="13" font-weight="400" fill="#1f2937">farmer_id</text>
+<text x="748" y="257.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="450" x2="750" y1="262" y2="262" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="275.5" font-size="13" font-weight="400" fill="#1f2937">biomass_type</text>
+<text x="748" y="275.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(50)</text>
+<line x1="450" x2="750" y1="280" y2="280" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="293.5" font-size="13" font-weight="400" fill="#1f2937">quantity_tons</text>
+<text x="748" y="293.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(10,2)</text>
+<line x1="450" x2="750" y1="298" y2="298" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="311.5" font-size="13" font-weight="400" fill="#1f2937">price_per_ton</text>
+<text x="748" y="311.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(10,2)</text>
+<line x1="450" x2="750" y1="316" y2="316" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="329.5" font-size="13" font-weight="400" fill="#1f2937">location</text>
+<text x="748" y="329.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(100)</text>
+<line x1="450" x2="750" y1="334" y2="334" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="347.5" font-size="13" font-weight="400" fill="#1f2937">district</text>
+<text x="748" y="347.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(50)</text>
+<line x1="450" x2="750" y1="352" y2="352" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="365.5" font-size="13" font-weight="400" fill="#1f2937">state</text>
+<text x="748" y="365.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(60)</text>
+<line x1="450" x2="750" y1="370" y2="370" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="383.5" font-size="13" font-weight="400" fill="#1f2937">available_from</text>
+<text x="748" y="383.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="450" x2="750" y1="388" y2="388" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="401.5" font-size="13" font-weight="400" fill="#1f2937">description</text>
+<text x="748" y="401.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(500)</text>
+<line x1="450" x2="750" y1="406" y2="406" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="419.5" font-size="13" font-weight="400" fill="#1f2937">status</text>
+<text x="748" y="419.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">listing_status</text>
+<line x1="450" x2="750" y1="424" y2="424" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="437.5" font-size="13" font-weight="400" fill="#1f2937">created_at</text>
+<text x="748" y="437.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+</g>
+<g>
+<rect x="440" y="490" width="320" height="420" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2.2"/>
+<path d="M440 500a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#dbeafe"/>
+<rect x="440" y="490" width="320" height="420" rx="10" fill="none" stroke="#2563eb" stroke-width="2.2"/>
+<line x1="440" x2="760" y1="524" y2="524" stroke="#2563eb" stroke-width="1"/>
+<text x="454" y="513" font-size="15" font-weight="700" fill="#1f2937">PURCHASE_ORDERS</text>
+<text x="746" y="512" font-size="12" font-weight="400" fill="#6b7280" text-anchor="end">farmer → manufacturer</text>
+<text x="452" y="537.5" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+<text x="506" y="537.5" font-size="13" font-weight="700" fill="#1f2937">order_id</text>
+<text x="748" y="537.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint identity</text>
+<line x1="450" x2="750" y1="542" y2="542" stroke="#e2e8f0" stroke-width="1"/>
+<text x="452" y="555.5" font-size="11" font-weight="700" fill="#c2410c">FK UK</text>
+<text x="506" y="555.5" font-size="13" font-weight="400" fill="#1f2937">listing_id</text>
+<text x="748" y="555.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="450" x2="750" y1="560" y2="560" stroke="#e2e8f0" stroke-width="1"/>
+<text x="452" y="573.5" font-size="11" font-weight="700" fill="#c2410c">FK</text>
+<text x="506" y="573.5" font-size="13" font-weight="400" fill="#1f2937">farmer_id</text>
+<text x="748" y="573.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="450" x2="750" y1="578" y2="578" stroke="#e2e8f0" stroke-width="1"/>
+<text x="452" y="591.5" font-size="11" font-weight="700" fill="#c2410c">FK</text>
+<text x="506" y="591.5" font-size="13" font-weight="400" fill="#1f2937">manufacturer_id</text>
+<text x="748" y="591.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="450" x2="750" y1="596" y2="596" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="609.5" font-size="13" font-weight="400" fill="#1f2937">quantity_tons</text>
+<text x="748" y="609.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(10,2)</text>
+<line x1="450" x2="750" y1="614" y2="614" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="627.5" font-size="13" font-weight="400" fill="#1f2937">price_per_ton</text>
+<text x="748" y="627.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(10,2)</text>
+<line x1="450" x2="750" y1="632" y2="632" stroke="#e2e8f0" stroke-width="1"/>
+<text x="452" y="645.5" font-size="11" font-weight="700" fill="#6b7280">GEN</text>
+<text x="506" y="645.5" font-size="13" font-weight="400" fill="#1f2937">total_amount</text>
+<text x="748" y="645.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(12,2)</text>
+<line x1="450" x2="750" y1="650" y2="650" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="663.5" font-size="13" font-weight="400" fill="#1f2937">order_date</text>
+<text x="748" y="663.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="450" x2="750" y1="668" y2="668" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="681.5" font-size="13" font-weight="400" fill="#1f2937">pickup_address</text>
+<text x="748" y="681.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(200)</text>
+<line x1="450" x2="750" y1="686" y2="686" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="699.5" font-size="13" font-weight="400" fill="#1f2937">delivery_address</text>
+<text x="748" y="699.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(200)</text>
+<line x1="450" x2="750" y1="704" y2="704" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="717.5" font-size="13" font-weight="400" fill="#1f2937">notes</text>
+<text x="748" y="717.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(500)</text>
+<line x1="450" x2="750" y1="722" y2="722" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="735.5" font-size="13" font-weight="400" fill="#1f2937">status</text>
+<text x="748" y="735.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">order_status</text>
+<line x1="450" x2="750" y1="740" y2="740" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="753.5" font-size="13" font-weight="400" fill="#1f2937">pickup_date</text>
+<text x="748" y="753.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="450" x2="750" y1="758" y2="758" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="771.5" font-size="13" font-weight="400" fill="#1f2937">expected_delivery</text>
+<text x="748" y="771.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="450" x2="750" y1="776" y2="776" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="789.5" font-size="13" font-weight="400" fill="#1f2937">vehicle_no</text>
+<text x="748" y="789.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(13)</text>
+<line x1="450" x2="750" y1="794" y2="794" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="807.5" font-size="13" font-weight="400" fill="#1f2937">driver_name</text>
+<text x="748" y="807.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(60)</text>
+<line x1="450" x2="750" y1="812" y2="812" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="825.5" font-size="13" font-weight="400" fill="#1f2937">driver_mobile</text>
+<text x="748" y="825.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">char(10)</text>
+<line x1="450" x2="750" y1="830" y2="830" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="843.5" font-size="13" font-weight="400" fill="#1f2937">dispatched_date</text>
+<text x="748" y="843.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="450" x2="750" y1="848" y2="848" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="861.5" font-size="13" font-weight="400" fill="#1f2937">delivered_date</text>
+<text x="748" y="861.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="450" x2="750" y1="866" y2="866" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="879.5" font-size="13" font-weight="400" fill="#1f2937">payment_status</text>
+<text x="748" y="879.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">payment_status</text>
+<line x1="450" x2="750" y1="884" y2="884" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="897.5" font-size="13" font-weight="400" fill="#1f2937">paid_on</text>
+<text x="748" y="897.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+</g>
+<g>
+<rect x="440" y="970" width="320" height="240" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M440 980a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#f1f5f9"/>
+<rect x="440" y="970" width="320" height="240" rx="10" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<line x1="440" x2="760" y1="1004" y2="1004" stroke="#94a3b8" stroke-width="1"/>
+<text x="454" y="993" font-size="15" font-weight="700" fill="#1f2937">COMPLAINTS</text>
+<text x="746" y="992" font-size="12" font-weight="400" fill="#6b7280" text-anchor="end">one order id is set</text>
+<text x="452" y="1017.5" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+<text x="506" y="1017.5" font-size="13" font-weight="700" fill="#1f2937">complaint_id</text>
+<text x="748" y="1017.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint identity</text>
+<line x1="450" x2="750" y1="1022" y2="1022" stroke="#e2e8f0" stroke-width="1"/>
+<text x="452" y="1035.5" font-size="11" font-weight="700" fill="#c2410c">FK</text>
+<text x="506" y="1035.5" font-size="13" font-weight="400" fill="#1f2937">raised_by</text>
+<text x="748" y="1035.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="450" x2="750" y1="1040" y2="1040" stroke="#e2e8f0" stroke-width="1"/>
+<text x="452" y="1053.5" font-size="11" font-weight="700" fill="#c2410c">FK</text>
+<text x="506" y="1053.5" font-size="13" font-weight="400" fill="#1f2937">against_user_id</text>
+<text x="748" y="1053.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="450" x2="750" y1="1058" y2="1058" stroke="#e2e8f0" stroke-width="1"/>
+<text x="452" y="1071.5" font-size="11" font-weight="700" fill="#c2410c">FK</text>
+<text x="506" y="1071.5" font-size="13" font-weight="400" fill="#1f2937">purchase_order_id</text>
+<text x="748" y="1071.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint null</text>
+<line x1="450" x2="750" y1="1076" y2="1076" stroke="#e2e8f0" stroke-width="1"/>
+<text x="452" y="1089.5" font-size="11" font-weight="700" fill="#c2410c">FK</text>
+<text x="506" y="1089.5" font-size="13" font-weight="400" fill="#1f2937">pellet_order_id</text>
+<text x="748" y="1089.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint null</text>
+<line x1="450" x2="750" y1="1094" y2="1094" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="1107.5" font-size="13" font-weight="400" fill="#1f2937">category</text>
+<text x="748" y="1107.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(50)</text>
+<line x1="450" x2="750" y1="1112" y2="1112" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="1125.5" font-size="13" font-weight="400" fill="#1f2937">description</text>
+<text x="748" y="1125.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(500)</text>
+<line x1="450" x2="750" y1="1130" y2="1130" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="1143.5" font-size="13" font-weight="400" fill="#1f2937">status</text>
+<text x="748" y="1143.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">complaint_status</text>
+<line x1="450" x2="750" y1="1148" y2="1148" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="1161.5" font-size="13" font-weight="400" fill="#1f2937">raised_on</text>
+<text x="748" y="1161.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="450" x2="750" y1="1166" y2="1166" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="1179.5" font-size="13" font-weight="400" fill="#1f2937">resolution</text>
+<text x="748" y="1179.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(500)</text>
+<line x1="450" x2="750" y1="1184" y2="1184" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506" y="1197.5" font-size="13" font-weight="400" fill="#1f2937">resolved_on</text>
+<text x="748" y="1197.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+</g>
+<g>
+<rect x="860" y="192" width="320" height="348" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M860 202a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#f1f5f9"/>
+<rect x="860" y="192" width="320" height="348" rx="10" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<line x1="860" x2="1180" y1="226" y2="226" stroke="#94a3b8" stroke-width="1"/>
+<text x="874" y="215" font-size="15" font-weight="700" fill="#1f2937">PELLET_LISTINGS</text>
+<text x="872" y="239.5" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+<text x="926" y="239.5" font-size="13" font-weight="700" fill="#1f2937">listing_id</text>
+<text x="1168" y="239.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint identity</text>
+<line x1="870" x2="1170" y1="244" y2="244" stroke="#e2e8f0" stroke-width="1"/>
+<text x="872" y="257.5" font-size="11" font-weight="700" fill="#c2410c">FK</text>
+<text x="926" y="257.5" font-size="13" font-weight="400" fill="#1f2937">manufacturer_id</text>
+<text x="1168" y="257.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="870" x2="1170" y1="262" y2="262" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="275.5" font-size="13" font-weight="400" fill="#1f2937">pellet_type</text>
+<text x="1168" y="275.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(50)</text>
+<line x1="870" x2="1170" y1="280" y2="280" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="293.5" font-size="13" font-weight="400" fill="#1f2937">grade</text>
+<text x="1168" y="293.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(20)</text>
+<line x1="870" x2="1170" y1="298" y2="298" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="311.5" font-size="13" font-weight="400" fill="#1f2937">quantity_tons</text>
+<text x="1168" y="311.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(10,2)</text>
+<line x1="870" x2="1170" y1="316" y2="316" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="329.5" font-size="13" font-weight="400" fill="#1f2937">price_per_ton</text>
+<text x="1168" y="329.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(10,2)</text>
+<line x1="870" x2="1170" y1="334" y2="334" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="347.5" font-size="13" font-weight="400" fill="#1f2937">diameter_mm</text>
+<text x="1168" y="347.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(4,1)</text>
+<line x1="870" x2="1170" y1="352" y2="352" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="365.5" font-size="13" font-weight="400" fill="#1f2937">length_mm</text>
+<text x="1168" y="365.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(4,1)</text>
+<line x1="870" x2="1170" y1="370" y2="370" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="383.5" font-size="13" font-weight="400" fill="#1f2937">moisture_pct</text>
+<text x="1168" y="383.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(5,2)</text>
+<line x1="870" x2="1170" y1="388" y2="388" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="401.5" font-size="13" font-weight="400" fill="#1f2937">ash_content_pct</text>
+<text x="1168" y="401.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(5,2)</text>
+<line x1="870" x2="1170" y1="406" y2="406" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="419.5" font-size="13" font-weight="400" fill="#1f2937">calorific_value</text>
+<text x="1168" y="419.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">integer</text>
+<line x1="870" x2="1170" y1="424" y2="424" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="437.5" font-size="13" font-weight="400" fill="#1f2937">bulk_density</text>
+<text x="1168" y="437.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">integer</text>
+<line x1="870" x2="1170" y1="442" y2="442" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="455.5" font-size="13" font-weight="400" fill="#1f2937">pickup_location</text>
+<text x="1168" y="455.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(100)</text>
+<line x1="870" x2="1170" y1="460" y2="460" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="473.5" font-size="13" font-weight="400" fill="#1f2937">available_from</text>
+<text x="1168" y="473.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="870" x2="1170" y1="478" y2="478" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="491.5" font-size="13" font-weight="400" fill="#1f2937">certification</text>
+<text x="1168" y="491.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(60)</text>
+<line x1="870" x2="1170" y1="496" y2="496" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="509.5" font-size="13" font-weight="400" fill="#1f2937">status</text>
+<text x="1168" y="509.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">listing_status</text>
+<line x1="870" x2="1170" y1="514" y2="514" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="527.5" font-size="13" font-weight="400" fill="#1f2937">created_at</text>
+<text x="1168" y="527.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+</g>
+<g>
+<rect x="860" y="580" width="320" height="420" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2.2"/>
+<path d="M860 590a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#dbeafe"/>
+<rect x="860" y="580" width="320" height="420" rx="10" fill="none" stroke="#2563eb" stroke-width="2.2"/>
+<line x1="860" x2="1180" y1="614" y2="614" stroke="#2563eb" stroke-width="1"/>
+<text x="874" y="603" font-size="15" font-weight="700" fill="#1f2937">PELLET_ORDERS</text>
+<text x="1166" y="602" font-size="12" font-weight="400" fill="#6b7280" text-anchor="end">manufacturer → power plant</text>
+<text x="872" y="627.5" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+<text x="926" y="627.5" font-size="13" font-weight="700" fill="#1f2937">order_id</text>
+<text x="1168" y="627.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint identity</text>
+<line x1="870" x2="1170" y1="632" y2="632" stroke="#e2e8f0" stroke-width="1"/>
+<text x="872" y="645.5" font-size="11" font-weight="700" fill="#c2410c">FK UK</text>
+<text x="926" y="645.5" font-size="13" font-weight="400" fill="#1f2937">listing_id</text>
+<text x="1168" y="645.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="870" x2="1170" y1="650" y2="650" stroke="#e2e8f0" stroke-width="1"/>
+<text x="872" y="663.5" font-size="11" font-weight="700" fill="#c2410c">FK</text>
+<text x="926" y="663.5" font-size="13" font-weight="400" fill="#1f2937">manufacturer_id</text>
+<text x="1168" y="663.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="870" x2="1170" y1="668" y2="668" stroke="#e2e8f0" stroke-width="1"/>
+<text x="872" y="681.5" font-size="11" font-weight="700" fill="#c2410c">FK</text>
+<text x="926" y="681.5" font-size="13" font-weight="400" fill="#1f2937">powerplant_id</text>
+<text x="1168" y="681.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="870" x2="1170" y1="686" y2="686" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="699.5" font-size="13" font-weight="400" fill="#1f2937">quantity_tons</text>
+<text x="1168" y="699.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(10,2)</text>
+<line x1="870" x2="1170" y1="704" y2="704" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="717.5" font-size="13" font-weight="400" fill="#1f2937">price_per_ton</text>
+<text x="1168" y="717.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(10,2)</text>
+<line x1="870" x2="1170" y1="722" y2="722" stroke="#e2e8f0" stroke-width="1"/>
+<text x="872" y="735.5" font-size="11" font-weight="700" fill="#6b7280">GEN</text>
+<text x="926" y="735.5" font-size="13" font-weight="400" fill="#1f2937">total_amount</text>
+<text x="1168" y="735.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(12,2)</text>
+<line x1="870" x2="1170" y1="740" y2="740" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="753.5" font-size="13" font-weight="400" fill="#1f2937">order_date</text>
+<text x="1168" y="753.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="870" x2="1170" y1="758" y2="758" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="771.5" font-size="13" font-weight="400" fill="#1f2937">pickup_address</text>
+<text x="1168" y="771.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(200)</text>
+<line x1="870" x2="1170" y1="776" y2="776" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="789.5" font-size="13" font-weight="400" fill="#1f2937">delivery_address</text>
+<text x="1168" y="789.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(200)</text>
+<line x1="870" x2="1170" y1="794" y2="794" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="807.5" font-size="13" font-weight="400" fill="#1f2937">notes</text>
+<text x="1168" y="807.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(500)</text>
+<line x1="870" x2="1170" y1="812" y2="812" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="825.5" font-size="13" font-weight="400" fill="#1f2937">status</text>
+<text x="1168" y="825.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">order_status</text>
+<line x1="870" x2="1170" y1="830" y2="830" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="843.5" font-size="13" font-weight="400" fill="#1f2937">pickup_date</text>
+<text x="1168" y="843.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="870" x2="1170" y1="848" y2="848" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="861.5" font-size="13" font-weight="400" fill="#1f2937">expected_delivery</text>
+<text x="1168" y="861.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="870" x2="1170" y1="866" y2="866" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="879.5" font-size="13" font-weight="400" fill="#1f2937">vehicle_no</text>
+<text x="1168" y="879.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(13)</text>
+<line x1="870" x2="1170" y1="884" y2="884" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="897.5" font-size="13" font-weight="400" fill="#1f2937">driver_name</text>
+<text x="1168" y="897.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(60)</text>
+<line x1="870" x2="1170" y1="902" y2="902" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="915.5" font-size="13" font-weight="400" fill="#1f2937">driver_mobile</text>
+<text x="1168" y="915.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">char(10)</text>
+<line x1="870" x2="1170" y1="920" y2="920" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="933.5" font-size="13" font-weight="400" fill="#1f2937">dispatched_date</text>
+<text x="1168" y="933.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="870" x2="1170" y1="938" y2="938" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="951.5" font-size="13" font-weight="400" fill="#1f2937">delivered_date</text>
+<text x="1168" y="951.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="870" x2="1170" y1="956" y2="956" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="969.5" font-size="13" font-weight="400" fill="#1f2937">payment_status</text>
+<text x="1168" y="969.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">payment_status</text>
+<line x1="870" x2="1170" y1="974" y2="974" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="987.5" font-size="13" font-weight="400" fill="#1f2937">paid_on</text>
+<text x="1168" y="987.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+</g>
+<g>
+<rect x="860" y="1060" width="320" height="204" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M860 1070a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#f1f5f9"/>
+<rect x="860" y="1060" width="320" height="204" rx="10" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<line x1="860" x2="1180" y1="1094" y2="1094" stroke="#94a3b8" stroke-width="1"/>
+<text x="874" y="1083" font-size="15" font-weight="700" fill="#1f2937">PELLET_FEEDBACK</text>
+<text x="872" y="1107.5" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+<text x="926" y="1107.5" font-size="13" font-weight="700" fill="#1f2937">feedback_id</text>
+<text x="1168" y="1107.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint identity</text>
+<line x1="870" x2="1170" y1="1112" y2="1112" stroke="#e2e8f0" stroke-width="1"/>
+<text x="872" y="1125.5" font-size="11" font-weight="700" fill="#c2410c">FK UK</text>
+<text x="926" y="1125.5" font-size="13" font-weight="400" fill="#1f2937">order_id</text>
+<text x="1168" y="1125.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="870" x2="1170" y1="1130" y2="1130" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="1143.5" font-size="13" font-weight="400" fill="#1f2937">received_date</text>
+<text x="1168" y="1143.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="870" x2="1170" y1="1148" y2="1148" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="1161.5" font-size="13" font-weight="400" fill="#1f2937">quantity_received</text>
+<text x="1168" y="1161.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(10,2)</text>
+<line x1="870" x2="1170" y1="1166" y2="1166" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="1179.5" font-size="13" font-weight="400" fill="#1f2937">moisture_pct</text>
+<text x="1168" y="1179.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(5,2)</text>
+<line x1="870" x2="1170" y1="1184" y2="1184" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="1197.5" font-size="13" font-weight="400" fill="#1f2937">ash_content_pct</text>
+<text x="1168" y="1197.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(5,2)</text>
+<line x1="870" x2="1170" y1="1202" y2="1202" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="1215.5" font-size="13" font-weight="400" fill="#1f2937">calorific_value</text>
+<text x="1168" y="1215.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">integer</text>
+<line x1="870" x2="1170" y1="1220" y2="1220" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="1233.5" font-size="13" font-weight="400" fill="#1f2937">score</text>
+<text x="1168" y="1233.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(2,1)</text>
+<line x1="870" x2="1170" y1="1238" y2="1238" stroke="#e2e8f0" stroke-width="1"/>
+<text x="926" y="1251.5" font-size="13" font-weight="400" fill="#1f2937">remarks</text>
+<text x="1168" y="1251.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(300)</text>
+</g>
+<g>
+<rect x="1240" y="192" width="320" height="222" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M1240 202a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#f1f5f9"/>
+<rect x="1240" y="192" width="320" height="222" rx="10" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<line x1="1240" x2="1560" y1="226" y2="226" stroke="#94a3b8" stroke-width="1"/>
+<text x="1254" y="215" font-size="15" font-weight="700" fill="#1f2937">MANUFACTURER_PROFILES</text>
+<text x="1252" y="239.5" font-size="11" font-weight="700" fill="#2563eb">PK FK</text>
+<text x="1306" y="239.5" font-size="13" font-weight="700" fill="#1f2937">user_id</text>
+<text x="1548" y="239.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="1250" x2="1550" y1="244" y2="244" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="257.5" font-size="13" font-weight="400" fill="#1f2937">contact_person</text>
+<text x="1548" y="257.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(100)</text>
+<line x1="1250" x2="1550" y1="262" y2="262" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1252" y="275.5" font-size="11" font-weight="700" fill="#6b7280">UK</text>
+<text x="1306" y="275.5" font-size="13" font-weight="400" fill="#1f2937">gstin</text>
+<text x="1548" y="275.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">char(15)</text>
+<line x1="1250" x2="1550" y1="280" y2="280" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="293.5" font-size="13" font-weight="400" fill="#1f2937">address</text>
+<text x="1548" y="293.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(200)</text>
+<line x1="1250" x2="1550" y1="298" y2="298" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="311.5" font-size="13" font-weight="400" fill="#1f2937">city</text>
+<text x="1548" y="311.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(60)</text>
+<line x1="1250" x2="1550" y1="316" y2="316" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="329.5" font-size="13" font-weight="400" fill="#1f2937">state</text>
+<text x="1548" y="329.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(60)</text>
+<line x1="1250" x2="1550" y1="334" y2="334" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="347.5" font-size="13" font-weight="400" fill="#1f2937">pincode</text>
+<text x="1548" y="347.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">char(6)</text>
+<line x1="1250" x2="1550" y1="352" y2="352" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="365.5" font-size="13" font-weight="400" fill="#1f2937">capacity_tons_per_day</text>
+<text x="1548" y="365.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(8,2)</text>
+<line x1="1250" x2="1550" y1="370" y2="370" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="383.5" font-size="13" font-weight="400" fill="#1f2937">photo_url</text>
+<text x="1548" y="383.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(255)</text>
+<line x1="1250" x2="1550" y1="388" y2="388" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="401.5" font-size="13" font-weight="400" fill="#1f2937">updated_at</text>
+<text x="1548" y="401.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+</g>
+<g>
+<rect x="1240" y="454" width="320" height="240" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M1240 464a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#f1f5f9"/>
+<rect x="1240" y="454" width="320" height="240" rx="10" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<line x1="1240" x2="1560" y1="488" y2="488" stroke="#94a3b8" stroke-width="1"/>
+<text x="1254" y="477" font-size="15" font-weight="700" fill="#1f2937">POWERPLANT_PROFILES</text>
+<text x="1252" y="501.5" font-size="11" font-weight="700" fill="#2563eb">PK FK</text>
+<text x="1306" y="501.5" font-size="13" font-weight="700" fill="#1f2937">user_id</text>
+<text x="1548" y="501.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="1250" x2="1550" y1="506" y2="506" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="519.5" font-size="13" font-weight="400" fill="#1f2937">contact_person</text>
+<text x="1548" y="519.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(100)</text>
+<line x1="1250" x2="1550" y1="524" y2="524" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="537.5" font-size="13" font-weight="400" fill="#1f2937">designation</text>
+<text x="1548" y="537.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(60)</text>
+<line x1="1250" x2="1550" y1="542" y2="542" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1252" y="555.5" font-size="11" font-weight="700" fill="#6b7280">UK</text>
+<text x="1306" y="555.5" font-size="13" font-weight="400" fill="#1f2937">gstin</text>
+<text x="1548" y="555.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">char(15)</text>
+<line x1="1250" x2="1550" y1="560" y2="560" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="573.5" font-size="13" font-weight="400" fill="#1f2937">capacity_mw</text>
+<text x="1548" y="573.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(8,2)</text>
+<line x1="1250" x2="1550" y1="578" y2="578" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="591.5" font-size="13" font-weight="400" fill="#1f2937">address</text>
+<text x="1548" y="591.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(200)</text>
+<line x1="1250" x2="1550" y1="596" y2="596" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="609.5" font-size="13" font-weight="400" fill="#1f2937">city</text>
+<text x="1548" y="609.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(60)</text>
+<line x1="1250" x2="1550" y1="614" y2="614" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="627.5" font-size="13" font-weight="400" fill="#1f2937">state</text>
+<text x="1548" y="627.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(60)</text>
+<line x1="1250" x2="1550" y1="632" y2="632" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="645.5" font-size="13" font-weight="400" fill="#1f2937">pincode</text>
+<text x="1548" y="645.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">char(6)</text>
+<line x1="1250" x2="1550" y1="650" y2="650" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="663.5" font-size="13" font-weight="400" fill="#1f2937">photo_url</text>
+<text x="1548" y="663.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(255)</text>
+<line x1="1250" x2="1550" y1="668" y2="668" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="681.5" font-size="13" font-weight="400" fill="#1f2937">updated_at</text>
+<text x="1548" y="681.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+</g>
+<g>
+<rect x="1240" y="734" width="320" height="186" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M1240 744a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#f1f5f9"/>
+<rect x="1240" y="734" width="320" height="186" rx="10" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<line x1="1240" x2="1560" y1="768" y2="768" stroke="#94a3b8" stroke-width="1"/>
+<text x="1254" y="757" font-size="15" font-weight="700" fill="#1f2937">CERTIFICATES</text>
+<text x="1252" y="781.5" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+<text x="1306" y="781.5" font-size="13" font-weight="700" fill="#1f2937">certificate_id</text>
+<text x="1548" y="781.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint identity</text>
+<line x1="1250" x2="1550" y1="786" y2="786" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1252" y="799.5" font-size="11" font-weight="700" fill="#6b7280">UK</text>
+<text x="1306" y="799.5" font-size="13" font-weight="400" fill="#1f2937">certificate_no</text>
+<text x="1548" y="799.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(30)</text>
+<line x1="1250" x2="1550" y1="804" y2="804" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1252" y="817.5" font-size="11" font-weight="700" fill="#c2410c">FK</text>
+<text x="1306" y="817.5" font-size="13" font-weight="400" fill="#1f2937">powerplant_id</text>
+<text x="1548" y="817.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="1250" x2="1550" y1="822" y2="822" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="835.5" font-size="13" font-weight="400" fill="#1f2937">title</text>
+<text x="1548" y="835.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(100)</text>
+<line x1="1250" x2="1550" y1="840" y2="840" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="853.5" font-size="13" font-weight="400" fill="#1f2937">issue_date</text>
+<text x="1548" y="853.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="1250" x2="1550" y1="858" y2="858" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="871.5" font-size="13" font-weight="400" fill="#1f2937">valid_until</text>
+<text x="1548" y="871.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="1250" x2="1550" y1="876" y2="876" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="889.5" font-size="13" font-weight="400" fill="#1f2937">remarks</text>
+<text x="1548" y="889.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(200)</text>
+<line x1="1250" x2="1550" y1="894" y2="894" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1252" y="907.5" font-size="11" font-weight="700" fill="#c2410c">FK</text>
+<text x="1306" y="907.5" font-size="13" font-weight="400" fill="#1f2937">issued_by</text>
+<text x="1548" y="907.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+</g>
+<g>
+<rect x="1240" y="960" width="320" height="204" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M1240 970a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#f1f5f9"/>
+<rect x="1240" y="960" width="320" height="204" rx="10" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<line x1="1240" x2="1560" y1="994" y2="994" stroke="#94a3b8" stroke-width="1"/>
+<text x="1254" y="983" font-size="15" font-weight="700" fill="#1f2937">CONSUMPTION_LOGS</text>
+<text x="1252" y="1007.5" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+<text x="1306" y="1007.5" font-size="13" font-weight="700" fill="#1f2937">entry_id</text>
+<text x="1548" y="1007.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint identity</text>
+<line x1="1250" x2="1550" y1="1012" y2="1012" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1252" y="1025.5" font-size="11" font-weight="700" fill="#c2410c">FK UK1</text>
+<text x="1306" y="1025.5" font-size="13" font-weight="400" fill="#1f2937">powerplant_id</text>
+<text x="1548" y="1025.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="1250" x2="1550" y1="1030" y2="1030" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1252" y="1043.5" font-size="11" font-weight="700" fill="#6b7280">UK1</text>
+<text x="1306" y="1043.5" font-size="13" font-weight="400" fill="#1f2937">entry_date</text>
+<text x="1548" y="1043.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">date</text>
+<line x1="1250" x2="1550" y1="1048" y2="1048" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1252" y="1061.5" font-size="11" font-weight="700" fill="#6b7280">UK1</text>
+<text x="1306" y="1061.5" font-size="13" font-weight="400" fill="#1f2937">unit</text>
+<text x="1548" y="1061.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(30)</text>
+<line x1="1250" x2="1550" y1="1066" y2="1066" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="1079.5" font-size="13" font-weight="400" fill="#1f2937">pellets_tons</text>
+<text x="1548" y="1079.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(10,2)</text>
+<line x1="1250" x2="1550" y1="1084" y2="1084" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="1097.5" font-size="13" font-weight="400" fill="#1f2937">coal_tons</text>
+<text x="1548" y="1097.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(10,2)</text>
+<line x1="1250" x2="1550" y1="1102" y2="1102" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1252" y="1115.5" font-size="11" font-weight="700" fill="#6b7280">GEN</text>
+<text x="1306" y="1115.5" font-size="13" font-weight="400" fill="#1f2937">cofiring_ratio_pct</text>
+<text x="1548" y="1115.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(5,2)</text>
+<line x1="1250" x2="1550" y1="1120" y2="1120" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="1133.5" font-size="13" font-weight="400" fill="#1f2937">energy_mwh</text>
+<text x="1548" y="1133.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(10,2)</text>
+<line x1="1250" x2="1550" y1="1138" y2="1138" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1306" y="1151.5" font-size="13" font-weight="400" fill="#1f2937">remarks</text>
+<text x="1548" y="1151.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(200)</text>
+</g>
+<g>
+<rect x="1620" y="442" width="320" height="132" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M1620 452a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#f1f5f9"/>
+<rect x="1620" y="442" width="320" height="132" rx="10" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<line x1="1620" x2="1940" y1="476" y2="476" stroke="#94a3b8" stroke-width="1"/>
+<text x="1634" y="465" font-size="15" font-weight="700" fill="#1f2937">AUDIT_LOGS</text>
+<text x="1632" y="489.5" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+<text x="1686" y="489.5" font-size="13" font-weight="700" fill="#1f2937">log_id</text>
+<text x="1928" y="489.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint identity</text>
+<line x1="1630" x2="1930" y1="494" y2="494" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1632" y="507.5" font-size="11" font-weight="700" fill="#c2410c">FK</text>
+<text x="1686" y="507.5" font-size="13" font-weight="400" fill="#1f2937">user_id</text>
+<text x="1928" y="507.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint</text>
+<line x1="1630" x2="1930" y1="512" y2="512" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="525.5" font-size="13" font-weight="400" fill="#1f2937">action</text>
+<text x="1928" y="525.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(200)</text>
+<line x1="1630" x2="1930" y1="530" y2="530" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="543.5" font-size="13" font-weight="400" fill="#1f2937">module</text>
+<text x="1928" y="543.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(50)</text>
+<line x1="1630" x2="1930" y1="548" y2="548" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="561.5" font-size="13" font-weight="400" fill="#1f2937">logged_at</text>
+<text x="1928" y="561.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">timestamptz</text>
+</g>
+<g>
+<rect x="1620" y="614" width="320" height="294" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M1620 624a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#f1f5f9"/>
+<rect x="1620" y="614" width="320" height="294" rx="10" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<line x1="1620" x2="1940" y1="648" y2="648" stroke="#94a3b8" stroke-width="1"/>
+<text x="1634" y="637" font-size="15" font-weight="700" fill="#1f2937">PLATFORM_SETTINGS</text>
+<text x="1926" y="636" font-size="12" font-weight="400" fill="#6b7280" text-anchor="end">single row · no links</text>
+<text x="1632" y="661.5" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+<text x="1686" y="661.5" font-size="13" font-weight="700" fill="#1f2937">settings_id</text>
+<text x="1928" y="661.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">smallint</text>
+<line x1="1630" x2="1930" y1="666" y2="666" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="679.5" font-size="13" font-weight="400" fill="#1f2937">platform_name</text>
+<text x="1928" y="679.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(60)</text>
+<line x1="1630" x2="1930" y1="684" y2="684" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="697.5" font-size="13" font-weight="400" fill="#1f2937">support_email</text>
+<text x="1928" y="697.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(100)</text>
+<line x1="1630" x2="1930" y1="702" y2="702" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="715.5" font-size="13" font-weight="400" fill="#1f2937">support_phone</text>
+<text x="1928" y="715.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">char(10)</text>
+<line x1="1630" x2="1930" y1="720" y2="720" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="733.5" font-size="13" font-weight="400" fill="#1f2937">commission_pct</text>
+<text x="1928" y="733.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(5,2)</text>
+<line x1="1630" x2="1930" y1="738" y2="738" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="751.5" font-size="13" font-weight="400" fill="#1f2937">gst_on_commission_pct</text>
+<text x="1928" y="751.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(5,2)</text>
+<line x1="1630" x2="1930" y1="756" y2="756" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="769.5" font-size="13" font-weight="400" fill="#1f2937">min_order_tons</text>
+<text x="1928" y="769.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">integer</text>
+<line x1="1630" x2="1930" y1="774" y2="774" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="787.5" font-size="13" font-weight="400" fill="#1f2937">session_timeout_min</text>
+<text x="1928" y="787.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">integer</text>
+<line x1="1630" x2="1930" y1="792" y2="792" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="805.5" font-size="13" font-weight="400" fill="#1f2937">max_login_attempts</text>
+<text x="1928" y="805.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">integer</text>
+<line x1="1630" x2="1930" y1="810" y2="810" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="823.5" font-size="13" font-weight="400" fill="#1f2937">max_upload_mb</text>
+<text x="1928" y="823.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">integer</text>
+<line x1="1630" x2="1930" y1="828" y2="828" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="841.5" font-size="13" font-weight="400" fill="#1f2937">notify_registrations</text>
+<text x="1928" y="841.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">boolean</text>
+<line x1="1630" x2="1930" y1="846" y2="846" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="859.5" font-size="13" font-weight="400" fill="#1f2937">notify_complaints</text>
+<text x="1928" y="859.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">boolean</text>
+<line x1="1630" x2="1930" y1="864" y2="864" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="877.5" font-size="13" font-weight="400" fill="#1f2937">notify_high_value</text>
+<text x="1928" y="877.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">boolean</text>
+<line x1="1630" x2="1930" y1="882" y2="882" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="895.5" font-size="13" font-weight="400" fill="#1f2937">high_value_threshold</text>
+<text x="1928" y="895.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">numeric(12,2)</text>
+</g>
+<g>
+<rect x="1620" y="948" width="320" height="168" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<path d="M1620 958a10 10 0 0 1 10 -10h300a10 10 0 0 1 10 10v24h-320z" fill="#f1f5f9"/>
+<rect x="1620" y="948" width="320" height="168" rx="10" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+<line x1="1620" x2="1940" y1="982" y2="982" stroke="#94a3b8" stroke-width="1"/>
+<text x="1634" y="971" font-size="15" font-weight="700" fill="#1f2937">CONTACT_MESSAGES</text>
+<text x="1926" y="970" font-size="12" font-weight="400" fill="#6b7280" text-anchor="end">no links</text>
+<text x="1632" y="995.5" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+<text x="1686" y="995.5" font-size="13" font-weight="700" fill="#1f2937">message_id</text>
+<text x="1928" y="995.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">bigint identity</text>
+<line x1="1630" x2="1930" y1="1000" y2="1000" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="1013.5" font-size="13" font-weight="400" fill="#1f2937">name</text>
+<text x="1928" y="1013.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(60)</text>
+<line x1="1630" x2="1930" y1="1018" y2="1018" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="1031.5" font-size="13" font-weight="400" fill="#1f2937">email</text>
+<text x="1928" y="1031.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(100)</text>
+<line x1="1630" x2="1930" y1="1036" y2="1036" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="1049.5" font-size="13" font-weight="400" fill="#1f2937">mobile</text>
+<text x="1928" y="1049.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">char(10)</text>
+<line x1="1630" x2="1930" y1="1054" y2="1054" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="1067.5" font-size="13" font-weight="400" fill="#1f2937">role</text>
+<text x="1928" y="1067.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(30)</text>
+<line x1="1630" x2="1930" y1="1072" y2="1072" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="1085.5" font-size="13" font-weight="400" fill="#1f2937">message</text>
+<text x="1928" y="1085.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">varchar(500)</text>
+<line x1="1630" x2="1930" y1="1090" y2="1090" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1686" y="1103.5" font-size="13" font-weight="400" fill="#1f2937">sent_at</text>
+<text x="1928" y="1103.5" font-size="12.5" font-weight="400" fill="#6b7280" text-anchor="end">timestamptz</text>
+</g>
+<rect x="1620" y="1156" width="320" height="134" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.4"/>
+<text x="1634" y="1179" font-size="15" font-weight="700" fill="#1f2937">How to read it</text>
+<text x="1634" y="1204" font-size="12.5" font-weight="400" fill="#1f2937">A listing is bought at most once.</text>
+<text x="1634" y="1222" font-size="12.5" font-weight="400" fill="#1f2937">A pellet order has at most one feedback.</text>
+<text x="1634" y="1240" font-size="12.5" font-weight="400" fill="#1f2937">A complaint is about exactly one order.</text>
+<text x="1634" y="1258" font-size="12.5" font-weight="400" fill="#1f2937">Each profile shares its user's user_id.</text>
+<text x="1634" y="1276" font-size="12.5" font-weight="400" fill="#1f2937">Rating = average feedback score (view).</text>
+</svg>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Pellet Order | Power Plant | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/powerplant/purchase-orders.css">
+</head>
+
+<body data-role="powerplant" data-page="purchase-orders">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Place Pellet Order</h1>
+                        <p class="page-subtitle">Buy a complete pellet lot from a manufacturer listing.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-secondary" href="marketplace.html">
+                            <i class="fa-solid fa-store"></i> Browse Marketplace
+                        </a>
+                    </div>
+                </div>
+
+                <div class="order-layout">
+
+                    <!-- ORDER FORM -->
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">New Pellet Order</div>
+                                <div class="card-subtitle">You buy the whole listing — quantity and total are fixed</div>
+                            </div>
+                        </div>
+
+                        <form class="card-body" id="orderForm" novalidate>
+
+                            <div class="form-grid">
+
+                                <div class="form-group full">
+                                    <label for="listingSelect">Pellet Listing</label>
+                                    <select id="listingSelect" data-label="Pellet listing" data-rules="required">
+                                        <option value="">Select a pellet listing</option>
+                                    </select>
+                                    <small class="error" id="listingSelectError"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="supplierName">Supplier</label>
+                                    <input type="text" id="supplierName" readonly placeholder="Select a listing" data-novalidate>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="quantity">Quantity (tons)</label>
+                                    <input type="text" id="quantity" readonly placeholder="—" data-novalidate>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="price">Price per Ton (₹)</label>
+                                    <input type="text" id="price" readonly placeholder="—" data-novalidate>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="total">Total Amount (₹)</label>
+                                    <input type="text" id="total" readonly placeholder="—" data-novalidate>
+                                </div>
+
+                                <div class="form-group full">
+                                    <label for="deliveryAddress">Delivery Address</label>
+                                    <textarea id="deliveryAddress" rows="2" placeholder="Plant gate / coal yard address with PIN code"
+                                              data-label="Delivery address" data-rules="required|text|minlen:10|maxlen:200"></textarea>
+                                    <small class="error" id="deliveryAddressError"></small>
+                                </div>
+
+                                <div class="form-group full">
+                                    <label for="notes">Notes (optional)</label>
+                                    <textarea id="notes" rows="2" placeholder="Unloading window, gate pass instructions…"
+                                              data-label="Notes" data-rules="text|maxlen:500"></textarea>
+                                    <small class="error" id="notesError"></small>
+                                    <small class="form-hint" id="notesCount"></small>
+                                </div>
+
+                            </div>
+
+                            <p class="form-hint mt-2">
+                                <i class="fa-solid fa-circle-info"></i>
+                                An order cannot be cancelled once it is placed. Pickup and delivery are arranged by the Biomass Connect logistics team.
+                            </p>
+
+                            <div class="form-actions">
+                                <button class="btn btn-secondary" type="reset">Clear</button>
+                                <button class="btn btn-primary" type="submit"><i class="fa-solid fa-paper-plane"></i> Place Order</button>
+                            </div>
+
+                        </form>
+                    </section>
+
+                    <!-- SELECTED LISTING SUMMARY -->
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div class="card-title">Listing Specifications</div>
+                        </div>
+                        <div class="card-body" id="listingSummary">
+                            <div class="empty-state"><i class="fa-solid fa-box-open"></i>Select a listing to see its quality specifications.</div>
+                        </div>
+                    </section>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/powerplant/plant.js"></script>
+    <script src="../js/powerplant/purchase-orders.js"></script>
+
+</body>
+
+</html>

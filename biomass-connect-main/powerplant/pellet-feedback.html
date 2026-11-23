@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pellet Batch Feedback | Power Plant | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/powerplant/pellet-feedback.css">
+</head>
+
+<body data-role="powerplant" data-page="pellet-feedback">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Pellet Batch Feedback</h1>
+                        <p class="page-subtitle">Record the measured quality of each delivered pellet batch.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-secondary" href="history.html">
+                            <i class="fa-solid fa-clock-rotate-left"></i> Purchase History
+                        </a>
+                    </div>
+                </div>
+
+                <!-- AWAITING -->
+
+                <section class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Awaiting Batch Details</div>
+                            <div class="card-subtitle">Delivered orders whose batch quality has not been recorded yet</div>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Supplier</th>
+                                    <th>Pellet Type</th>
+                                    <th>Quantity</th>
+                                    <th>Delivered On</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="awaitingTable"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <div class="feedback-layout mt-3">
+
+                    <!-- FORM -->
+
+                    <section class="card" id="formCard">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Enter Batch Details</div>
+                                <div class="card-subtitle">One entry per delivered order</div>
+                            </div>
+                        </div>
+
+                        <form class="card-body" id="feedbackForm" novalidate>
+
+                            <input type="hidden" id="fbMinDate">
+
+                            <div class="form-grid">
+
+                                <div class="form-group full">
+                                    <label for="orderSelect">Delivered Order</label>
+                                    <select id="orderSelect" data-label="Delivered order" data-rules="required">
+                                        <option value="">Select a delivered order</option>
+                                    </select>
+                                    <small class="error" id="orderSelectError"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="receivedDate">Received Date</label>
+                                    <input type="date" id="receivedDate" data-label="Received date"
+                                           data-rules="required|date|notFuture|minDate:#fbMinDate">
+                                    <small class="error" id="receivedDateError"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="quantityReceived">Quantity Received (tons)</label>
+                                    <input type="number" id="quantityReceived" step="0.01" placeholder="e.g. 45" data-label="Quantity received"
+                                           data-rules="required|number|positive|decimals:2|max:10000">
+                                    <small class="error" id="quantityReceivedError"></small>
+                                    <small class="form-hint" id="quantityHint"></small>
+                                </div>
+
+                            </div>
+
+                            <div class="form-grid cols-3 mt-3">
+
+                                <div class="form-section-title">Measured Quality</div>
+
+                                <div class="form-group">
+                                    <label for="moisture">Moisture (%)</label>
+                                    <input type="number" id="moisture" step="0.01" placeholder="e.g. 9" data-label="Moisture"
+                                           data-rules="required|number|min:0|max:40|decimals:2">
+                                    <small class="error" id="moistureError"></small>
+                                    <small class="form-hint" id="moistureDeclared"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ashContent">Ash Content (%)</label>
+                                    <input type="number" id="ashContent" step="0.01" placeholder="e.g. 6" data-label="Ash content"
+                                           data-rules="required|number|min:0|max:40|decimals:2">
+                                    <small class="error" id="ashContentError"></small>
+                                    <small class="form-hint" id="ashDeclared"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="calorificValue">Calorific Value (kcal/kg)</label>
+                                    <input type="number" id="calorificValue" step="1" placeholder="e.g. 4100" data-label="Calorific value"
+                                           data-rules="required|integer|min:1000|max:6000">
+                                    <small class="error" id="calorificValueError"></small>
+                                    <small class="form-hint" id="cvDeclared"></small>
+                                </div>
+
+                                <div class="form-group full">
+                                    <label for="remarks">Remarks (optional)</label>
+                                    <textarea id="remarks" rows="2" placeholder="Fines, lab report number, anything the supplier should know…"
+                                              data-label="Remarks" data-rules="text|maxlen:300"></textarea>
+                                    <small class="error" id="remarksError"></small>
+                                    <small class="form-hint" id="remarksCount"></small>
+                                </div>
+
+                            </div>
+
+                            <div class="form-actions">
+                                <button class="btn btn-secondary" type="reset">Clear</button>
+                                <button class="btn btn-primary" type="submit"><i class="fa-solid fa-paper-plane"></i> Submit Batch Details</button>
+                            </div>
+
+                        </form>
+                    </section>
+
+                    <!-- SCORE PREVIEW -->
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Batch Score</div>
+                                <div class="card-subtitle">Calculated automatically</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="score-figure">
+                                <strong id="scoreValue">—</strong>
+                                <span class="text-muted">/ 5</span>
+                            </div>
+                            <div class="progress"><span id="scoreBar"></span></div>
+                            <p class="form-hint" id="scoreHint">Select an order and enter the measured values to see the score.</p>
+
+                            <dl class="detail-list mt-3 hidden" id="orderSummary"></dl>
+
+                            <p class="form-hint mt-3">
+                                <i class="fa-solid fa-circle-info"></i>
+                                Each parameter starts at 5. Moisture and ash lose 1 point for every % above the declared value;
+                                calorific value loses 1 point for every 100 kcal/kg below it. The batch score is the average of the three.
+                            </p>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- SUBMITTED -->
+
+                <section class="card mt-3">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Submitted Feedback</div>
+                            <div class="card-subtitle">Your batch details automatically update the manufacturer's rating shown in the Pellet Marketplace.</div>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Supplier</th>
+                                    <th>Pellet Type</th>
+                                    <th>Received On</th>
+                                    <th>Qty Received</th>
+                                    <th>Moisture</th>
+                                    <th>Ash</th>
+                                    <th>Calorific Value</th>
+                                    <th>Score</th>
+                                    <th>Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody id="submittedTable"></tbody>
+                        </table>
+                    </div>
+                    <p class="form-hint table-note">Measured value, with the supplier's declared value in brackets.</p>
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/powerplant/plant.js"></script>
+    <script src="../js/powerplant/pellet-feedback.js"></script>
+
+</body>
+
+</html>

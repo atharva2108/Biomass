@@ -1,0 +1,26 @@
+/* Admin profile (read-only) — page-specific layout only.
+   Shared components (card, avatar, detail list) live in ../theme.css */
+
+.profile-card {
+    max-width: 720px;
+}
+
+.profile-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.profile-head h2 {
+    font-size: 18px;
+    margin-bottom: 2px;
+}
+
+.avatar-xl {
+    width: 64px;
+    height: 64px;
+    font-size: 22px;
+}

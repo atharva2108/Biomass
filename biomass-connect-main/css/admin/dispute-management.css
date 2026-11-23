@@ -1,0 +1,35 @@
+/* Admin dispute management — page-specific layout only.
+   Shared components live in ../theme.css */
+
+.tab .count {
+    font-weight: 600;
+}
+
+.section-title {
+    font-size: 14px;
+    color: var(--primary-dark);
+    margin: 22px 0 10px;
+}
+
+.dispute-desc {
+    font-size: 14px;
+    color: var(--text);
+    background: var(--surface-muted);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+}
+
+.note-box {
+    background: var(--success-soft);
+    border: 1px solid var(--primary-border);
+    border-left: 3px solid var(--success);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    font-size: 14px;
+}
+
+.note-box p {
+    color: var(--text-muted);
+    margin: 4px 0;
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Manufacturer | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/manufacturer/dashboard.css">
+</head>
+
+<body data-role="manufacturer" data-page="dashboard">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Manufacturer Dashboard</h1>
+                        <p class="page-subtitle">Overview of your biomass purchases, pellet listings and sales.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-secondary" href="marketplace.html">
+                            <i class="fa-solid fa-store"></i> Buy Biomass
+                        </a>
+                        <a class="btn btn-primary" href="pellet-listing.html">
+                            <i class="fa-solid fa-plus"></i> New Pellet Listing
+                        </a>
+                    </div>
+                </div>
+
+                <!-- KPI CARDS -->
+
+                <div class="kpi-grid">
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiBiomass">0 t</div>
+                            <div class="kpi-label">Biomass Purchased</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-file-signature"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiActivePOs">0</div>
+                            <div class="kpi-label">Active Purchase Orders</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiListings">0</div>
+                            <div class="kpi-label">Active Pellet Listings</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiRevenue">₹0</div>
+                            <div class="kpi-label">Pellet Revenue</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="dashboard-grid">
+
+                    <div class="stack">
+
+                        <!-- RECENT PURCHASE ORDERS -->
+
+                        <section class="card">
+                            <div class="card-header">
+                                <div>
+                                    <div class="card-title">Recent Purchase Orders</div>
+                                    <div class="card-subtitle">Biomass you have ordered from farmers</div>
+                                </div>
+                                <a class="btn btn-ghost btn-sm" href="purchase-orders.html">View all <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                            <div class="table-wrap">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>PO ID</th>
+                                            <th>Farmer</th>
+                                            <th>Biomass Type</th>
+                                            <th>Quantity</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="poTable"></tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <!-- RECENT PELLET ORDERS -->
+
+                        <section class="card">
+                            <div class="card-header">
+                                <div>
+                                    <div class="card-title">Recent Pellet Orders</div>
+                                    <div class="card-subtitle">Orders received from power plants</div>
+                                </div>
+                                <a class="btn btn-ghost btn-sm" href="pellet-orders.html">View all <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                            <div class="table-wrap">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Power Plant</th>
+                                            <th>Pellet Type</th>
+                                            <th>Quantity</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="pelletTable"></tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                    </div>
+
+                    <!-- RATING + STATUS + QUICK ACTIONS -->
+
+                    <div class="stack">
+
+                        <section class="card">
+                            <div class="card-header">
+                                <div class="card-title">Your Quality Rating</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="rating-value" id="ratingBox"></div>
+                                <p class="form-hint mt-2">Calculated automatically from the batch details power plants enter after each pellet delivery.</p>
+                            </div>
+                        </section>
+
+                        <section class="card">
+                            <div class="card-header">
+                                <div class="card-title">Pellet Order Status</div>
+                            </div>
+                            <div class="card-body status-list" id="statusList"></div>
+                        </section>
+
+                        <section class="card">
+                            <div class="card-header">
+                                <div class="card-title">Quick Actions</div>
+                            </div>
+                            <div class="card-body action-grid quick-actions">
+                                <a class="action-tile" href="marketplace.html"><i class="fa-solid fa-store"></i> Buy Biomass</a>
+                                <a class="action-tile" href="pellet-listing.html"><i class="fa-solid fa-circle-plus"></i> Pellet Listing</a>
+                                <a class="action-tile" href="tracking.html"><i class="fa-solid fa-truck-fast"></i> Track Purchases</a>
+                                <a class="action-tile" href="history.html"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+                                <a class="action-tile" href="pellet-orders.html"><i class="fa-solid fa-cart-shopping"></i> Pellet Orders</a>
+                                <a class="action-tile" href="billing.html"><i class="fa-solid fa-file-invoice"></i> Billing</a>
+                            </div>
+                        </section>
+
+                    </div>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/manufacturer/dashboard.js"></script>
+
+</body>
+
+</html>

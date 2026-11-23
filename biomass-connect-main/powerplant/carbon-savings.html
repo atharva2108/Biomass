@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Savings | Power Plant | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/powerplant/carbon-savings.css">
+</head>
+
+<body data-role="powerplant" data-page="carbon-savings">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Carbon Savings</h1>
+                        <p class="page-subtitle">Carbon reduction achieved by co-firing biomass pellets in place of coal.</p>
+                    </div>
+                </div>
+
+                <!-- PERIOD SELECTOR -->
+
+                <section class="card mb-3">
+                    <form class="card-body" id="periodForm" novalidate>
+                        <div class="period-grid">
+                            <div class="form-group">
+                                <label for="preset">Period</label>
+                                <select id="preset" data-novalidate>
+                                    <option value="30">Last 30 days</option>
+                                    <option value="90">Last 3 months</option>
+                                    <option value="180" selected>Last 6 months</option>
+                                    <option value="365">Last 12 months</option>
+                                    <option value="fy">This financial year</option>
+                                    <option value="custom">Custom range</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="fromDate">From</label>
+                                <input type="date" id="fromDate" data-label="From date" data-rules="required|date|notFuture|minDate:-365"
+                                       data-msg-min-date="Consumption data is available for the last 12 months only">
+                                <small class="error" id="fromDateError"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="toDate">To</label>
+                                <input type="date" id="toDate" data-label="To date" data-rules="required|date|notFuture|sameOrAfter:#fromDate">
+                                <small class="error" id="toDateError"></small>
+                            </div>
+                            <div class="form-group period-actions">
+                                <button class="btn btn-secondary" type="submit"><i class="fa-solid fa-filter"></i> Apply</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-cloud"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiCo2">0 t</div>
+                            <div class="kpi-label">CO₂ Emissions Avoided</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-mound"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiCoal">0 t</div>
+                            <div class="kpi-label">Coal Saved</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiStubble">0 t</div>
+                            <div class="kpi-label">Stubble Burning Avoided</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-tree"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiTrees">0</div>
+                            <div class="kpi-label">Equivalent Trees (1 year)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carbon-grid">
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Monthly CO₂ Avoided (tons)</div>
+                                <div class="card-subtitle" id="periodLabel"></div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-wrap">
+                                <div class="bar-chart" id="co2Chart"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div class="card-title">Period Summary</div>
+                        </div>
+                        <div class="card-body">
+                            <dl class="detail-list summary-list" id="summaryList"></dl>
+                        </div>
+                    </section>
+
+                </div>
+
+                <section class="card mt-3">
+                    <div class="card-header">
+                        <div class="card-title">Monthly Breakdown</div>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Month</th>
+                                    <th>Pellets Co-fired (t)</th>
+                                    <th>Co-firing %</th>
+                                    <th>CO₂ Avoided (t)</th>
+                                    <th>Coal Saved (t)</th>
+                                    <th>Stubble Avoided (t)</th>
+                                    <th>Green Energy (MWh)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="breakdownTable"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="card mt-3">
+                    <div class="card-header">
+                        <div class="card-title">Methodology</div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="method-list text-muted" id="methodList"></ul>
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/powerplant/plant.js"></script>
+    <script src="../js/powerplant/carbon-savings.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biomass Marketplace | Manufacturer | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/manufacturer/marketplace.css">
+</head>
+
+<body data-role="manufacturer" data-page="marketplace">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Biomass Marketplace</h1>
+                        <p class="page-subtitle">Browse active biomass listings from verified farmers. Each listing is sold as a whole.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-secondary" href="purchase-orders.html">
+                            <i class="fa-solid fa-file-signature"></i> My Purchase Orders
+                        </a>
+                    </div>
+                </div>
+
+                <!-- FILTERS -->
+
+                <section class="card mb-3">
+                    <div class="card-body">
+                        <form id="filterForm" class="filter-grid" novalidate>
+
+                            <div class="form-group filter-search">
+                                <label for="searchInput">Search</label>
+                                <input type="search" id="searchInput" placeholder="Biomass type, farmer or location" data-novalidate>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="typeFilter">Biomass Type</label>
+                                <select id="typeFilter" data-novalidate>
+                                    <option value="">All types</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="stateFilter">State</label>
+                                <select id="stateFilter" data-novalidate>
+                                    <option value="">All states</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="maxPrice">Max Price (₹/ton)</label>
+                                <input type="number" id="maxPrice" placeholder="e.g. 2500" inputmode="decimal"
+                                       data-label="Max price" data-rules="number|min:100|max:100000|decimals:2">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sortBy">Sort By</label>
+                                <select id="sortBy" data-novalidate>
+                                    <option value="newest">Newest first</option>
+                                    <option value="priceAsc">Price: low to high</option>
+                                    <option value="priceDesc">Price: high to low</option>
+                                    <option value="qtyDesc">Quantity: high to low</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-actions">
+                                <button type="button" class="btn btn-secondary" id="resetFilters">
+                                    <i class="fa-solid fa-rotate-left"></i> Reset
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+                </section>
+
+                <div class="flex between mb-2">
+                    <p class="text-muted" id="resultCount">0 listings</p>
+                </div>
+
+                <!-- LISTINGS -->
+
+                <div class="listing-grid" id="marketplaceContainer"></div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/manufacturer/marketplace.js"></script>
+
+</body>
+
+</html>

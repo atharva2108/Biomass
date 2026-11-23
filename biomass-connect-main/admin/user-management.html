@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management | Admin | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/admin/user-management.css">
+</head>
+
+<body data-role="admin" data-page="user-management">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>User Management</h1>
+                        <p class="page-subtitle">View farmers, manufacturers and power plants, and block or unblock their accounts.</p>
+                    </div>
+                </div>
+
+                <!-- KPI CARDS -->
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-users"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiTotal">0</div>
+                            <div class="kpi-label">Total Users</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-user-check"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiActive">0</div>
+                            <div class="kpi-label">Active</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-user-clock"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiPending">0</div>
+                            <div class="kpi-label">Pending Verification</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-user-slash"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiBlocked">0</div>
+                            <div class="kpi-label">Blocked</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- USERS TABLE -->
+
+                <section class="card">
+
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">All Users</div>
+                            <div class="card-subtitle" id="resultCount">0 users</div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="toolbar">
+                            <div class="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" id="searchInput" placeholder="Search by name, email, mobile or ID" aria-label="Search users" data-novalidate>
+                            </div>
+                            <select id="roleFilter" aria-label="Filter by role" data-novalidate>
+                                <option value="All">All Roles</option>
+                                <option value="Farmer">Farmers</option>
+                                <option value="Manufacturer">Manufacturers</option>
+                                <option value="Power Plant">Power Plants</option>
+                            </select>
+                            <select id="statusFilter" aria-label="Filter by status" data-novalidate>
+                                <option value="All">All Statuses</option>
+                                <option value="Active">Active</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Blocked">Blocked</option>
+                                <option value="Rejected">Rejected</option>
+                            </select>
+                            <button class="btn btn-ghost" type="button" id="clearFilters">
+                                <i class="fa-solid fa-rotate-left"></i> Clear
+                            </button>
+                        </div>
+
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Role</th>
+                                        <th>Email</th>
+                                        <th>Mobile</th>
+                                        <th>Status</th>
+                                        <th>Joined</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="userTable"></tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- VIEW USER MODAL -->
+
+    <div class="modal-backdrop" id="viewModal" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="viewTitle">
+            <div class="modal-header">
+                <h3 id="viewTitle">User Details</h3>
+                <button class="modal-close" type="button" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="viewBody"></div>
+            <div class="modal-footer" id="viewFooter"></div>
+        </div>
+    </div>
+
+    <!-- BLOCK USER MODAL -->
+
+    <div class="modal-backdrop" id="blockModal" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="blockTitle">
+            <div class="modal-header">
+                <h3 id="blockTitle">Block User</h3>
+                <button class="modal-close" type="button" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="blockForm" novalidate>
+                <div class="modal-body">
+                    <p class="text-muted mb-2" id="blockIntro"></p>
+                    <div class="form-grid">
+                        <div class="form-group full">
+                            <label for="blockCategory">Reason Category</label>
+                            <select id="blockCategory" data-rules="required">
+                                <option value="">Select a category</option>
+                                <option>Fraudulent activity</option>
+                                <option>Fake or misleading listings</option>
+                                <option>Payment default</option>
+                                <option>Orders not supplied</option>
+                                <option>Abusive behaviour</option>
+                                <option>Other policy violation</option>
+                            </select>
+                            <small class="error"></small>
+                        </div>
+                        <div class="form-group full">
+                            <label for="blockReason">Reason for Blocking</label>
+                            <textarea id="blockReason" rows="4" placeholder="Explain why this account is being blocked (min. 10 characters)" data-rules="required|text|minlen:10|maxlen:500"></textarea>
+                            <small class="form-hint">The user will see this reason when they try to sign in.</small>
+                            <small class="error"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-close>Cancel</button>
+                    <button class="btn btn-danger" type="submit"><i class="fa-solid fa-ban"></i> Block User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/admin/admin-common.js"></script>
+    <script src="../js/admin/user-management.js"></script>
+
+</body>
+
+</html>

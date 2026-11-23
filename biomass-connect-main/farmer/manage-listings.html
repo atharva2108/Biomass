@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Listings | Farmer | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/farmer/manage-listings.css">
+</head>
+
+<body data-role="farmer" data-page="manage-listings">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Manage Biomass Listings</h1>
+                        <p class="page-subtitle">Edit, pause or remove the biomass you have listed for sale. Sold out listings are locked.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-primary" href="create-listing.html">
+                            <i class="fa-solid fa-plus"></i> New Listing
+                        </a>
+                    </div>
+                </div>
+
+                <!-- KPI CARDS -->
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-layer-group"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiTotal">0</div>
+                            <div class="kpi-label">Total Listings</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-circle-check"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiActive">0</div>
+                            <div class="kpi-label">Active Listings</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-circle-pause"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiInactive">0</div>
+                            <div class="kpi-label">Inactive / Sold Out</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-weight-hanging"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiTons">0</div>
+                            <div class="kpi-label">Tons Listed (Active)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LISTINGS TABLE -->
+
+                <section class="card">
+
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Your Listings</div>
+                            <div class="card-subtitle" id="resultCount">0 listings</div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="toolbar">
+                            <div class="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" id="searchInput" placeholder="Search by ID, type or location" data-novalidate aria-label="Search listings">
+                            </div>
+                            <select id="statusFilter" data-novalidate aria-label="Filter by status">
+                                <option value="">All statuses</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                                <option>Sold Out</option>
+                            </select>
+                            <select id="typeFilter" data-novalidate aria-label="Filter by biomass type"></select>
+                            <button type="button" class="btn btn-ghost btn-sm" id="clearFilters">
+                                <i class="fa-solid fa-xmark"></i> Clear
+                            </button>
+                        </div>
+
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Listing ID</th>
+                                        <th>Biomass Type</th>
+                                        <th>Quantity</th>
+                                        <th>Price / Ton</th>
+                                        <th>Location</th>
+                                        <th>Available From</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="listingTable"></tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- EDIT LISTING MODAL -->
+
+    <div class="modal-backdrop" id="editModal">
+        <div class="modal modal-lg" role="dialog" aria-modal="true" aria-labelledby="editTitle">
+
+            <div class="modal-header">
+                <h3 id="editTitle">Edit Listing</h3>
+                <button type="button" class="modal-close" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <form id="editForm" novalidate>
+
+                <div class="modal-body">
+
+                    <input type="hidden" id="editId">
+                    <input type="hidden" id="editMinDate">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="editType">Biomass Type</label>
+                            <select id="editType" data-label="Biomass type" data-rules="required"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editAvailable">Available From</label>
+                            <input type="date" id="editAvailable" data-label="Available from"
+                                   data-rules="required|date|minDate:#editMinDate|maxDate:+180">
+                            <small class="form-hint">Cannot be moved further into the past</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editQuantity">Quantity (Tons)</label>
+                            <input type="number" id="editQuantity" inputmode="decimal"
+                                   data-label="Quantity" data-rules="required|number|positive|max:10000|decimals:2">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editPrice">Price per Ton (₹)</label>
+                            <input type="number" id="editPrice" inputmode="decimal"
+                                   data-label="Price per ton" data-rules="required|number|min:100|max:100000|decimals:2">
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="editLocation">Village / Pickup Point</label>
+                            <input type="text" id="editLocation" data-label="Pickup location"
+                                   data-rules="required|text|minlen:2|maxlen:100">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editDistrict">District</label>
+                            <input type="text" id="editDistrict" data-label="District"
+                                   data-rules="required|alpha|minlen:2|maxlen:50">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editState">State</label>
+                            <select id="editState" data-label="State" data-rules="required"></select>
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="editDescription">Description</label>
+                            <textarea id="editDescription" rows="3" data-label="Description" data-rules="text|maxlen:500"></textarea>
+                            <div class="flex between">
+                                <small class="error"></small>
+                                <small class="form-hint" id="editDescCount">0 / 500</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close>Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/farmer/farmer-utils.js"></script>
+    <script src="../js/farmer/manage-listings.js"></script>
+
+</body>
+
+</html>

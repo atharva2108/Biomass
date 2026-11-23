@@ -1,0 +1,36 @@
+/* Admin audit & compliance — page-specific layout only.
+   Shared components live in ../theme.css */
+
+.tab i {
+    margin-right: 6px;
+}
+
+/* inline date filters inside the toolbar */
+.filter-field {
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-field label {
+    margin: 0;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.filter-field .error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    white-space: nowrap;
+    margin-top: 2px;
+}
+
+.filters {
+    row-gap: 22px;
+}
+
+.nowrap {
+    white-space: nowrap;
+}

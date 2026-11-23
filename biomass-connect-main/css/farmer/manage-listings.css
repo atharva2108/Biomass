@@ -1,0 +1,17 @@
+/* Farmer — Manage Listings: page-specific layout only.
+   Shared components (cards, tables, modal, badges) live in ../theme.css */
+
+.cell-sub {
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.modal.modal-lg {
+    max-width: 720px;
+}
+
+@media (max-width: 768px) {
+    .toolbar select {
+        flex: 1;
+    }
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders &amp; Transactions | Admin | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/admin/orders-monitoring.css">
+</head>
+
+<body data-role="admin" data-page="orders-monitoring">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Orders &amp; Transactions</h1>
+                        <p class="page-subtitle">Monitor biomass orders and pellet orders, their delivery and payment status.</p>
+                    </div>
+                </div>
+
+                <!-- KPI CARDS (reflect current filters) -->
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-receipt"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiCount">0</div>
+                            <div class="kpi-label">Orders</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiActive">0</div>
+                            <div class="kpi-label">Active Orders</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiValue">₹0</div>
+                            <div class="kpi-label">Transaction Value</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiUnpaid">0</div>
+                            <div class="kpi-label">Delivered, Payment Pending</div>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="card">
+
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">All Orders</div>
+                            <div class="card-subtitle" id="resultCount">0 orders</div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+
+                        <form class="toolbar filters" id="filterForm" novalidate>
+                            <div class="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" id="searchInput" placeholder="Search order ID, buyer, seller or product" aria-label="Search orders" data-novalidate>
+                            </div>
+                            <select id="typeFilter" aria-label="Filter by order type" data-novalidate>
+                                <option value="All">All Types</option>
+                                <option value="Biomass">Biomass Orders</option>
+                                <option value="Pellet">Pellet Orders</option>
+                            </select>
+                            <select id="statusFilter" aria-label="Filter by status" data-novalidate>
+                                <option value="All">All Statuses</option>
+                                <option>Placed</option>
+                                <option>Pickup Scheduled</option>
+                                <option>In Transit</option>
+                                <option>Delivered</option>
+                            </select>
+                            <select id="paymentFilter" aria-label="Filter by payment" data-novalidate>
+                                <option value="All">All Payments</option>
+                                <option>Pending</option>
+                                <option>Paid</option>
+                            </select>
+                            <div class="form-group filter-field">
+                                <label for="fromDate">From</label>
+                                <input type="date" id="fromDate" data-label="From date" data-rules="date|notFuture">
+                                <small class="error"></small>
+                            </div>
+                            <div class="form-group filter-field">
+                                <label for="toDate">To</label>
+                                <input type="date" id="toDate" data-label="To date" data-rules="date|notFuture|sameOrAfter:#fromDate">
+                                <small class="error"></small>
+                            </div>
+                            <button class="btn btn-ghost" type="button" id="clearFilters">
+                                <i class="fa-solid fa-rotate-left"></i> Clear
+                            </button>
+                        </form>
+
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Type</th>
+                                        <th>Buyer</th>
+                                        <th>Seller</th>
+                                        <th>Product</th>
+                                        <th>Qty</th>
+                                        <th>Amount</th>
+                                        <th>Order Date</th>
+                                        <th>Status</th>
+                                        <th>Payment</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="orderTable"></tbody>
+                                <tfoot id="orderTotals"></tfoot>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- VIEW ORDER MODAL -->
+
+    <div class="modal-backdrop" id="viewModal" aria-hidden="true">
+        <div class="modal modal-lg" role="dialog" aria-modal="true" aria-labelledby="viewTitle">
+            <div class="modal-header">
+                <h3 id="viewTitle">Order Details</h3>
+                <button class="modal-close" type="button" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="viewBody"></div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-close>Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/admin/admin-common.js"></script>
+    <script src="../js/admin/orders-monitoring.js"></script>
+
+</body>
+
+</html>

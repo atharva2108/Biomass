@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Pellet Listing | Manufacturer | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/manufacturer/pellet-listing.css">
+</head>
+
+<body data-role="manufacturer" data-page="pellet-listing">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Create Pellet Listing</h1>
+                        <p class="page-subtitle">List a pellet batch with its quality parameters so power plants can order it.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-secondary" href="pellet-management.html">
+                            <i class="fa-solid fa-boxes-stacked"></i> Manage Listings
+                        </a>
+                    </div>
+                </div>
+
+                <div class="listing-layout">
+
+                    <section class="card">
+                        <form id="pelletForm" novalidate>
+
+                            <div class="card-body">
+                                <div class="form-grid">
+
+                                    <div class="form-section-title">Product Details</div>
+
+                                    <div class="form-group">
+                                        <label for="pelletType">Pellet Type</label>
+                                        <select id="pelletType" data-rules="required">
+                                            <option value="">Select pellet type</option>
+                                            <option>Agro Residue Pellets</option>
+                                            <option>Rice Husk Pellets</option>
+                                            <option>Bagasse Pellets</option>
+                                            <option>Wheat Straw Pellets</option>
+                                            <option>Mustard Husk Pellets</option>
+                                            <option>Groundnut Shell Pellets</option>
+                                            <option>Wood Pellets</option>
+                                            <option>Mixed Biomass Pellets</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="grade">Grade</label>
+                                        <select id="grade" data-grade-select data-rules="required">
+                                            <option value="">Select grade</option>
+                                            <option>Premium</option>
+                                            <option>Standard</option>
+                                            <option>Industrial</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="quantity">Quantity (Tons)</label>
+                                        <input type="number" id="quantity" placeholder="e.g. 100" step="any" inputmode="decimal"
+                                               data-label="Quantity" data-rules="required|number|positive|max:10000|decimals:2">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="price">Price per Ton (₹)</label>
+                                        <input type="number" id="price" placeholder="e.g. 7500" step="any" inputmode="decimal"
+                                               data-label="Price per ton" data-rules="required|number|min:1000|max:50000|decimals:2">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="availableFrom">Available From</label>
+                                        <input type="date" id="availableFrom" data-rules="required|date|notPast|maxDate:+180">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="location">Pickup Location</label>
+                                        <input type="text" id="location" placeholder="e.g. Nashik, Maharashtra" value="Nashik, Maharashtra"
+                                               data-label="Pickup location" data-rules="required|text|minlen:2|maxlen:100">
+                                    </div>
+
+                                </div>
+
+                                <div class="form-grid cols-3 mt-3">
+
+                                    <div class="form-section-title">Quality Parameters</div>
+
+                                    <div class="form-group">
+                                        <label for="diameter">Diameter (mm)</label>
+                                        <input type="number" id="diameter" placeholder="6 – 12" step="any" inputmode="decimal"
+                                               data-label="Diameter" data-rules="required|number|min:6|max:12|decimals:1">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="length">Length (mm)</label>
+                                        <input type="number" id="length" placeholder="10 – 50" step="any" inputmode="decimal"
+                                               data-label="Length" data-rules="required|number|min:10|max:50|decimals:1">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="moisture">Moisture (%)</label>
+                                        <input type="number" id="moisture" placeholder="0 – 15" step="any" inputmode="decimal"
+                                               data-label="Moisture" data-rules="required|number|min:0|max:15|decimals:2|premiumMax:10">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="ashContent">Ash Content (%)</label>
+                                        <input type="number" id="ashContent" placeholder="0 – 20" step="any" inputmode="decimal"
+                                               data-label="Ash content" data-rules="required|number|min:0|max:20|decimals:2|premiumMax:8">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="calorificValue">Calorific Value (kcal/kg)</label>
+                                        <input type="number" id="calorificValue" placeholder="3000 – 5500" inputmode="numeric"
+                                               data-label="Calorific value" data-rules="required|number|integer|min:3000|max:5500|premiumMin:4000">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="bulkDensity">Bulk Density (kg/m³)</label>
+                                        <input type="number" id="bulkDensity" placeholder="500 – 800" inputmode="numeric"
+                                               data-label="Bulk density" data-rules="required|number|integer|min:500|max:800">
+                                    </div>
+
+                                </div>
+
+                                <div class="form-grid mt-3">
+
+                                    <div class="form-section-title">Certification</div>
+
+                                    <div class="form-group">
+                                        <label for="certification">Certification <span class="text-subtle">(optional)</span></label>
+                                        <input type="text" id="certification" list="certOptions" placeholder="e.g. BIS IS 17583"
+                                               data-label="Certification" data-rules="text|minlen:2|maxlen:60">
+                                        <datalist id="certOptions">
+                                            <option value="BIS IS 17583"></option>
+                                            <option value="ENplus A1"></option>
+                                            <option value="ENplus A2"></option>
+                                            <option value="ISO 17225-2"></option>
+                                        </datalist>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="reset" class="btn btn-secondary">Clear</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-check"></i> Publish Listing</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </section>
+
+                    <!-- GUIDELINES -->
+
+                    <aside class="stack guide-col">
+
+                        <section class="card">
+                            <div class="card-header">
+                                <div class="card-title">Listing Value</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="value-big" id="listingValue">₹0</div>
+                                <p class="form-hint">Quantity × price per ton. A power plant buys the whole listing in one order.</p>
+                            </div>
+                        </section>
+
+                        <section class="card">
+                            <div class="card-header">
+                                <div class="card-title">Quality Guidelines</div>
+                            </div>
+                            <div class="card-body">
+                                <ul class="guide-list">
+                                    <li><span>Diameter</span><strong>6 – 12 mm</strong></li>
+                                    <li><span>Length</span><strong>10 – 50 mm</strong></li>
+                                    <li><span>Moisture</span><strong>0 – 15 %</strong></li>
+                                    <li><span>Ash content</span><strong>0 – 20 %</strong></li>
+                                    <li><span>Calorific value</span><strong>3000 – 5500 kcal/kg</strong></li>
+                                    <li><span>Bulk density</span><strong>500 – 800 kg/m³</strong></li>
+                                </ul>
+                                <p class="guide-note">
+                                    <i class="fa-solid fa-award"></i>
+                                    <span><strong>Premium grade</strong> needs moisture ≤ 10%, ash ≤ 8% and calorific value ≥ 4000 kcal/kg.</span>
+                                </p>
+                            </div>
+                        </section>
+
+                    </aside>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/manufacturer/pellet-listing.js"></script>
+
+</body>
+
+</html>

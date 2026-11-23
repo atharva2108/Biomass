@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Listing | Farmer | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/farmer/create-listing.css">
+</head>
+
+<body data-role="farmer" data-page="create-listing">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Create Biomass Listing</h1>
+                        <p class="page-subtitle">List your crop residue so pellet manufacturers can discover and order it.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-secondary" href="manage-listings.html">
+                            <i class="fa-solid fa-list-check"></i> Manage Listings
+                        </a>
+                    </div>
+                </div>
+
+                <div class="listing-layout">
+
+                    <!-- LISTING FORM -->
+
+                    <section class="card">
+
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Listing Details</div>
+                                <div class="card-subtitle">Fields marked * are required</div>
+                            </div>
+                        </div>
+
+                        <form class="card-body" id="listingForm" novalidate>
+
+                            <div class="form-grid">
+
+                                <div class="form-section-title">Biomass</div>
+
+                                <div class="form-group">
+                                    <label for="biomassType">Biomass Type</label>
+                                    <select id="biomassType" data-rules="required"></select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="availableFrom">Available From</label>
+                                    <input type="date" id="availableFrom" data-rules="required|date|notPast|maxDate:+180">
+                                    <small class="form-hint">Between today and the next 180 days</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="quantity">Quantity (Tons)</label>
+                                    <input type="number" id="quantity" inputmode="decimal" placeholder="e.g. 25"
+                                           data-label="Quantity" data-rules="required|number|positive|max:10000|decimals:2">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="price">Price per Ton (₹)</label>
+                                    <input type="number" id="price" inputmode="decimal" placeholder="e.g. 2000"
+                                           data-label="Price per ton" data-rules="required|number|min:100|max:100000|decimals:2">
+                                </div>
+
+                                <div class="form-section-title">Pickup Location</div>
+
+                                <div class="form-group full">
+                                    <label for="location">Village / Pickup Point</label>
+                                    <input type="text" id="location" placeholder="e.g. Niphad, near APMC yard"
+                                           data-label="Pickup location" data-rules="required|text|minlen:2|maxlen:100">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="district">District</label>
+                                    <input type="text" id="district" placeholder="e.g. Nashik"
+                                           data-rules="required|alpha|minlen:2|maxlen:50">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="state">State</label>
+                                    <select id="state" data-rules="required"></select>
+                                </div>
+
+                                <div class="form-section-title">Additional Information</div>
+
+                                <div class="form-group full">
+                                    <label for="description">Description</label>
+                                    <textarea id="description" rows="4" placeholder="Storage condition, baling, pickup access, etc."
+                                              data-rules="text|maxlen:500"></textarea>
+                                    <div class="flex between">
+                                        <small class="error"></small>
+                                        <small class="form-hint" id="descCount">0 / 500</small>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" id="resetBtn">
+                                    <i class="fa-solid fa-rotate-left"></i> Reset
+                                </button>
+                                <button type="submit" class="btn btn-primary" id="submitBtn">
+                                    <i class="fa-solid fa-circle-plus"></i> Create Listing
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </section>
+
+                    <!-- SUMMARY -->
+
+                    <aside class="stack">
+
+                        <section class="card">
+                            <div class="card-header">
+                                <div class="card-title">Listing Summary</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="estimate">
+                                    <span class="text-muted">Estimated total value</span>
+                                    <strong id="estimateValue">₹0</strong>
+                                    <small class="text-subtle" id="estimateBreakdown">Enter quantity and price to see the estimate</small>
+                                </div>
+                                <dl class="detail-list summary-list">
+                                    <div><dt>Biomass</dt><dd id="sumType">—</dd></div>
+                                    <div><dt>Available from</dt><dd id="sumDate">—</dd></div>
+                                    <div><dt>Location</dt><dd id="sumLocation">—</dd></div>
+                                </dl>
+                            </div>
+                        </section>
+
+                        <section class="card">
+                            <div class="card-header">
+                                <div class="card-title">Tips for a good listing</div>
+                            </div>
+                            <ul class="card-body tips">
+                                <li><i class="fa-solid fa-check"></i> Buyers purchase the whole listing, so list only the quantity you can supply.</li>
+                                <li><i class="fa-solid fa-check"></i> Describe how the stock is stored and how easy pickup is.</li>
+                                <li><i class="fa-solid fa-check"></i> Keep the listing inactive when stock is not ready.</li>
+                            </ul>
+                        </section>
+
+                    </aside>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/farmer/farmer-utils.js"></script>
+    <script src="../js/farmer/create-listing.js"></script>
+
+</body>
+
+</html>

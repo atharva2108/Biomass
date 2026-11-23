@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking | Farmer | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/farmer/tracking.css">
+</head>
+
+<body data-role="farmer" data-page="tracking">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Order Tracking</h1>
+                        <p class="page-subtitle">Follow your orders from pickup to delivery. Transport details are updated by the logistics team.</p>
+                    </div>
+                    <div class="page-actions">
+                        <a class="btn btn-secondary" href="orders.html">
+                            <i class="fa-solid fa-cart-shopping"></i> Orders Received
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tracking-layout">
+
+                    <!-- ORDER PICKER -->
+
+                    <section class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Orders</div>
+                                <div class="card-subtitle" id="listCount">0 orders</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="toolbar picker-toolbar">
+                                <div class="search">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="search" id="searchInput" placeholder="Search orders" data-novalidate aria-label="Search orders">
+                                </div>
+                                <select id="viewFilter" data-novalidate aria-label="Show orders">
+                                    <option value="active">Active</option>
+                                    <option value="delivered">Delivered</option>
+                                    <option value="all">All</option>
+                                </select>
+                            </div>
+                            <div class="track-list" id="trackList"></div>
+                        </div>
+                    </section>
+
+                    <!-- TRACKING DETAIL -->
+
+                    <section class="card" id="trackDetail"></section>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/farmer/farmer-utils.js"></script>
+    <script src="../js/farmer/tracking.js"></script>
+
+</body>
+
+</html>

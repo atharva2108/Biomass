@@ -1,0 +1,58 @@
+/* Purchase orders — page-specific layout only. */
+
+.po-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.po-layout > .card + .card {
+    margin-top: 0;
+}
+
+.summary-card {
+    position: sticky;
+    top: calc(var(--topbar-h) + 20px);
+}
+
+.summary-lines {
+    margin: 16px 0 12px;
+    border-top: 1px solid var(--border);
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.summary-line span {
+    color: var(--text-muted);
+}
+
+.summary-line.total {
+    border-bottom: none;
+    font-size: 16px;
+}
+
+.summary-line.total strong {
+    color: var(--primary-dark);
+}
+
+.listing-summary-title {
+    font-weight: 600;
+    color: var(--text);
+}
+
+@media (max-width: 1100px) {
+    .po-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-card {
+        position: static;
+    }
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pellet Sales History | Manufacturer | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/manufacturer/pellet-sales.css">
+</head>
+
+<body data-role="manufacturer" data-page="pellet-sales">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Pellet Sales History</h1>
+                        <p class="page-subtitle">Delivered pellet orders with their payment status and the quality score of each batch.</p>
+                    </div>
+                </div>
+
+                <section class="card rating-summary">
+                    <div class="card-body">
+                        <div class="kpi-icon"><i class="fa-solid fa-star"></i></div>
+                        <div>
+                            <div class="card-title">Your Supplier Rating <span id="overallRating"></span></div>
+                            <p class="form-hint">Calculated automatically from the batch details power plants submit after delivery.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-circle-check"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiOrders">0</div>
+                            <div class="kpi-label">Delivered Orders</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-weight-hanging"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiTons">0 t</div>
+                            <div class="kpi-label">Pellets Sold</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiRevenue">₹0</div>
+                            <div class="kpi-label">Sales Value</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiPending">₹0</div>
+                            <div class="kpi-label">Payment Pending</div>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Delivered Orders</div>
+                            <div class="card-subtitle" id="resultCount">0 sales</div>
+                        </div>
+                    </div>
+
+                    <div class="card-body" style="padding-bottom:0">
+                        <div class="toolbar">
+                            <div class="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" id="searchInput" placeholder="Search by order ID, power plant or pellet type" data-novalidate>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Power Plant</th>
+                                    <th>Pellets</th>
+                                    <th>Quantity</th>
+                                    <th>Amount</th>
+                                    <th>Delivered On</th>
+                                    <th>Batch Score</th>
+                                    <th>Payment</th>
+                                </tr>
+                            </thead>
+                            <tbody id="salesTable"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/manufacturer/pellet-sales.js"></script>
+
+</body>
+
+</html>

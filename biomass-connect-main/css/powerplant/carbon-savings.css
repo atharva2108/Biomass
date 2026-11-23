@@ -1,0 +1,72 @@
+/* Power plant carbon savings — page-specific layout only. */
+
+.period-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+    gap: 16px;
+    align-items: start;
+}
+
+.period-actions {
+    padding-top: 25px;
+}
+
+.carbon-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.carbon-grid .card + .card {
+    margin-top: 0;
+}
+
+/* room for the value labels above and month labels below the bars */
+.chart-wrap {
+    padding: 22px 4px 26px;
+}
+
+.bar-chart .bar b {
+    position: absolute;
+    top: -18px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.summary-list {
+    grid-template-columns: 1fr;
+}
+
+.method-list {
+    padding-left: 18px;
+    font-size: 13px;
+    display: grid;
+    gap: 6px;
+}
+
+@media (max-width: 1100px) {
+    .carbon-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 992px) {
+    .period-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .period-actions {
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .period-grid {
+        grid-template-columns: 1fr;
+    }
+}

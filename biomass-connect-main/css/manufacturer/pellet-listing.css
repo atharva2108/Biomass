@@ -1,0 +1,67 @@
+/* Create pellet listing — page-specific layout only. */
+
+.listing-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.guide-col {
+    position: sticky;
+    top: calc(var(--topbar-h) + 20px);
+}
+
+.value-big {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+.guide-list {
+    list-style: none;
+}
+
+.guide-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border);
+}
+
+.guide-list li:last-child {
+    border-bottom: none;
+}
+
+.guide-list span {
+    color: var(--text-muted);
+}
+
+.guide-note {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    background: var(--primary-softer);
+    border: 1px solid var(--primary-border);
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.guide-note i {
+    color: var(--primary);
+    margin-top: 2px;
+}
+
+@media (max-width: 1100px) {
+    .listing-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .guide-col {
+        position: static;
+    }
+}

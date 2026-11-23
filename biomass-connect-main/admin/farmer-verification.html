@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Verification | Admin | Biomass Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/admin/verification.css">
+</head>
+
+<body data-role="admin" data-page="farmer-verification" data-verify-role="farmer">
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="app-main">
+
+            <header class="topbar" id="topbar"></header>
+
+            <main class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Farmer Verification</h1>
+                        <p class="page-subtitle">Review farmer registrations and the Aadhaar card each farmer submits.</p>
+                    </div>
+                </div>
+
+                <!-- KPI CARDS -->
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiPending">0</div>
+                            <div class="kpi-label">Pending Review</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-circle-check"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiApproved">0</div>
+                            <div class="kpi-label">Approved</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-circle-xmark"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiRejected">0</div>
+                            <div class="kpi-label">Rejected</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-seedling"></i></div>
+                        <div>
+                            <div class="kpi-value" id="kpiTotal">0</div>
+                            <div class="kpi-label">Total Applications</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- APPLICATIONS -->
+
+                <section class="card">
+                    <div class="card-body">
+
+                        <div class="tabs" id="statusTabs" role="tablist">
+                            <button class="tab active" type="button" data-status="Pending">Pending (<span class="count">0</span>)</button>
+                            <button class="tab" type="button" data-status="Approved">Approved (<span class="count">0</span>)</button>
+                            <button class="tab" type="button" data-status="Rejected">Rejected (<span class="count">0</span>)</button>
+                            <button class="tab" type="button" data-status="All">All (<span class="count">0</span>)</button>
+                        </div>
+
+                        <div class="toolbar">
+                            <div class="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" id="searchInput" placeholder="Search by name, email, mobile, district or ID" aria-label="Search applications" data-novalidate>
+                            </div>
+                        </div>
+
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Applicant</th>
+                                        <th>Contact</th>
+                                        <th>Location</th>
+                                        <th id="idColumn">ID</th>
+                                        <th>Submitted</th>
+                                        <th>Status</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="verifyTable"></tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- REVIEW MODAL -->
+
+    <div class="modal-backdrop" id="reviewModal" aria-hidden="true">
+        <div class="modal modal-lg" role="dialog" aria-modal="true" aria-labelledby="reviewTitle">
+            <div class="modal-header">
+                <h3 id="reviewTitle">Application</h3>
+                <button class="modal-close" type="button" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="reviewBody"></div>
+            <div class="modal-footer" id="reviewFooter"></div>
+        </div>
+    </div>
+
+    <!-- REJECT MODAL -->
+
+    <div class="modal-backdrop" id="rejectModal" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="rejectTitle">
+            <div class="modal-header">
+                <h3 id="rejectTitle">Reject Application</h3>
+                <button class="modal-close" type="button" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="rejectForm" novalidate>
+                <div class="modal-body">
+                    <p class="text-muted mb-2" id="rejectIntro"></p>
+                    <div class="form-grid">
+                        <div class="form-group full">
+                            <label for="rejectCategory">Rejection Category</label>
+                            <select id="rejectCategory" data-rules="required">
+                                <option value="">Select a category</option>
+                                <option>Document unclear</option>
+                                <option>Details mismatch</option>
+                                <option>Invalid document</option>
+                                <option>Other</option>
+                            </select>
+                            <small class="error"></small>
+                        </div>
+                        <div class="form-group full">
+                            <label for="rejectReason">Reason for Rejection</label>
+                            <textarea id="rejectReason" rows="4" placeholder="Describe what is wrong with the document and what to resubmit (min. 10 characters)" data-rules="required|text|minlen:10|maxlen:500"></textarea>
+                            <small class="form-hint">Shared with the applicant by email and SMS.</small>
+                            <small class="error"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-close>Cancel</button>
+                    <button class="btn btn-danger" type="submit"><i class="fa-solid fa-xmark"></i> Reject Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/common/toast.js"></script>
+    <script src="../js/common/validation.js"></script>
+    <script src="../js/common/store.js"></script>
+    <script src="../js/common/layout.js"></script>
+    <script src="../js/admin/admin-common.js"></script>
+    <script src="../js/admin/verification.js"></script>
+
+</body>
+
+</html>

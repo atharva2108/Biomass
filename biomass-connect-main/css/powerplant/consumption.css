@@ -1,0 +1,39 @@
+/* Power plant biomass consumption — page-specific layout only. */
+
+.consumption-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(300px, 2fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.consumption-grid .card + .card {
+    margin-top: 0;
+}
+
+/* room for the value labels above and month labels below the bars */
+.chart-wrap {
+    padding: 22px 4px 26px;
+}
+
+.bar-chart .bar b {
+    position: absolute;
+    top: -18px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.unit-filter {
+    width: auto;
+    min-width: 180px;
+}
+
+@media (max-width: 1100px) {
+    .consumption-grid {
+        grid-template-columns: 1fr;
+    }
+}
